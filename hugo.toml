@@ -1,0 +1,8 @@
+baseURL = 'https://hugo.crazyfrank.top/'
+languageCode = 'zh-cn'
+title = 'Crazyfrank\'s Blog'
+theme = 'ananke'
+
+[params]
+  description = "Crazyfrank's Blog"
+  author = "crazyfrank"

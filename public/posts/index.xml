@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on My New Hugo Site</title>
+    <link>http://example.org/posts/</link>
+    <description>Recent content in Posts on My New Hugo Site</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 19 Jun 2025 10:00:00 +0800</lastBuildDate><atom:link href="http://example.org/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>我的第一篇文章</title>
+      <link>http://example.org/posts/my-first-post/</link>
+      <pubDate>Thu, 19 Jun 2025 10:00:00 +0800</pubDate>
+      
+      <guid>http://example.org/posts/my-first-post/</guid>
+      <description>这是我的第一篇 Hugo 文章！
+标题 Hugo 使用 CommonMark Markdown 规范，支持各种 Markdown 语法。
+ 列表项 1 列表项 2 列表项 3  粗体文本 和 斜体文本。</description>
+    </item>
+    
+  </channel>
+</rss>
