@@ -1,7 +1,7 @@
 baseURL = 'https://hugo.crazyfrank.top/'
 languageCode = 'zh-cn'
 title = 'Crazyfrank Blog'
-theme = 'ananke'
+theme = 'gohugo-theme-ananke'
 
 [params]
   description = "Crazyfrank's Blog"
