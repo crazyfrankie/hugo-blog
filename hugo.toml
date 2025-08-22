@@ -1,6 +1,6 @@
 baseURL = 'https://hugo.crazyfrank.top/'
 languageCode = 'zh-cn'
-title = 'Crazyfrank\'s Blog'
+title = 'Crazyfrank Blog'
 theme = 'ananke'
 
 [params]
