@@ -1,7 +1,11 @@
 baseURL = 'https://hugo.crazyfrank.top/'
 languageCode = 'zh-cn'
 title = "Crazyfrank's Blog"
-theme = 'gohugo-theme-ananke'
+
+[module]
+  [[module.imports]]
+    path = "github.com/gethinode/hinode"
+    disable = false
 
 [params]
   description = "Crazyfrank's Blog"
