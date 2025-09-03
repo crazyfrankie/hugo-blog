@@ -6,5 +6,5 @@
     }
   },
   "buildCommand": "bash build.sh",
-  "outputDirectory": "public",
+  "outputDirectory": "public"
 }
