@@ -7,5 +7,4 @@
   },
   "buildCommand": "bash build.sh",
   "outputDirectory": "public",
-  "installCommand": "npm install"
 }
