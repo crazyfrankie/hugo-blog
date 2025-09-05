@@ -2,57 +2,57 @@
     xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
     xmlns:xhtml="http://www.w3.org/1999/xhtml"
     ><url>
-            <loc>http://localhost:1313/posts/</loc><lastmod>2025-09-05T10:00:00&#43;08:00</lastmod><xhtml:link
+            <loc>https://hugo.crazyfrank.top/decentration/</loc><lastmod>2025-09-05T18:51:27&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority><xhtml:link
                         rel="alternate"
                         hreflang="en"
-                        href="http://localhost:1313/en/posts/"
+                        href="https://hugo.crazyfrank.top/en/decentration/"
                         /><xhtml:link
                     rel="alternate"
                     hreflang="zh"
-                    href="http://localhost:1313/posts/"
+                    href="https://hugo.crazyfrank.top/decentration/"
                     /></url><url>
-            <loc>http://localhost:1313/</loc><lastmod>2025-09-05T10:00:00&#43;08:00</lastmod><xhtml:link
+            <loc>https://hugo.crazyfrank.top/categories/</loc><changefreq>weekly</changefreq><priority>0.5</priority><xhtml:link
                         rel="alternate"
                         hreflang="en"
-                        href="http://localhost:1313/en/"
+                        href="https://hugo.crazyfrank.top/en/categories/"
                         /><xhtml:link
                     rel="alternate"
                     hreflang="zh"
-                    href="http://localhost:1313/"
+                    href="https://hugo.crazyfrank.top/categories/"
                     /></url><url>
-            <loc>http://localhost:1313/posts/decentration/</loc><lastmod>2025-09-05T10:00:00&#43;08:00</lastmod><xhtml:link
+            <loc>https://hugo.crazyfrank.top/search/</loc><lastmod>2025-09-05T18:44:15&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority><xhtml:link
                         rel="alternate"
                         hreflang="en"
-                        href="http://localhost:1313/en/posts/decentration/"
+                        href="https://hugo.crazyfrank.top/en/search/"
                         /><xhtml:link
                     rel="alternate"
                     hreflang="zh"
-                    href="http://localhost:1313/posts/decentration/"
+                    href="https://hugo.crazyfrank.top/search/"
                     /></url><url>
-            <loc>http://localhost:1313/categories/</loc><xhtml:link
+            <loc>https://hugo.crazyfrank.top/posts/</loc><lastmod>2025-09-05T18:02:49&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority><xhtml:link
                         rel="alternate"
                         hreflang="en"
-                        href="http://localhost:1313/en/categories/"
+                        href="https://hugo.crazyfrank.top/en/posts/"
                         /><xhtml:link
                     rel="alternate"
                     hreflang="zh"
-                    href="http://localhost:1313/categories/"
+                    href="https://hugo.crazyfrank.top/posts/"
                     /></url><url>
-            <loc>http://localhost:1313/search/</loc><xhtml:link
+            <loc>https://hugo.crazyfrank.top/tags/</loc><changefreq>weekly</changefreq><priority>0.5</priority><xhtml:link
                         rel="alternate"
                         hreflang="en"
-                        href="http://localhost:1313/en/search/"
+                        href="https://hugo.crazyfrank.top/en/tags/"
                         /><xhtml:link
                     rel="alternate"
                     hreflang="zh"
-                    href="http://localhost:1313/search/"
+                    href="https://hugo.crazyfrank.top/tags/"
                     /></url><url>
-            <loc>http://localhost:1313/tags/</loc><xhtml:link
+            <loc>https://hugo.crazyfrank.top/</loc><lastmod>2025-09-05T18:02:49&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority><xhtml:link
                         rel="alternate"
                         hreflang="en"
-                        href="http://localhost:1313/en/tags/"
+                        href="https://hugo.crazyfrank.top/en/"
                         /><xhtml:link
                     rel="alternate"
                     hreflang="zh"
-                    href="http://localhost:1313/tags/"
+                    href="https://hugo.crazyfrank.top/"
                     /></url></urlset>
