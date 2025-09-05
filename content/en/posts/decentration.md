@@ -1,6 +1,6 @@
 ---
 title: "Exploring Decentralization through Log Processing"
-date: 2025-06-19T10:00:00+08:00
+date: 2025-09-05T10:00:00+08:00
 draft: false
 ---
 

@@ -3,6 +3,9 @@ defaultContentLanguage = 'zh'
 defaultContentLanguageInSubdir = false
 title = "Crazyfrank's Blog"
 
+# 中文字数统计配置
+hasCJKLanguage = true
+
 [module]
   [[module.imports]]
     path = "github.com/dillonzq/LoveIt"

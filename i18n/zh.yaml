@@ -12,9 +12,19 @@
     one: "1 分钟"
     other: "{{ .Count }} 分钟"
 
+- id: readingTime
+  translation:
+    one: "1 分钟"
+    other: "{{ .Count }} 分钟"
+
 - id: words
   translation:
     one: "字"
+    other: "{{ .Count }} 字"
+
+- id: wordCount
+  translation:
+    one: "1 字"
     other: "{{ .Count }} 字"
 
 - id: toc
