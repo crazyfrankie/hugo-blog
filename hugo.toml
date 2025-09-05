@@ -10,6 +10,15 @@ title = "Crazyfrank's Blog"
 
 [params]
   description = "Crazyfrank's Blog"
+  # 网站图标配置
+  [params.app]
+    title = "Crazyfrank's Blog"
+    noFavicon = false
+    svgFavicon = "/favicon.svg"
+    themeColor = "#ffffff"
+    iconColor = "#5bbad5"
+    tileColor = "#da532c"
+  
   [params.Author]
     name = "crazyfrank"
     link = "https://hugo.crazyfrank.top/"
