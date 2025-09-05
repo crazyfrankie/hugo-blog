@@ -1,0 +1,8 @@
+.home-avatar img.lazyload {
+    background-image: url('/images/avatar.jpg');
+    background-size: cover;
+    background-position: center;
+    width: 6rem;
+    height: 6rem;
+    border-radius: 50%;
+}

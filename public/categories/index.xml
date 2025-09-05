@@ -2,12 +2,34 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Categories on Crazyfrank 的博客</title>
-    <link>https://hugo.crazyfrank.top/categories/</link>
+    <link>http://localhost:1313/categories/</link>
     <description>Recent content in Categories on Crazyfrank 的博客</description>
     <generator>Hugo</generator>
     <language>zh-CN</language>
     <managingEditor>axu9417@gmail.com (crazyfrank)</managingEditor>
     <webMaster>axu9417@gmail.com (crazyfrank)</webMaster>
-    <atom:link href="https://hugo.crazyfrank.top/categories/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 05 Sep 2025 18:51:27 +0800</lastBuildDate>
+    <atom:link href="http://localhost:1313/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>技术</title>
+      <link>http://localhost:1313/categories/%E6%8A%80%E6%9C%AF/</link>
+      <pubDate>Fri, 05 Sep 2025 10:00:00 +0800</pubDate><author>axu9417@gmail.com (crazyfrank)</author>
+      <guid>http://localhost:1313/categories/%E6%8A%80%E6%9C%AF/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>技术</title>
+      <link>http://localhost:1313/categories/technology/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><author>axu9417@gmail.com (crazyfrank)</author>
+      <guid>http://localhost:1313/categories/technology/</guid>
+      <description>&lt;p&gt;技术相关的文章分类。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>生活</title>
+      <link>http://localhost:1313/categories/life/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><author>axu9417@gmail.com (crazyfrank)</author>
+      <guid>http://localhost:1313/categories/life/</guid>
+      <description></description>
+    </item>
   </channel>
 </rss>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>去中心化 on Crazyfrank 的博客</title>
+    <link>http://localhost:1313/tags/%E5%8E%BB%E4%B8%AD%E5%BF%83%E5%8C%96/</link>
+    <description>Recent content in 去中心化 on Crazyfrank 的博客</description>
+    <generator>Hugo</generator>
+    <language>zh-CN</language>
+    <managingEditor>axu9417@gmail.com (crazyfrank)</managingEditor>
+    <webMaster>axu9417@gmail.com (crazyfrank)</webMaster>
+    <lastBuildDate>Fri, 05 Sep 2025 18:51:27 +0800</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/%E5%8E%BB%E4%B8%AD%E5%BF%83%E5%8C%96/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>以日志处理浅谈去中心化</title>
+      <link>http://localhost:1313/decentration/</link>
+      <pubDate>Fri, 05 Sep 2025 10:00:00 +0800</pubDate><author>axu9417@gmail.com (crazyfrank)</author>
+      <guid>http://localhost:1313/decentration/</guid>
+      <description>&lt;p&gt;本文通过日志处理的角度来探讨去中心化系统的设计思路和实现方案。&lt;/p&gt;&#xA;&lt;h2 id=&#34;去中心化系统概述&#34;&gt;去中心化系统概述&lt;/h2&gt;&#xA;&lt;p&gt;去中心化是分布式系统设计中的重要概念，它通过将控制权分散到多个节点来提高系统的可靠性和容错性。&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

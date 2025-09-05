@@ -71,11 +71,11 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
       # title name
       name = "Crazyfrank's Blog"
       # you can add extra information before the name (HTML format is supported), such as icons
-      pre = ""
+      pre = "<i class='far fa-kiss-wink-heart fa-fw' aria-hidden='true'></i>"
       # you can add extra information after the name (HTML format is supported), such as icons
       post = ""
       # whether to use typeit animation for title name
-      typeit = false
+      typeit = true
 
   # Footer config
   [params.footer]
@@ -176,8 +176,85 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
   # Social config in home page
   [params.social]
     GitHub = "crazyfrankie"
-    Email = "axu9417@gmail.com"
-    RSS = ""
+		Email = "axu9417@gmail.com"
+		Linkedin = ""
+		X = ""
+		Instagram = ""
+		Facebook = ""
+		Telegram = ""
+		Medium = ""
+		Gitlab = ""
+		Youtubelegacy = ""
+		Youtubecustom = ""
+		Youtubechannel = ""
+		Tumblr = ""
+		Quora = ""
+		Keybase = ""
+		Pinterest = ""
+		Reddit = ""
+		Codepen = ""
+		FreeCodeCamp = ""
+		Bitbucket = ""
+		Stackoverflow = ""
+		Weibo = ""
+		Odnoklassniki = ""
+		VK = ""
+		Flickr = ""
+		Xing = ""
+		Snapchat = ""
+		Soundcloud = ""
+		Spotify = ""
+		Bandcamp = ""
+		Paypal = ""
+		Fivehundredpx = ""
+		Mix = ""
+		Goodreads = ""
+		Lastfm = ""
+		Foursquare = ""
+		Hackernews = ""
+		Kickstarter = ""
+		Patreon = ""
+		Steam = ""
+		Twitch = ""
+		Strava = ""
+		Skype = ""
+		Whatsapp = ""
+		Zhihu = ""
+		Douban = ""
+		Angellist = ""
+		Slidershare = ""
+		Jsfiddle = ""
+		Deviantart = ""
+		Behance = ""
+		Dribbble = ""
+		Wordpress = ""
+		Vine = ""
+		Googlescholar = ""
+		Researchgate = ""
+		Mastodon = ""
+		Thingiverse = ""
+		Devto = ""
+		Gitea = ""
+		XMPP = ""
+		Matrix = ""
+		Bilibili = ""
+		Discord = ""
+		DiscordInvite = ""
+		Lichess = ""
+		ORCID = ""
+		Pleroma = ""
+		Kaggle = ""
+		MediaWiki = ""
+		Plume = ""
+		HackTheBox = ""
+		RootMe= ""
+		Malt = ""
+		TikTok = ""
+		TryHackMe = ""
+		Codeberg = ""
+		HuggingFace = ""
+		Threads = ""
+		RSS = ""
 
   # Page global config
   [params.page]
@@ -246,6 +323,19 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
   [params.cdn]
     # CDN data file name, disabled by default
     data = "jsdelivr.yml"
+
+  # Page library config
+  [params.page.library]
+    [params.page.library.js]
+      typeit = true
+      lazysizes = true
+
+  # Compatibility config
+  [params.compatibility]
+    # whether to use Polyfill.io to be compatible with older browsers
+    polyfill = false
+    # whether to use object-fit-images to be compatible with older browsers
+    objectFit = false
     # typing speed between each step (measured in milliseconds)
     speed = 100
     # blinking speed of the cursor (measured in milliseconds)
@@ -312,6 +402,9 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
     
     [languages.zh.params]
       description = "Crazyfrank 的中文博客"
+      [languages.zh.params.home.profile]
+        title = "Crazyfrank 的博客"
+        subtitle = "疾风知劲草"
       [languages.zh.params.search]
         enable = true
         type = "lunr"
@@ -358,6 +451,9 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
     
     [languages.en.params]
       description = "Crazyfrank's English Blog"
+      [languages.en.params.home.profile]
+        title = "Crazyfrank's Blog"
+        subtitle = "Adversity reveals true strength"
       [languages.en.params.search]
         enable = true
         type = "lunr"

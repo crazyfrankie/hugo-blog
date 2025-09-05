@@ -1,0 +1,16 @@
+<script src="https://cdn.jsdelivr.net/npm/typeit@8.7.1/dist/index.umd.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // 初始化所有typeit元素
+    document.querySelectorAll('.typeit').forEach(function(element) {
+        if (element.id) {
+            new TypeIt('#' + element.id, {
+                strings: element.getAttribute('data-content') || element.textContent || 'Crazyfrank 的博客',
+                speed: 100,
+                waitUntilVisible: true
+            }).go();
+        }
+    });
+});
+</script>

@@ -2,6 +2,8 @@
 title: "Exploring Decentralization through Log Processing"
 date: 2025-09-05T10:00:00+08:00
 draft: false
+categories: ["technology"]
+tags: ["distributed-systems", "decentralization", "system design"]
 ---
 
 This article explores the design concepts and implementation approaches of decentralized systems from the perspective of log processing.

@@ -1,0 +1,5 @@
+---
+title: "life"
+---
+
+life posts
