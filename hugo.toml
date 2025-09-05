@@ -1,12 +1,107 @@
 baseURL = 'https://hugo.crazyfrank.top/'
-languageCode = 'zh-cn'
+defaultContentLanguage = 'zh'
+defaultContentLanguageInSubdir = false
 title = "Crazyfrank's Blog"
 
 [module]
   [[module.imports]]
-    path = "github.com/gethinode/hinode"
+    path = "github.com/dillonzq/LoveIt"
     disable = false
 
 [params]
   description = "Crazyfrank's Blog"
-  author = "crazyfrank"
+  [params.Author]
+    name = "crazyfrank"
+    link = "https://hugo.crazyfrank.top/"
+  
+  # 搜索配置
+  [params.search]
+    enable = true
+    type = "lunr"
+    contentLength = 4000
+    placeholder = ""
+    maxResultLength = 10
+    snippetLength = 30
+    highlightTag = "em"
+    absoluteURL = false
+
+  # 页面配置
+  [params.page]
+    hiddenFromHomePage = false
+    hiddenFromSearch = false
+    twemoji = false
+    lightgallery = false
+    ruby = true
+    fraction = true
+    fontawesome = true
+    linkToMarkdown = true
+    rssFullText = false
+
+  # Header config
+  [params.header]
+    desktopMode = "fixed"
+    mobileMode = "auto"
+    [params.header.title]
+      logo = ""
+      name = "Crazyfrank's Blog"
+      pre = ""
+      post = ""
+      typeit = false
+
+[outputs]
+  home = ["HTML", "RSS", "JSON"]
+
+[languages]
+  [languages.zh]
+    languageCode = "zh-cn"
+    languageName = "简体中文"
+    title = "Crazyfrank 的博客"
+    contentDir = "content/zh"
+    weight = 1
+    
+    [languages.zh.params]
+      description = "Crazyfrank 的中文博客"
+    
+    [[languages.zh.menu.main]]
+      name = "首页"
+      url = "/"
+      weight = 10
+    [[languages.zh.menu.main]]
+      name = "文章"
+      url = "/posts/"
+      weight = 20
+    [[languages.zh.menu.main]]
+      name = "搜索"
+      url = "/search/"
+      weight = 30
+    [[languages.zh.menu.main]]
+      name = "🇺🇸 English"
+      url = "/en/"
+      weight = 40
+
+  [languages.en]
+    languageCode = "en-us"
+    languageName = "English"
+    title = "Crazyfrank's Blog"
+    contentDir = "content/en"
+    weight = 2
+    
+    [languages.en.params]
+      description = "Crazyfrank's English Blog"
+    
+    [[languages.en.menu.main]]
+      name = "Home"
+      url = "/en/"
+      weight = 10
+    [[languages.en.menu.main]]
+      name = "Posts"
+      url = "/en/posts/"
+      weight = 20
+    [[languages.en.menu.main]]
+      name = "Search"
+      url = "/en/search/"
+      weight = 30
+    [[languages.en.menu.main]]
+      name = "🇨🇳 中文"
+      url = "../"
+      weight = 40

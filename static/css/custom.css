@@ -1,0 +1,9 @@
+/* 隐藏默认的语言切换器 */
+.menu-item.language {
+  display: none !important;
+}
+
+/* 额外确保隐藏 */
+#language-select-desktop {
+  display: none !important;
+}

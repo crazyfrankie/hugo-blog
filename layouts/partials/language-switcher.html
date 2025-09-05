@@ -1,0 +1,82 @@
+{{- if .Site.IsMultiLingual -}}
+<div class="custom-language-switcher">
+  {{- range .Site.Languages -}}
+    {{- if ne .Lang $.Site.Language.Lang -}}
+      {{- $url := "/" -}}
+      {{- if ne .Lang $.Site.DefaultContentLanguage -}}
+        {{- $url = printf "/%s/" .Lang -}}
+      {{- end -}}
+      <a href="{{ $url }}" class="custom-lang-link">
+        {{- if eq .Lang "zh" -}}
+          🇨🇳 中文
+        {{- else if eq .Lang "en" -}}
+          🇺🇸 EN
+        {{- else -}}
+          {{ .LanguageName }}
+        {{- end -}}
+      </a>
+    {{- end -}}
+  {{- end -}}
+</div>
+
+<style>
+/* 隐藏主题默认的语言切换器 */
+.lang-switch, .language-selector, [class*="lang"] {
+  display: none !important;
+}
+
+.custom-language-switcher {
+  position: fixed !important;
+  top: 20px !important;
+  left: 20px !important;
+  z-index: 9999 !important;
+  background: rgba(255, 255, 255, 0.95) !important;
+  border-radius: 8px !important;
+  padding: 8px 12px !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+  backdrop-filter: blur(10px) !important;
+  border: 1px solid rgba(0, 0, 0, 0.1) !important;
+}
+
+.custom-lang-link {
+  text-decoration: none !important;
+  color: #333 !important;
+  font-weight: 500 !important;
+  font-size: 14px !important;
+  transition: color 0.3s ease !important;
+  display: block !important;
+}
+
+.custom-lang-link:hover {
+  color: #0066cc !important;
+}
+
+@media (max-width: 768px) {
+  .custom-language-switcher {
+    top: 10px !important;
+    left: 10px !important;
+    padding: 6px 10px !important;
+  }
+  
+  .custom-lang-link {
+    font-size: 12px !important;
+  }
+}
+
+/* 暗色模式适配 */
+@media (prefers-color-scheme: dark) {
+  .custom-language-switcher {
+    background: rgba(30, 30, 30, 0.95) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  }
+  
+  .custom-lang-link {
+    color: #e0e0e0 !important;
+  }
+  
+  .custom-lang-link:hover {
+    color: #66b3ff !important;
+  }
+}
+</style>
+{{- end -}}

@@ -1,0 +1,12 @@
+{{- $pages := where .Site.RegularPages "Type" "in" .Site.Params.mainSections -}}
+{{- $pages = where $pages "Params.searchHidden" "!=" true -}}
+[
+{{- range $index, $page := $pages -}}
+{{- if gt $index 0 }},{{ end }}
+{
+  "title": {{ $page.Title | jsonify }},
+  "content": {{ $page.Plain | truncate 500 | jsonify }},
+  "uri": {{ $page.RelPermalink | jsonify }}
+}
+{{- end -}}
+]

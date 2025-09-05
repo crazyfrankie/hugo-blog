@@ -1,0 +1,42 @@
+/* 美化语言切换器 */
+.menu-item.language {
+  background: rgba(0, 102, 204, 0.1) !important;
+  border-radius: 8px !important;
+  padding: 6px 12px !important;
+  transition: all 0.3s ease !important;
+  margin-left: 10px !important;
+}
+
+.menu-item.language:hover {
+  background: rgba(0, 102, 204, 0.2) !important;
+}
+
+.language-select {
+  background: transparent !important;
+  border: none !important;
+  color: inherit !important;
+  font-weight: 500 !important;
+  cursor: pointer !important;
+  outline: none !important;
+  font-size: 14px !important;
+}
+
+.menu-item.language i {
+  margin-right: 6px !important;
+  color: #0066cc !important;
+}
+
+/* 暗色模式适配 */
+@media (prefers-color-scheme: dark) {
+  .menu-item.language {
+    background: rgba(102, 179, 255, 0.1) !important;
+  }
+  
+  .menu-item.language:hover {
+    background: rgba(102, 179, 255, 0.2) !important;
+  }
+  
+  .menu-item.language i {
+    color: #66b3ff !important;
+  }
+}

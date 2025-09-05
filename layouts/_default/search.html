@@ -1,0 +1,74 @@
+{{- define "content" -}}
+<div style="padding: 40px 20px;">
+  <div style="max-width: 800px; margin: 0 auto;">
+    <h2 style="margin-bottom: 30px;">{{ .Title }}</h2>
+    
+    <!-- 搜索输入框 -->
+    <div style="margin-bottom: 30px;">
+      <input type="text" id="search-input" placeholder="{{ .Params.placeholder | default "输入关键词搜索..." }}" 
+             style="width: 100%; padding: 15px; font-size: 16px; border: 2px solid #ddd; border-radius: 8px; box-sizing: border-box;" />
+    </div>
+    
+    <!-- 搜索结果 -->
+    <div id="search-results"></div>
+  </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const searchInput = document.getElementById('search-input');
+  const searchResults = document.getElementById('search-results');
+  
+  let blogIndex = null;
+  
+  // 加载博客搜索索引
+  fetch('/index.json')
+    .then(response => response.json())
+    .then(data => {
+      // 只保留唯一的文章，去重
+      const seen = new Set();
+      blogIndex = data.filter(item => {
+        if (item.uri && !item.uri.includes('/search/') && !seen.has(item.uri)) {
+          seen.add(item.uri);
+          return true;
+        }
+        return false;
+      });
+    });
+  
+  searchInput.addEventListener('input', function() {
+    const query = this.value.trim();
+    
+    if (query.length < 1) {
+      searchResults.innerHTML = '';
+      return;
+    }
+    
+    if (!blogIndex || blogIndex.length === 0) {
+      searchResults.innerHTML = '<div style="padding: 20px; color: #666;">暂无内容</div>';
+      return;
+    }
+    
+    const results = blogIndex.filter(item => 
+      item.title.toLowerCase().includes(query.toLowerCase()) || 
+      item.content.toLowerCase().includes(query.toLowerCase())
+    );
+    
+    if (results.length === 0) {
+      searchResults.innerHTML = '<div style="padding: 20px; color: #666;">未找到相关内容</div>';
+      return;
+    }
+    
+    const html = results.map(result => `
+      <div style="padding: 15px; border: 1px solid #eee; border-radius: 8px; margin-bottom: 10px; background: white;">
+        <a href="${result.uri}" style="text-decoration: none; color: #333; display: block;">
+          ${result.title} >>
+        </a>
+      </div>
+    `).join('');
+    
+    searchResults.innerHTML = html;
+  });
+});
+</script>
+{{- end -}}

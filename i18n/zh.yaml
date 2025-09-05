@@ -1,0 +1,24 @@
+- id: home
+  translation: "首页"
+
+- id: posts
+  translation: "文章"
+
+- id: search
+  translation: "搜索"
+
+- id: read_time
+  translation:
+    one: "1 分钟"
+    other: "{{ .Count }} 分钟"
+
+- id: words
+  translation:
+    one: "字"
+    other: "{{ .Count }} 字"
+
+- id: toc
+  translation: "目录"
+
+- id: translations
+  translation: "语言"

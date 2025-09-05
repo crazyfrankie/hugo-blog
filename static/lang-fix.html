@@ -1,0 +1,14 @@
+<script>
+setTimeout(function() {
+  const langSelect = document.getElementById('language-select-desktop');
+  if (langSelect) {
+    langSelect.style.border = '2px solid #0066cc';
+    langSelect.style.borderRadius = '8px';
+    langSelect.style.padding = '6px 10px';
+    langSelect.style.background = 'white';
+    console.log('语言选择器样式已修改');
+  } else {
+    console.log('未找到语言选择器');
+  }
+}, 1000);
+</script>
