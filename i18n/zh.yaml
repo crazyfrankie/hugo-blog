@@ -7,25 +7,128 @@
 - id: search
   translation: "搜索"
 
-- id: read_time
-  translation:
-    one: "1 分钟"
-    other: "{{ .Count }} 分钟"
+- id: backToTop
+  translation: "回到顶部"
 
-- id: readingTime
-  translation:
-    one: "1 分钟"
-    other: "{{ .Count }} 分钟"
+- id: viewComments
+  translation: "查看评论"
 
-- id: words
-  translation:
-    one: "字"
-    other: "{{ .Count }} 字"
+- id: allSome
+  translation: "所有{{ .Some }}"
+
+- id: tag
+  translation: "标签"
+
+- id: tags
+  translation: "标签"
+
+- id: category
+  translation: "分类"
+
+- id: categories
+  translation: "分类"
+
+- id: more
+  translation: "更多"
+
+- id: selectLanguage
+  translation: "选择语言"
+
+- id: switchTheme
+  translation: "切换主题"
+
+- id: poweredBySome
+  translation: "由 {{ .Hugo }} 强力驱动 | 主题 - {{ .Theme }}"
+
+- id: valineLang
+  translation: "zh-CN"
+
+- id: valinePlaceholder
+  translation: "你的评论 ..."
+
+- id: facebookLanguageCode
+  translation: "zh_CN"
+
+- id: giscusLang
+  translation: "zh-CN"
+
+- id: walineLang
+  translation: "zh-CN"
+
+- id: searchPlaceholder
+  translation: "搜索文章标题或内容..."
+
+- id: clear
+  translation: "清空"
+
+- id: cancel
+  translation: "取消"
+
+- id: noResultsFound
+  translation: "没有找到结果"
+
+- id: lunrLanguageCode
+  translation: "zh"
+
+- id: lunrLanguageLib
+  translation: "lib/lunr/lunr.zh.js"
+
+- id: lunrSegmentitLib
+  translation: "lib/lunr/lunr.segmentit.js"
+
+- id: copyToClipboard
+  translation: "复制到剪贴板"
+
+- id: cookieconsentMessage
+  translation: "本网站使用 Cookies 来改善您的浏览体验."
+
+- id: cookieconsentDismiss
+  translation: "同意"
+
+- id: cookieconsentLink
+  translation: "了解更多"
+
+- id: shareOn
+  translation: "分享到"
+
+- id: contents
+  translation: "目录"
+
+- id: publishedOnDate
+  translation: "发布于 {{ .Date }}"
+
+- id: includedInCategories
+  translation: "收录于 {{ .Categories }}"
 
 - id: wordCount
-  translation:
-    one: "1 字"
-    other: "{{ .Count }} 字"
+  translation: "约 {{ .Count }} 字"
+
+- id: readingTime
+  translation: "预计阅读 {{ .Count }} 分钟"
+
+- id: views
+  translation: "次阅读"
+
+- id: author
+  translation: "作者"
+
+- id: updatedOnDate
+  translation: "更新于 {{ .Date }}"
+
+- id: readMarkdown
+  translation: "阅读原始文档"
+
+- id: back
+  translation: "返回"
+
+- id: readMore
+  translation: "阅读全文"
+
+- id: pageNotFound
+  translation: "页面没找到"
+
+- id: pageNotFoundText
+  translation: "抱歉，您要查找的页面不存在。"
 
 - id: toc
   translation: "目录"
