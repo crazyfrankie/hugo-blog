@@ -140,7 +140,7 @@ function closeLightbox() {
             </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
                 <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
             </a>
-        </div><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/sharer/sharer.min.js"></script><script type="text/javascript" src="/lib/typeit/index.umd.js"></script><script type="text/javascript">window.config={"data":{"id-1":"This is my cool site"},"search":{"highlightTag":"em","lunrIndexURL":"/en/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"lunr"},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"id-1":["id-1"]},"duration":-1,"speed":100}};</script><script type="text/javascript" src="/js/theme.min.js"></script><style>
+        </div><style>
  
 .menu-item.language {
   display: none !important;
@@ -148,6 +148,52 @@ function closeLightbox() {
 #language-select-desktop {
   display: none !important;
 }
+
+ 
+.search-form,
+#search-input,
+.search-loading,
+.search-results {
+  text-align: center !important;
+}
 </style>
+
+<script>
+
+const originalFetch = window.fetch;
+window.fetch = function(url, options) {
+  if (window.location.pathname.startsWith('/en/') && url === '/index.json') {
+    console.log('拦截搜索请求，重定向到英文索引');
+    url = '/en/index.json';
+  }
+  return originalFetch(url, options);
+};
+
+
+const originalOpen = XMLHttpRequest.prototype.open;
+XMLHttpRequest.prototype.open = function(method, url, ...args) {
+  if (window.location.pathname.startsWith('/en/') && url === '/index.json') {
+    console.log('拦截XHR搜索请求，重定向到英文索引');
+    url = '/en/index.json';
+  }
+  return originalOpen.call(this, method, url, ...args);
+};
+
+
+document.addEventListener('DOMContentLoaded', function() {
+  if (window.location.pathname.includes('/search/')) {
+    const title = document.querySelector('h2');
+    if (title) {
+      title.style.cssText = `
+        text-align: center !important;
+        margin-top: 120px !important;
+        margin-bottom: 60px !important;
+        padding-top: 50px !important;
+      `;
+      console.log('搜索页面标题样式已修改');
+    }
+  }
+});
+</script>
 </body>
 </html>

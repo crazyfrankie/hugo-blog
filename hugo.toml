@@ -59,6 +59,9 @@ title = "Crazyfrank's Blog"
 
 [outputs]
   home = ["HTML", "RSS", "JSON"]
+  section = ["HTML", "RSS"]
+  taxonomy = ["HTML", "RSS"]
+  term = ["HTML", "RSS"]
 
 [languages]
   [languages.zh]
@@ -70,6 +73,16 @@ title = "Crazyfrank's Blog"
     
     [languages.zh.params]
       description = "Crazyfrank 的中文博客"
+      # 中文搜索配置
+      [languages.zh.params.search]
+        enable = true
+        type = "lunr"
+        contentLength = 4000
+        placeholder = "搜索标题或内容..."
+        maxResultLength = 10
+        snippetLength = 30
+        highlightTag = "em"
+        absoluteURL = false
     
     [[languages.zh.menu.main]]
       name = "首页"
@@ -97,6 +110,17 @@ title = "Crazyfrank's Blog"
     
     [languages.en.params]
       description = "Crazyfrank's English Blog"
+      # 英文搜索配置
+      [languages.en.params.search]
+        enable = true
+        type = "lunr"
+        contentLength = 4000
+        placeholder = "Search titles or contents..."
+        maxResultLength = 10
+        snippetLength = 30
+        highlightTag = "em"
+        absoluteURL = false
+        lunrIndexURL = "/en/index.json"
     
     [[languages.en.menu.main]]
       name = "Home"
