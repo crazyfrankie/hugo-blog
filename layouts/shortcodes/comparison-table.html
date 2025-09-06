@@ -1,0 +1,27 @@
+{{- $headers := split (.Get "headers") "|" -}}
+{{- $content := .Inner | strings.TrimSpace -}}
+{{- $rows := split $content "\n" -}}
+
+<table style="border-collapse: collapse; width: 100%; margin: 1rem 0;">
+<thead>
+<tr style="background-color: #f5f5f5;">
+{{- range $headers }}
+<th style="border: 1px solid #ddd; padding: 8px 12px; text-align: left; font-weight: 600;">{{ strings.TrimSpace . | markdownify }}</th>
+{{- end }}
+</tr>
+</thead>
+<tbody>
+{{- range $index, $row := $rows }}
+{{- if and $row (ne (strings.TrimSpace $row) "") }}
+{{- $cells := split $row "|" }}
+{{- $bgStyle := "" }}
+{{- if eq (mod $index 2) 1 }}{{ $bgStyle = "background-color: #f9f9f9;" }}{{ end }}
+<tr style="{{ $bgStyle }}">
+{{- range $cells }}
+<td style="border: 1px solid #ddd; padding: 8px 12px;">{{ strings.TrimSpace . | markdownify }}</td>
+{{- end }}
+</tr>
+{{- end }}
+{{- end }}
+</tbody>
+</table>

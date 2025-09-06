@@ -1,7 +1,7 @@
 [
 {
-  "title": "Exploring Decentralization through Log Processing",
-  "content": "This article explores the design concepts and implementation approaches of decentralized systems from the perspective of log processing.\nOverview of Decentralized Systems Decentralization is an important concept in distributed system design. It improves system reliability and fault tolerance by distributing control across multiple nodes.\nIn traditional centralized systems, all requests must be processed through a central server, creating a single point of failure. Decentralized systems work …",
+  "title": "Understanding Decentralization Through Log Processing",
+  "content": "This article explores decentralized system design concepts and implementation approaches through the lens of log processing.\nOverview of Decentralized Systems Decentralization is a key concept in distributed system design that improves system reliability and fault tolerance by distributing control across multiple nodes.\nIn architecture, \u0026amp;ldquo;decentralization\u0026amp;rdquo; doesn\u0026amp;rsquo;t necessarily mean \u0026amp;ldquo;completely no center,\u0026amp;rdquo; but rather:\nAvoid irreplaceable single points of failure by …",
   "uri": "/en/decentration/"
 },
 {

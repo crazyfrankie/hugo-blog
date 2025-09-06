@@ -5,14 +5,20 @@
         <description>All Posts | Crazyfrank&#39;s Blog</description>
         <generator>Hugo -- gohugo.io</generator><language>en-US</language><managingEditor>axu9417@gmail.com (crazyfrank)</managingEditor>
             <webMaster>axu9417@gmail.com (crazyfrank)</webMaster><atom:link href="http://localhost:1313/en/posts/" rel="self" type="application/rss+xml" /><item>
-    <title>Exploring Decentralization through Log Processing</title>
+    <title>Understanding Decentralization Through Log Processing</title>
     <link>http://localhost:1313/en/decentration/</link>
     <pubDate>Fri, 05 Sep 2025 10:00:00 &#43;0800</pubDate>
     <author>crazyfrank</author>
     <guid>http://localhost:1313/en/decentration/</guid>
-    <description><![CDATA[<p>This article explores the design concepts and implementation approaches of decentralized systems from the perspective of log processing.</p>
+    <description><![CDATA[<p>This article explores decentralized system design concepts and implementation approaches through the lens of log processing.</p>
 <h2 id="overview-of-decentralized-systems">Overview of Decentralized Systems</h2>
-<p>Decentralization is an important concept in distributed system design. It improves system reliability and fault tolerance by distributing control across multiple nodes.</p>
+<p>Decentralization is a key concept in distributed system design that improves system reliability and fault tolerance by distributing control across multiple nodes.</p>
+<p>In architecture, &ldquo;decentralization&rdquo; doesn&rsquo;t necessarily mean &ldquo;completely no center,&rdquo; but rather:</p>
+<ul>
+<li>Avoid irreplaceable single points of failure by using distributed, peer-to-peer nodes to share responsibilities</li>
+<li>System availability and scalability don&rsquo;t depend on any single critical node</li>
+</ul>
+<h2 id="log-processing">Log Processing</h2>
 
 
 
@@ -35,7 +41,7 @@ function closeLightbox() {
 }
 </script>
 
-<p>In traditional centralized systems, all requests must be processed through a central server, creating a single point of failure. Decentralized systems work through multiple nodes collaborating together, so the system can continue to operate even if some nodes fail.</p>]]></description>
+<p>Taking the <a href="https://www.elastic.co/elastic-stack" target="_blank" rel="noopener noreffer ">ELK</a> log processing architecture as an example:</p>]]></description>
 </item>
 <item>
     <title>realisation</title>
