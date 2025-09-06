@@ -1,0 +1,55 @@
+/* 标题锚点样式 */
+
+/* 滚动定位偏移，避免被固定头部遮挡 */
+main [id] {
+  scroll-margin-top: 4rem; /* 根据你的头部高度调整 */
+}
+
+/* 标题链接基础样式 */
+.header-link {
+  position: relative;
+}
+
+.header-mark {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* 标题前的标记符号 */
+.content h1 > .header-mark::before,
+.content h2 > .header-mark::before,
+.content h3 > .header-mark::before,
+.content h4 > .header-mark::before,
+.content h5 > .header-mark::before,
+.content h6 > .header-mark::before {
+  content: "|";
+  margin-right: 0.3rem;
+  color: #2d96bd;
+  font-weight: bold;
+}
+
+/* h2使用#符号 */
+.content h2 > .header-mark::before {
+  content: "#";
+}
+
+/* 悬停效果 */
+.header-link:hover > .header-mark::before {
+  color: #ef3982;
+}
+
+/* 暗色主题适配 */
+@media (prefers-color-scheme: dark) {
+  .content h1 > .header-mark::before,
+  .content h2 > .header-mark::before,
+  .content h3 > .header-mark::before,
+  .content h4 > .header-mark::before,
+  .content h5 > .header-mark::before,
+  .content h6 > .header-mark::before {
+    color: #55bde2;
+  }
+  
+  .header-link:hover > .header-mark::before {
+    color: #bdebfc;
+  }
+}

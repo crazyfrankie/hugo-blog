@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>DDD on Crazyfrank&#39;s Blog</title>
-    <link>http://localhost:1313/en/tags/ddd/</link>
+    <link>https://hugo.crazyfrank.top/en/tags/ddd/</link>
     <description>Recent content in DDD on Crazyfrank&#39;s Blog</description>
     <generator>Hugo</generator>
     <language>en-US</language>
     <managingEditor>axu9417@gmail.com (crazyfrank)</managingEditor>
     <webMaster>axu9417@gmail.com (crazyfrank)</webMaster>
-    <lastBuildDate>Thu, 04 Sep 2025 10:00:00 +0800</lastBuildDate>
-    <atom:link href="http://localhost:1313/en/tags/ddd/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 06 Sep 2025 20:56:37 +0800</lastBuildDate>
+    <atom:link href="https://hugo.crazyfrank.top/en/tags/ddd/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Some Thoughts on DDD</title>
-      <link>http://localhost:1313/en/ddd/</link>
+      <link>https://hugo.crazyfrank.top/en/ddd/</link>
       <pubDate>Thu, 04 Sep 2025 10:00:00 +0800</pubDate><author>axu9417@gmail.com (crazyfrank)</author>
-      <guid>http://localhost:1313/en/ddd/</guid>
+      <guid>https://hugo.crazyfrank.top/en/ddd/</guid>
       <description>&lt;h2 id=&#34;project-introduction&#34;&gt;Project Introduction&lt;/h2&gt;&#xA;&lt;p&gt;I&amp;rsquo;m writing this article mainly to share some learning insights from the project practice of DDD. Since I&amp;rsquo;m too lazy to read the theory, I&amp;rsquo;m just guessing how DDD should be designed. For more details, please refer to the DDD official website: &lt;a href=&#34;https://domain-driven-design.org/zh/ddd-concept-reference.html&#34; target=&#34;_blank&#34; rel=&#34;noopener noreffer &#34;&gt;DDD Concept Introduction&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;Recently, ByteDance has open-sourced their open-coze. The front end is React + TS, and the back end uses Go. Since I didn&amp;rsquo;t use Py or TS, and I have a bit more knowledge of Go, I started learning it.&lt;/p&gt;</description>
     </item>
   </channel>

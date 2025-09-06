@@ -13,6 +13,10 @@
         {{- partial "head/seo.html" . -}}
         <script src="https://cdn.jsdelivr.net/npm/typeit@8.7.1/dist/index.umd.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script>
+        
+        {{- /* 标题锚点功能 */ -}}
+        <link rel="stylesheet" href="{{ "/css/header-links.css" | relURL }}">
+        <script src="{{ "/js/header-links.js" | relURL }}"></script>
     </head>
     <body data-header-desktop="{{ .Site.Params.header.desktopMode }}" data-header-mobile="{{ .Site.Params.header.mobileMode }}">
         {{- /* Check theme isDark before body rendering */ -}}
