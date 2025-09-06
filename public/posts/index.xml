@@ -5,6 +5,14 @@
         <description>所有文章 | Crazyfrank 的博客</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>axu9417@gmail.com (crazyfrank)</managingEditor>
             <webMaster>axu9417@gmail.com (crazyfrank)</webMaster><atom:link href="http://localhost:1313/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>感悟</title>
+    <link>http://localhost:1313/life/</link>
+    <pubDate>Sat, 06 Sep 2025 10:00:00 &#43;0800</pubDate>
+    <author>crazyfrank</author>
+    <guid>http://localhost:1313/life/</guid>
+    <description><![CDATA[<p>人的肉体是过去，意识是现在和未来。</p>]]></description>
+</item>
+<item>
     <title>以日志处理浅谈去中心化</title>
     <link>http://localhost:1313/decentration/</link>
     <pubDate>Fri, 05 Sep 2025 10:00:00 &#43;0800</pubDate>
