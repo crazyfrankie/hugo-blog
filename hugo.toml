@@ -42,7 +42,7 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
   # public git repo url only then enableGitInfo is true
   gitRepo = ""
   # which hash function used for SRI, when empty, no SRI is used
-  fingerprint = ""
+  fingerprint = "sha256"
   # date format
   dateFormat = "2006-01-02"
   # website title for Open Graph and Twitter Cards

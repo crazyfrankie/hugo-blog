@@ -4,16 +4,16 @@
 
 {{- partial "plugin/analytics.html" . -}}
 
+<script>window.config={"search":{"maxResultLength":10,"snippetLength":30,"highlightTag":"em","noResultsFound":"没有找到结果"},"toc":{"enable":true,"auto":true}};</script>
+<script src="/js/theme.js"></script>
+
 <style>
-/* 隐藏默认的语言切换器 */
 .menu-item.language {
   display: none !important;
 }
 #language-select-desktop {
   display: none !important;
 }
-
-/* 搜索相关元素居中 */
 .search-form,
 #search-input,
 .search-loading,
@@ -23,27 +23,22 @@
 </style>
 
 <script>
-// 拦截所有fetch请求，重定向英文页面的搜索索引
 const originalFetch = window.fetch;
 window.fetch = function(url, options) {
   if (window.location.pathname.startsWith('/en/') && url === '/index.json') {
-    console.log('拦截搜索请求，重定向到英文索引');
     url = '/en/index.json';
   }
   return originalFetch(url, options);
 };
 
-// 也拦截XMLHttpRequest
 const originalOpen = XMLHttpRequest.prototype.open;
 XMLHttpRequest.prototype.open = function(method, url, ...args) {
   if (window.location.pathname.startsWith('/en/') && url === '/index.json') {
-    console.log('拦截XHR搜索请求，重定向到英文索引');
     url = '/en/index.json';
   }
   return originalOpen.call(this, method, url, ...args);
 };
 
-// 修改搜索页面标题样式
 document.addEventListener('DOMContentLoaded', function() {
   if (window.location.pathname.includes('/search/')) {
     const title = document.querySelector('h2');
@@ -54,7 +49,6 @@ document.addEventListener('DOMContentLoaded', function() {
         margin-bottom: 60px !important;
         padding-top: 50px !important;
       `;
-      console.log('搜索页面标题样式已修改');
     }
   }
 });
