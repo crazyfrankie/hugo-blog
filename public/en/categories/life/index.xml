@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>life on Crazyfrank&#39;s Blog</title>
+    <title>Life on Crazyfrank&#39;s Blog</title>
     <link>http://localhost:1313/en/categories/life/</link>
-    <description>Recent content in life on Crazyfrank&#39;s Blog</description>
+    <description>Recent content in Life on Crazyfrank&#39;s Blog</description>
     <generator>Hugo</generator>
     <language>en-US</language>
     <managingEditor>axu9417@gmail.com (crazyfrank)</managingEditor>
@@ -12,7 +12,7 @@
     <item>
       <title>realisation</title>
       <link>http://localhost:1313/en/life/</link>
-      <pubDate>Sat, 06 Sep 2025 10:00:00 +0800</pubDate><author>axu9417@gmail.com (crazyfrank)</author>
+      <pubDate>Mon, 01 Sep 2025 10:00:00 +0800</pubDate><author>axu9417@gmail.com (crazyfrank)</author>
       <guid>http://localhost:1313/en/life/</guid>
       <description>&lt;p&gt;Man&amp;rsquo;s physical body is the past and his consciousness is the present and future.&lt;/p&gt;</description>
     </item>

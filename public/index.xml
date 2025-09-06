@@ -7,14 +7,6 @@
             <webMaster>axu9417@gmail.com (crazyfrank)</webMaster>
             <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
         <item>
-    <title>感悟</title>
-    <link>http://localhost:1313/life/</link>
-    <pubDate>Sat, 06 Sep 2025 10:00:00 &#43;0800</pubDate>
-    <author>crazyfrank</author>
-    <guid>http://localhost:1313/life/</guid>
-    <description><![CDATA[<p>人的肉体是过去，意识是现在和未来。</p>]]></description>
-</item>
-<item>
     <title>以日志处理浅谈去中心化</title>
     <link>http://localhost:1313/decentration/</link>
     <pubDate>Fri, 05 Sep 2025 10:00:00 &#43;0800</pubDate>
@@ -23,6 +15,14 @@
     <description><![CDATA[<p>本文通过日志处理的角度来探讨去中心化系统的设计思路和实现方案。</p>
 <h2 id="去中心化系统概述">去中心化系统概述</h2>
 <p>去中心化是分布式系统设计中的重要概念，它通过将控制权分散到多个节点来提高系统的可靠性和容错性。</p>]]></description>
+</item>
+<item>
+    <title>感悟</title>
+    <link>http://localhost:1313/life/</link>
+    <pubDate>Mon, 01 Sep 2025 10:00:00 &#43;0800</pubDate>
+    <author>crazyfrank</author>
+    <guid>http://localhost:1313/life/</guid>
+    <description><![CDATA[<p>人的肉体是过去，意识是现在和未来。</p>]]></description>
 </item>
 </channel>
 </rss>

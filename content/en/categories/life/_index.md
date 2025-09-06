@@ -1,5 +1,5 @@
 ---
-title: "life"
+title: "Life"
 ---
 
 life posts

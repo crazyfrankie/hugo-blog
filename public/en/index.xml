@@ -7,14 +7,6 @@
             <webMaster>axu9417@gmail.com (crazyfrank)</webMaster>
             <atom:link href="http://localhost:1313/en/index.xml" rel="self" type="application/rss+xml" />
         <item>
-    <title>realisation</title>
-    <link>http://localhost:1313/en/life/</link>
-    <pubDate>Sat, 06 Sep 2025 10:00:00 &#43;0800</pubDate>
-    <author>crazyfrank</author>
-    <guid>http://localhost:1313/en/life/</guid>
-    <description><![CDATA[<p>Man&rsquo;s physical body is the past and his consciousness is the present and future.</p>]]></description>
-</item>
-<item>
     <title>Exploring Decentralization through Log Processing</title>
     <link>http://localhost:1313/en/decentration/</link>
     <pubDate>Fri, 05 Sep 2025 10:00:00 &#43;0800</pubDate>
@@ -46,6 +38,14 @@ function closeLightbox() {
 </script>
 
 <p>In traditional centralized systems, all requests must be processed through a central server, creating a single point of failure. Decentralized systems work through multiple nodes collaborating together, so the system can continue to operate even if some nodes fail.</p>]]></description>
+</item>
+<item>
+    <title>realisation</title>
+    <link>http://localhost:1313/en/life/</link>
+    <pubDate>Mon, 01 Sep 2025 10:00:00 &#43;0800</pubDate>
+    <author>crazyfrank</author>
+    <guid>http://localhost:1313/en/life/</guid>
+    <description><![CDATA[<p>Man&rsquo;s physical body is the past and his consciousness is the present and future.</p>]]></description>
 </item>
 </channel>
 </rss>
