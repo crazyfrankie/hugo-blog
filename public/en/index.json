@@ -5,6 +5,11 @@
   "uri": "/en/decentration/"
 },
 {
+  "title": "Some Thoughts on DDD",
+  "content": "Project Introduction I\u0026amp;rsquo;m writing this article mainly to share some learning insights from the project practice of DDD. Since I\u0026amp;rsquo;m too lazy to read the theory, I\u0026amp;rsquo;m just guessing how DDD should be designed. For more details, please refer to the DDD official website: DDD Concept Introduction\nRecently, ByteDance has open-sourced their open-coze. The front end is React + TS, and the back end uses Go. Since I didn\u0026amp;rsquo;t use Py or TS, and I have a bit more knowledge of Go, I started …",
+  "uri": "/en/ddd/"
+},
+{
   "title": "realisation",
   "content": "Man\u0026amp;rsquo;s physical body is the past and his consciousness is the present and future.\n",
   "uri": "/en/life/"

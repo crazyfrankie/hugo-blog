@@ -1,200 +1,21 @@
-<!DOCTYPE html>
-<html lang="zh-CN">
-    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="robots" content="noodp" />
-        <title>系统设计 - Crazyfrank 的博客</title><meta name="Description" content="Crazyfrank 的中文博客"><meta property="og:url" content="http://localhost:1313/tags/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/">
-  <meta property="og:site_name" content="Crazyfrank 的博客">
-  <meta property="og:title" content="系统设计">
-  <meta property="og:description" content="Crazyfrank 的中文博客">
-  <meta property="og:locale" content="zh_CN">
-  <meta property="og:type" content="website">
-    <meta property="og:image" content="http://localhost:1313/logo.png">
-
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:image" content="http://localhost:1313/logo.png">
-  <meta name="twitter:title" content="系统设计">
-  <meta name="twitter:description" content="Crazyfrank 的中文博客">
-<meta name="application-name" content="Crazyfrank&#39;s Blog">
-<meta name="apple-mobile-web-app-title" content="Crazyfrank&#39;s Blog"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/favicon.svg"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://localhost:1313/tags/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/" /><link rel="alternate" href="/tags/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/index.xml" type="application/rss+xml" title="Crazyfrank 的博客">
-    <link rel="feed" href="/tags/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/index.xml" type="application/rss+xml" title="Crazyfrank 的博客"><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-        <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" href="/lib/animate/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-        <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script src="https://cdn.jsdelivr.net/npm/typeit@8.7.1/dist/index.umd.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script>
-    </head>
-    <body data-header-desktop="fixed" data-header-mobile="auto"><script>
-          const query = window.matchMedia('(prefers-color-scheme: dark)');
-          function applyTheme() {
-            let theme = window.localStorage?.getItem('theme') || 'auto';
-            let isDark = theme === 'dark' || (theme === 'auto' && query.matches);
-            document.body.setAttribute('theme', isDark? 'dark' : 'light');
-            document.body.setAttribute('cfg-theme', theme);
-          }
-
-          applyTheme();
-          query.addEventListener('change', applyTheme);
-        </script>
-
-        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
-    <div class="header-wrapper">
-        <div class="header-title">
-            <a href="/" title="Crazyfrank 的博客"><span class="header-title-pre"><i class='far fa-kiss-wink-heart fa-fw' aria-hidden='true'></i></span><span id="id-1" class="typeit"></span></a>
-        </div>
-        <div class="menu">
-            <div class="menu-inner"><a class="menu-item" href="/posts/"> 文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><a class="menu-item" href="/search/"> 搜索 </a><a class="menu-item" href="/en/"> 🇺🇸 English </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
-                        <input type="text" placeholder="搜索标题或内容..." id="search-input-desktop">
-                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
-                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
-                        </a>
-                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="清空">
-                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
-                        </a>
-                        <span class="search-button search-loading" id="search-loading-desktop">
-                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
-                        </span>
-                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
-                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
-                </a><a href="javascript:void(0);" class="menu-item language" title="选择语言">
-                    <i class="fa fa-globe fa-fw" aria-hidden="true"></i>                      
-                    <select class="language-select" id="language-select-desktop" onchange="location = this.value;"><option value="/tags/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/" selected>简体中文</option></select>
-                </a></div>
-        </div>
-    </div>
-</header><header class="mobile" id="header-mobile">
-    <div class="header-container">
-        <div class="header-wrapper">
-            <div class="header-title">
-                <a href="/" title="Crazyfrank 的博客"><span class="header-title-pre"><i class='far fa-kiss-wink-heart fa-fw' aria-hidden='true'></i></span><span id="id-2" class="typeit"></span></a>
-            </div>
-            <div class="menu-toggle" id="menu-toggle-mobile">
-                <span></span><span></span><span></span>
-            </div>
-        </div>
-        <div class="menu" id="menu-mobile"><div class="search-wrapper">
-                    <div class="search mobile" id="search-mobile">
-                        <input type="text" placeholder="搜索标题或内容..." id="search-input-mobile">
-                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
-                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
-                        </a>
-                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="清空">
-                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
-                        </a>
-                        <span class="search-button search-loading" id="search-loading-mobile">
-                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
-                        </span>
-                    </div>
-                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
-                        取消
-                    </a>
-                </div><a class="menu-item" href="/posts/" title="">文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item" href="/search/" title="">搜索</a><a class="menu-item" href="/en/" title="">🇺🇸 English</a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
-                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
-            </a><a href="javascript:void(0);" class="menu-item" title="选择语言">
-                    <i class="fa fa-globe fa-fw" aria-hidden="true"></i>
-                    <select class="language-select" onchange="location = this.value;"><option value="/tags/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/" selected>简体中文</option></select>
-                </a></div>
-    </div>
-</header><div class="search-dropdown desktop">
-        <div id="search-dropdown-desktop"></div>
-    </div>
-    <div class="search-dropdown mobile">
-        <div id="search-dropdown-mobile"></div>
-    </div><main class="main">
-                <div class="container"><div class="page archive"><h2 class="single-title animate__animated animate__pulse animate__faster">系统设计</h2><h3 class="group-title">2025</h3><article class="archive-item">
-                        <a href="/decentration/" class="archive-item-link">以日志处理浅谈去中心化</a>
-                        <span class="archive-item-date">09-05</span>
-                    </article></div></div>
-            </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.148.2">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.3.0"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
-                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2019 - 2025</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://hugo.crazyfrank.top/" target="_blank">crazyfrank</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
-        </div>
-    </footer></div>
-
-        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="回到顶部">
-                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
-            </a>
-        </div>
-
-        <div id="fixed-buttons-hidden"><a href="#" id="view-comments" class="fixed-button" title="查看评论">
-                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
-            </a>
-        </div><script>window.config={"search":{"maxResultLength":10,"snippetLength":30,"highlightTag":"em","noResultsFound":"没有找到结果"},"toc":{"enable":true,"auto":true}};</script>
-<script src="/js/theme.js"></script>
-
-<style>
-.menu-item.language {
-  display: none !important;
-}
-#language-select-desktop {
-  display: none !important;
-}
-.search-form,
-#search-input,
-.search-loading,
-.search-results {
-  text-align: center !important;
-}
-</style>
-
-<script>
-const originalFetch = window.fetch;
-window.fetch = function(url, options) {
-  if (window.location.pathname.startsWith('/en/') && url === '/index.json') {
-    url = '/en/index.json';
-  }
-  return originalFetch(url, options);
-};
-
-const originalOpen = XMLHttpRequest.prototype.open;
-XMLHttpRequest.prototype.open = function(method, url, ...args) {
-  if (window.location.pathname.startsWith('/en/') && url === '/index.json') {
-    url = '/en/index.json';
-  }
-  return originalOpen.call(this, method, url, ...args);
-};
-
-document.addEventListener('DOMContentLoaded', function() {
-  if (window.location.pathname.includes('/search/')) {
-    const title = document.querySelector('h2');
-    if (title) {
-      title.style.cssText = `
+<!doctype html><html lang=zh-CN><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=robots content="noodp"><title>系统设计 - Crazyfrank 的博客</title><meta name=Description content="Crazyfrank 的中文博客"><meta property="og:url" content="https://hugo.crazyfrank.top/tags/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/"><meta property="og:site_name" content="Crazyfrank 的博客"><meta property="og:title" content="系统设计"><meta property="og:description" content="Crazyfrank 的中文博客"><meta property="og:locale" content="zh_CN"><meta property="og:type" content="website"><meta property="og:image" content="https://hugo.crazyfrank.top/logo.png"><meta name=twitter:card content="summary_large_image"><meta name=twitter:image content="https://hugo.crazyfrank.top/logo.png"><meta name=twitter:title content="系统设计"><meta name=twitter:description content="Crazyfrank 的中文博客"><meta name=application-name content="Crazyfrank's Blog"><meta name=apple-mobile-web-app-title content="Crazyfrank's Blog"><meta name=referrer content="no-referrer"><meta name=theme-color content="#ffffff"><meta name=msapplication-TileColor content="#da532c"><link rel=icon href=/favicon.svg><link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png><link rel=mask-icon href=/safari-pinned-tab.svg color=#5bbad5><link rel=manifest href=/site.webmanifest><link rel=canonical href=https://hugo.crazyfrank.top/tags/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/><link rel=alternate href=/tags/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/index.xml type=application/rss+xml title="Crazyfrank 的博客"><link rel=feed href=/tags/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/index.xml type=application/rss+xml title="Crazyfrank 的博客"><link rel=stylesheet href=/css/style.min.0b4294dead3bcb53946d16fb4769f4b9032c426ec3a33609afe9b90ccc391015.css integrity="sha256-C0KU3q07y1OUbRb7R2n0uQMsQm7DozYJr+m5DMw5EBU="><link rel=preload href=https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.7.2/css/all.min.css as=style onload='this.onload=null,this.rel="stylesheet"'><noscript><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.7.2/css/all.min.css></noscript><link rel=preload href=https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css as=style onload='this.onload=null,this.rel="stylesheet"'><noscript><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css></noscript><script src=https://cdn.jsdelivr.net/npm/typeit@8.7.1/dist/index.umd.js></script><script src=https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js></script></head><body data-header-desktop=fixed data-header-mobile=auto><script>const query=window.matchMedia("(prefers-color-scheme: dark)");function applyTheme(){let e=window.localStorage?.getItem("theme")||"auto",t=e==="dark"||e==="auto"&&query.matches;document.body.setAttribute("theme",t?"dark":"light"),document.body.setAttribute("cfg-theme",e)}applyTheme(),query.addEventListener("change",applyTheme)</script><div id=mask></div><div class=wrapper><header class=desktop id=header-desktop><div class=header-wrapper><div class=header-title><a href=/ title="Crazyfrank 的博客"><span class=header-title-pre><i class='far fa-kiss-wink-heart fa-fw' aria-hidden=true></i></span><span id=id-1 class=typeit></span></a></div><div class=menu><div class=menu-inner><a class=menu-item href=/posts/>文章 </a><a class=menu-item href=/tags/>标签 </a><a class=menu-item href=/categories/>分类 </a><a class=menu-item href=/search/>搜索 </a><a class=menu-item href=/en/>🇺🇸 English </a><span class="menu-item delimiter"></span><span class="menu-item search" id=search-desktop>
+<input type=text placeholder=搜索标题或内容... id=search-input-desktop>
+<a href=javascript:void(0); class="search-button search-toggle" id=search-toggle-desktop title=搜索><i class="fas fa-search fa-fw" aria-hidden=true></i>
+</a><a href=javascript:void(0); class="search-button search-clear" id=search-clear-desktop title=清空><i class="fas fa-times-circle fa-fw" aria-hidden=true></i>
+</a><span class="search-button search-loading" id=search-loading-desktop><i class="fas fa-spinner fa-fw fa-spin" aria-hidden=true></i>
+</span></span><a href=javascript:void(0); class="menu-item theme-switch" title=切换主题><i class="fas fa-adjust fa-fw" aria-hidden=true></i>
+</a><a href=javascript:void(0); class="menu-item language" title=选择语言><i class="fa fa-globe fa-fw" aria-hidden=true></i>
+<select class=language-select id=language-select-desktop onchange="location=this.value"><option value=/tags/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/ selected>简体中文</option></select></a></div></div></div></header><header class=mobile id=header-mobile><div class=header-container><div class=header-wrapper><div class=header-title><a href=/ title="Crazyfrank 的博客"><span class=header-title-pre><i class='far fa-kiss-wink-heart fa-fw' aria-hidden=true></i></span><span id=id-2 class=typeit></span></a></div><div class=menu-toggle id=menu-toggle-mobile><span></span><span></span><span></span></div></div><div class=menu id=menu-mobile><div class=search-wrapper><div class="search mobile" id=search-mobile><input type=text placeholder=搜索标题或内容... id=search-input-mobile>
+<a href=javascript:void(0); class="search-button search-toggle" id=search-toggle-mobile title=搜索><i class="fas fa-search fa-fw" aria-hidden=true></i>
+</a><a href=javascript:void(0); class="search-button search-clear" id=search-clear-mobile title=清空><i class="fas fa-times-circle fa-fw" aria-hidden=true></i>
+</a><span class="search-button search-loading" id=search-loading-mobile><i class="fas fa-spinner fa-fw fa-spin" aria-hidden=true></i></span></div><a href=javascript:void(0); class=search-cancel id=search-cancel-mobile>取消</a></div><a class=menu-item href=/posts/ title>文章</a><a class=menu-item href=/tags/ title>标签</a><a class=menu-item href=/categories/ title>分类</a><a class=menu-item href=/search/ title>搜索</a><a class=menu-item href=/en/ title>🇺🇸 English</a><a href=javascript:void(0); class="menu-item theme-switch" title=切换主题>
+<i class="fas fa-adjust fa-fw" aria-hidden=true></i>
+</a><a href=javascript:void(0); class=menu-item title=选择语言><i class="fa fa-globe fa-fw" aria-hidden=true></i>
+<select class=language-select onchange="location=this.value"><option value=/tags/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/ selected>简体中文</option></select></a></div></div></header><div class="search-dropdown desktop"><div id=search-dropdown-desktop></div></div><div class="search-dropdown mobile"><div id=search-dropdown-mobile></div></div><main class=main><div class=container><div class="page archive"><h2 class="single-title animate__animated animate__pulse animate__faster">系统设计</h2><h3 class=group-title>2025</h3><article class=archive-item><a href=/decentration/ class=archive-item-link>以日志处理浅谈去中心化</a>
+<span class=archive-item-date>09-05</span></article><article class=archive-item><a href=/ddd/ class=archive-item-link>DDD 的一些思考</a>
+<span class=archive-item-date>09-04</span></article></div></div></main><footer class=footer><div class=footer-container><div class=footer-line>由 <a href=https://gohugo.io/ target=_blank rel="noopener noreffer" title="Hugo 0.148.2">Hugo</a> 强力驱动 | 主题 - <a href=https://github.com/dillonzq/LoveIt target=_blank rel="noopener noreffer" title="LoveIt 0.3.1-DEV"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden=true></i> LoveIt</a></div><div class=footer-line itemscope itemtype=http://schema.org/CreativeWork><i class="far fa-copyright fa-fw" aria-hidden=true></i><span itemprop=copyrightYear>2019 - 2025</span><span class=author itemprop=copyrightHolder>&nbsp;<a href=https://hugo.crazyfrank.top/ target=_blank>crazyfrank</a></span>&nbsp;|&nbsp;<span class=license><a rel="license external nofollow noopener noreffer" href=https://creativecommons.org/licenses/by-nc/4.0/ target=_blank>CC BY-NC 4.0</a></span></div></div></footer></div><div id=fixed-buttons><a href=# id=back-to-top class=fixed-button title=回到顶部><i class="fas fa-arrow-up fa-fw" aria-hidden=true></i></a></div><div id=fixed-buttons-hidden><a href=# id=view-comments class=fixed-button title=查看评论><i class="fas fa-comment fa-fw" aria-hidden=true></i></a></div><script>window.config={search:{maxResultLength:10,snippetLength:30,highlightTag:"em",noResultsFound:"没有找到结果"},toc:{enable:!0,auto:!0}}</script><script>window.ClipboardJS=function(e){this.element=e,this.callbacks={},e.addEventListener("click",()=>{const t=e.getAttribute("data-clipboard-text");navigator.clipboard.writeText(t).then(()=>{this.callbacks.success&&this.callbacks.success()})})},window.ClipboardJS.prototype.on=function(e,t){this.callbacks[e]=t}</script><script src=/js/theme.js></script><script>document.addEventListener("DOMContentLoaded",function(){setTimeout(function(){document.querySelectorAll(".details.admonition").forEach(function(e){const t=e.querySelector(".details-summary");t&&t.addEventListener("click",function(){e.classList.toggle("open")})})},300)})</script><script>setTimeout(function(){document.querySelectorAll(".code-block").forEach(function(e){const t=e.querySelector(".code-header > .code-title"),n=e.querySelector(".code-header .copy");if(t&&!t.hasAttribute("data-cb-init")&&(t.setAttribute("data-cb-init","true"),t.addEventListener("click",function(){e.classList.toggle("open")})),n&&!n.hasAttribute("data-cb-init")){n.setAttribute("data-cb-init","true");const t=e.querySelector("code");t&&n.addEventListener("click",function(){navigator.clipboard.writeText(t.innerText).then(function(){const e=t.querySelectorAll("span.cl");e.length>0&&e.forEach(function(e){e.classList.add("animate__animated","animate__flash"),setTimeout(function(){e.classList.remove("animate__animated","animate__flash")},1e3)})})})}})},500)</script><style>.menu-item.language{display:none !important}#language-select-desktop{display:none !important}.search-form,#search-input,.search-loading,.search-results{text-align:center !important}</style><script>const originalFetch=window.fetch;window.fetch=function(e,t){return window.location.pathname.startsWith("/en/")&&e==="/index.json"&&(e="/en/index.json"),originalFetch(e,t)};const originalOpen=XMLHttpRequest.prototype.open;XMLHttpRequest.prototype.open=function(t,e,...n){return window.location.pathname.startsWith("/en/")&&e==="/index.json"&&(e="/en/index.json"),originalOpen.call(this,t,e,...n)},document.addEventListener("DOMContentLoaded",function(){if(window.location.pathname.includes("/search/")){const e=document.querySelector("h2");e&&(e.style.cssText=`
         text-align: center !important;
         margin-top: 120px !important;
         margin-bottom: 60px !important;
         padding-top: 50px !important;
-      `;
-    }
-  }
-});
-</script>
-<script>
-        document.addEventListener('DOMContentLoaded', function() {
-            
-            const content = {
-                title: "Crazyfrank 的博客",
-                subtitle: "疾风知劲草"
-            };
-            
-            
-            document.querySelectorAll('.typeit').forEach(function(element) {
-                if (element.id) {
-                    let text = '';
-                    if (element.id === 'id-1' || element.id === 'id-2') {
-                        text = content.title;
-                    } else if (element.id === 'id-3') {
-                        text = content.subtitle;
-                    }
-                    
-                    if (text) {
-                        new TypeIt('#' + element.id, {
-                            strings: text,
-                            speed: 100,
-                            waitUntilVisible: true
-                        }).go();
-                    }
-                }
-            });
-        });
-        </script>
-    </body>
-</html>
+      `)}})</script><script>setTimeout(function(){const e={title:"Crazyfrank 的博客",subtitle:"疾风知劲草"};document.querySelectorAll(".typeit").forEach(function(t){if(t.id){let n="";t.id==="id-1"||t.id==="id-2"?n=e.title:t.id==="id-3"&&(n=e.subtitle),n&&new TypeIt("#"+t.id,{strings:n,speed:100,waitUntilVisible:!0}).go()}})},600)</script></body></html>

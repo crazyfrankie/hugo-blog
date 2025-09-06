@@ -46,6 +46,16 @@ function closeLightbox() {
 <p>Taking the <a href="https://www.elastic.co/elastic-stack" target="_blank" rel="noopener noreffer ">ELK</a> log processing architecture as an example:</p>]]></description>
 </item>
 <item>
+    <title>Some Thoughts on DDD</title>
+    <link>http://localhost:1313/en/ddd/</link>
+    <pubDate>Thu, 04 Sep 2025 10:00:00 &#43;0800</pubDate>
+    <author>crazyfrank</author>
+    <guid>http://localhost:1313/en/ddd/</guid>
+    <description><![CDATA[<h2 id="project-introduction">Project Introduction</h2>
+<p>I&rsquo;m writing this article mainly to share some learning insights from the project practice of DDD. Since I&rsquo;m too lazy to read the theory, I&rsquo;m just guessing how DDD should be designed. For more details, please refer to the DDD official website: <a href="https://domain-driven-design.org/zh/ddd-concept-reference.html" target="_blank" rel="noopener noreffer ">DDD Concept Introduction</a></p>
+<p>Recently, ByteDance has open-sourced their open-coze. The front end is React + TS, and the back end uses Go. Since I didn&rsquo;t use Py or TS, and I have a bit more knowledge of Go, I started learning it.</p>]]></description>
+</item>
+<item>
     <title>realisation</title>
     <link>http://localhost:1313/en/life/</link>
     <pubDate>Mon, 01 Sep 2025 10:00:00 &#43;0800</pubDate>

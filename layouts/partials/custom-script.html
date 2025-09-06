@@ -1,9 +1,22 @@
 <script>
-document.addEventListener('DOMContentLoaded', function() {
-  // 隐藏默认的语言切换器
+// 使用 setTimeout 避免与主题初始化冲突
+setTimeout(function() {
   const defaultLangSwitcher = document.querySelector('.menu-item.language');
   if (defaultLangSwitcher) {
     defaultLangSwitcher.style.display = 'none';
   }
-});
+}, 100);
+
+// 修复 admonition 收起功能
+setTimeout(function() {
+  document.querySelectorAll('.details.admonition').forEach(function(details) {
+    const summary = details.querySelector('.details-summary');
+    if (summary && !summary.hasAttribute('data-adm-init')) {
+      summary.setAttribute('data-adm-init', 'true');
+      summary.addEventListener('click', function() {
+        details.classList.toggle('open');
+      });
+    }
+  });
+}, 200);
 </script>

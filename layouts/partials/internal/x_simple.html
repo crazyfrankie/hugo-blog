@@ -1,0 +1,5 @@
+{{- $user := .Get "user" -}}
+{{- $id := .Get "id" -}}
+{{- if and $user $id -}}
+<a href="https://twitter.com/{{ $user }}/status/{{ $id }}">View Tweet</a>
+{{- end -}}

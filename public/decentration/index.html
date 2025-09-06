@@ -25,8 +25,9 @@
   <meta name="twitter:description" content="本文通过日志处理的角度来探讨去中心化系统的设计思路和实现方案。
 去中心化系统概述 去中心化是分布式系统设计中的重要概念，它通过将控制权分散到多个节点来提高系统的可靠性和容错性。">
 <meta name="application-name" content="Crazyfrank&#39;s Blog">
-<meta name="apple-mobile-web-app-title" content="Crazyfrank&#39;s Blog"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/favicon.svg"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://localhost:1313/decentration/" /><link rel="prev" href="http://localhost:1313/life/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-        <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" href="/lib/animate/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<meta name="apple-mobile-web-app-title" content="Crazyfrank&#39;s Blog">
+<meta name="referrer" content="no-referrer" /><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/favicon.svg"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://localhost:1313/decentration/" /><link rel="prev" href="http://localhost:1313/ddd/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/fontawesome-free/css/all.min.css"></noscript><link rel="preload" href="/lib/animate/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
     {
         "@context": "http://schema.org",
@@ -36,7 +37,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "http:\/\/localhost:1313\/decentration\/"
-        },"genre": "posts","keywords": "分布式系统, 去中心化, 系统设计","wordcount":  1669 ,
+        },"genre": "posts","keywords": "分布式系统, 去中心化, 系统设计","wordcount":  1672 ,
         "url": "http:\/\/localhost:1313\/decentration\/","datePublished": "2025-09-05T10:00:00+08:00","dateModified": "2025-09-06T17:08:38+08:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
@@ -129,7 +130,7 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">以日志处理浅谈去中心化</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="https://hugo.crazyfrank.top/" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>crazyfrank</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/%E6%8A%80%E6%9C%AF/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>技术</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2025-09-05">2025-09-05</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;约 1669 字&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2025-09-05">2025-09-05</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;约 1672 字&nbsp;
                 <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;预计阅读 4 分钟&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
                 <div class="details-summary toc-title">
@@ -182,10 +183,16 @@ function closeLightbox() {
 </script>
 
 <p>以 <a href="https://www.elastic.co/cn/elastic-stack" target="_blank" rel="noopener noreffer ">ELK</a> 日志处理架构为例，</p>
-<blockquote>
-<p>这里简单介绍一下图示结构：
+<div class="details admonition note open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-pencil-alt fa-fw" aria-hidden="true"></i>ELK 介绍<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">这里简单介绍一下图示结构：
 ELK 是一种日志处理架构，主要思想是将 <code>AppServer</code> 也就是各个微服务的日志统一使用 <code>LogStash Agent</code> 进行代理收集，经过分析、过滤后发送给远端的 <code>Elastic Search</code> 进行存储，
-<code>Elastic Search</code> 将数据以分片的形式压缩存储并提供多种 API 供用户查询，操作；用户同样的也可以直观的配置 <code>Kibana Web</code> 方便的对日志查询，并生成数据报表</p></blockquote>
+<code>Elastic Search</code> 将数据以分片的形式压缩存储并提供多种 API 供用户查询，操作；用户同样的也可以直观的配置 <code>Kibana Web</code> 方便的对日志查询，并生成数据报表</div>
+        </div>
+    </div>
 <p>在传统的中心化系统中，所有的请求都需要通过中央服务器处理，也就是 <code>Server</code> 角色，在本例中也就是 <code>LogStash</code> ，这往往会形成单点故障、集中式的热点问题：<code>一旦 Logstash 出问题，全链路就断了</code>。图中示例虽然只画了两台机器，其实可以扩展，
 但本质上这种架构模式没有改变，Logstash 依然很重，占资源多，延迟高。同时，微服务的数量也在不断增多。</p>
 
@@ -336,7 +343,7 @@ function closeLightbox() {
         <div class="post-info-line">
             <div class="post-info-md"></div>
             <div class="post-info-share">
-                <span><a href="javascript:void(0);" title="分享到 Twitter" data-sharer="twitter" data-url="http://localhost:1313/decentration/" data-title="以日志处理浅谈去中心化" data-hashtags="分布式系统,去中心化,系统设计"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 Facebook" data-sharer="facebook" data-url="http://localhost:1313/decentration/" data-hashtag="分布式系统"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 Hacker News" data-sharer="hackernews" data-url="http://localhost:1313/decentration/" data-title="以日志处理浅谈去中心化"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 Line" data-sharer="line" data-url="http://localhost:1313/decentration/" data-title="以日志处理浅谈去中心化"><i data-svg-src="/lib/simple-icons/icons/line.min.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 微博" data-sharer="weibo" data-url="http://localhost:1313/decentration/" data-title="以日志处理浅谈去中心化"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
+                <span><a href="javascript:void(0);" title="分享到 X" data-sharer="x" data-url="http://localhost:1313/decentration/" data-title="以日志处理浅谈去中心化" data-hashtags="分布式系统,去中心化,系统设计"><i class="fab fa-x-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 Facebook" data-sharer="facebook" data-url="http://localhost:1313/decentration/" data-hashtag="分布式系统"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 Hacker News" data-sharer="hackernews" data-url="http://localhost:1313/decentration/" data-title="以日志处理浅谈去中心化"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 Line" data-sharer="line" data-url="http://localhost:1313/decentration/" data-title="以日志处理浅谈去中心化"><i data-svg-src="/lib/simple-icons/icons/line.min.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 微博" data-sharer="weibo" data-url="http://localhost:1313/decentration/" data-title="以日志处理浅谈去中心化"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 Diaspora" data-sharer="diaspora" data-url="http://localhost:1313/decentration/" data-title="以日志处理浅谈去中心化" data-description=""><i class="fab fa-diaspora fa-fw" aria-hidden="true"></i></a><a href="https://t.me/share/url?url=http%3a%2f%2flocalhost%3a1313%2fdecentration%2f&amp;text=%e4%bb%a5%e6%97%a5%e5%bf%97%e5%a4%84%e7%90%86%e6%b5%85%e8%b0%88%e5%8e%bb%e4%b8%ad%e5%bf%83%e5%8c%96" target="_blank" title="分享到 Telegram"><i class="fab fa-telegram fa-fw" aria-hidden="true"></i></a></span>
             </div>
         </div>
     </div>
@@ -348,11 +355,11 @@ function closeLightbox() {
         </section>
     </div>
 
-    <div class="post-nav"><a href="/life/" class="prev" rel="prev" title="感悟"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>感悟</a></div>
+    <div class="post-nav"><a href="/ddd/" class="prev" rel="prev" title="DDD 的一些思考"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>DDD 的一些思考</a></div>
 </div>
 </article></div>
             </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.148.2">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.3.0"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.148.2">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.3.1-DEV"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
                 </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2019 - 2025</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://hugo.crazyfrank.top/" target="_blank">crazyfrank</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
         </div>
     </footer></div>
@@ -366,7 +373,77 @@ function closeLightbox() {
                 <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
             </a>
         </div><script>window.config={"search":{"maxResultLength":10,"snippetLength":30,"highlightTag":"em","noResultsFound":"没有找到结果"},"toc":{"enable":true,"auto":true}};</script>
+
+<script>
+window.ClipboardJS = function(element) {
+  this.element = element;
+  this.callbacks = {};
+  element.addEventListener('click', () => {
+    const text = element.getAttribute('data-clipboard-text');
+    navigator.clipboard.writeText(text).then(() => {
+      if (this.callbacks.success) this.callbacks.success();
+    });
+  });
+};
+window.ClipboardJS.prototype.on = function(event, callback) {
+  this.callbacks[event] = callback;
+};
+</script>
+
 <script src="/js/theme.js"></script>
+
+<script>
+
+document.addEventListener('DOMContentLoaded', function() {
+  setTimeout(function() {
+    document.querySelectorAll('.details.admonition').forEach(function(details) {
+      const summary = details.querySelector('.details-summary');
+      if (summary) {
+        summary.addEventListener('click', function() {
+          details.classList.toggle('open');
+        });
+      }
+    });
+  }, 300);
+});
+</script>
+
+<script>
+
+setTimeout(function() {
+  document.querySelectorAll('.code-block').forEach(function(codeBlock) {
+    const codeTitle = codeBlock.querySelector('.code-header > .code-title');
+    const copyBtn = codeBlock.querySelector('.code-header .copy');
+    
+    if (codeTitle && !codeTitle.hasAttribute('data-cb-init')) {
+      codeTitle.setAttribute('data-cb-init', 'true');
+      codeTitle.addEventListener('click', function() {
+        codeBlock.classList.toggle('open');
+      });
+    }
+    
+    if (copyBtn && !copyBtn.hasAttribute('data-cb-init')) {
+      copyBtn.setAttribute('data-cb-init', 'true');
+      const code = codeBlock.querySelector('code');
+      if (code) {
+        copyBtn.addEventListener('click', function() {
+          navigator.clipboard.writeText(code.innerText).then(function() {
+            const codeLines = code.querySelectorAll('span.cl');
+            if (codeLines.length > 0) {
+              codeLines.forEach(function(codeLine) {
+                codeLine.classList.add('animate__animated', 'animate__flash');
+                setTimeout(function() {
+                  codeLine.classList.remove('animate__animated', 'animate__flash');
+                }, 1000);
+              });
+            }
+          });
+        });
+      }
+    }
+  });
+}, 500);
+</script>
 
 <style>
 .menu-item.language {
@@ -415,7 +492,7 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 </script>
 <script>
-        document.addEventListener('DOMContentLoaded', function() {
+        setTimeout(function() {
             
             const content = {
                 title: "Crazyfrank 的博客",
@@ -441,7 +518,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     }
                 }
             });
-        });
+        }, 600);
         </script>
     </body>
 </html>

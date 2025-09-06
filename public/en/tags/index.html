@@ -17,9 +17,10 @@
   <meta name="twitter:title" content="Tags">
   <meta name="twitter:description" content="Crazyfrank&#39;s English Blog">
 <meta name="application-name" content="Crazyfrank&#39;s Blog">
-<meta name="apple-mobile-web-app-title" content="Crazyfrank&#39;s Blog"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/favicon.svg"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://localhost:1313/en/tags/" /><link rel="alternate" href="/en/tags/index.xml" type="application/rss+xml" title="Crazyfrank&#39;s Blog">
-    <link rel="feed" href="/en/tags/index.xml" type="application/rss+xml" title="Crazyfrank&#39;s Blog"><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-        <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" href="/lib/animate/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<meta name="apple-mobile-web-app-title" content="Crazyfrank&#39;s Blog">
+<meta name="referrer" content="no-referrer" /><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/favicon.svg"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://localhost:1313/en/tags/" /><link rel="alternate" href="/en/tags/index.xml" type="application/rss+xml" title="Crazyfrank&#39;s Blog">
+    <link rel="feed" href="/en/tags/index.xml" type="application/rss+xml" title="Crazyfrank&#39;s Blog"><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/fontawesome-free/css/all.min.css"></noscript><link rel="preload" href="/lib/animate/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script src="https://cdn.jsdelivr.net/npm/typeit@8.7.1/dist/index.umd.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script>
     </head>
@@ -100,9 +101,9 @@
     <div class="search-dropdown mobile">
         <div id="search-dropdown-mobile"></div>
     </div><main class="main">
-                <div class="container"><div class="page archive"><h2 class="single-title animate__animated animate__pulse animate__faster">All Tags</h2><div class="tag-cloud-tags"><a href="/en/tags/decentralization/">Decentralization <sup>1</sup></a><a href="/en/tags/distributed-systems/">Distributed Systems <sup>1</sup></a><a href="/en/tags/system-design/">System Design <sup>1</sup></a></div></div></div>
+                <div class="container"><div class="page archive"><h2 class="single-title animate__animated animate__pulse animate__faster">All Tags</h2><div class="tag-cloud-tags"><a href="/en/tags/system-design/">System Design <sup>2</sup></a><a href="/en/tags/ddd/">DDD <sup>1</sup></a><a href="/en/tags/decentralization/">Decentralization <sup>1</sup></a><a href="/en/tags/distributed-systems/">Distributed Systems <sup>1</sup></a></div></div></div>
             </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.148.2">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.3.0"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.148.2">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.3.1-DEV"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
                 </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2019 - 2025</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://hugo.crazyfrank.top/" target="_blank">crazyfrank</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
         </div>
     </footer></div>
@@ -116,7 +117,77 @@
                 <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
             </a>
         </div><script>window.config={"search":{"maxResultLength":10,"snippetLength":30,"highlightTag":"em","noResultsFound":"没有找到结果"},"toc":{"enable":true,"auto":true}};</script>
+
+<script>
+window.ClipboardJS = function(element) {
+  this.element = element;
+  this.callbacks = {};
+  element.addEventListener('click', () => {
+    const text = element.getAttribute('data-clipboard-text');
+    navigator.clipboard.writeText(text).then(() => {
+      if (this.callbacks.success) this.callbacks.success();
+    });
+  });
+};
+window.ClipboardJS.prototype.on = function(event, callback) {
+  this.callbacks[event] = callback;
+};
+</script>
+
 <script src="/js/theme.js"></script>
+
+<script>
+
+document.addEventListener('DOMContentLoaded', function() {
+  setTimeout(function() {
+    document.querySelectorAll('.details.admonition').forEach(function(details) {
+      const summary = details.querySelector('.details-summary');
+      if (summary) {
+        summary.addEventListener('click', function() {
+          details.classList.toggle('open');
+        });
+      }
+    });
+  }, 300);
+});
+</script>
+
+<script>
+
+setTimeout(function() {
+  document.querySelectorAll('.code-block').forEach(function(codeBlock) {
+    const codeTitle = codeBlock.querySelector('.code-header > .code-title');
+    const copyBtn = codeBlock.querySelector('.code-header .copy');
+    
+    if (codeTitle && !codeTitle.hasAttribute('data-cb-init')) {
+      codeTitle.setAttribute('data-cb-init', 'true');
+      codeTitle.addEventListener('click', function() {
+        codeBlock.classList.toggle('open');
+      });
+    }
+    
+    if (copyBtn && !copyBtn.hasAttribute('data-cb-init')) {
+      copyBtn.setAttribute('data-cb-init', 'true');
+      const code = codeBlock.querySelector('code');
+      if (code) {
+        copyBtn.addEventListener('click', function() {
+          navigator.clipboard.writeText(code.innerText).then(function() {
+            const codeLines = code.querySelectorAll('span.cl');
+            if (codeLines.length > 0) {
+              codeLines.forEach(function(codeLine) {
+                codeLine.classList.add('animate__animated', 'animate__flash');
+                setTimeout(function() {
+                  codeLine.classList.remove('animate__animated', 'animate__flash');
+                }, 1000);
+              });
+            }
+          });
+        });
+      }
+    }
+  });
+}, 500);
+</script>
 
 <style>
 .menu-item.language {
@@ -165,7 +236,7 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 </script>
 <script>
-        document.addEventListener('DOMContentLoaded', function() {
+        setTimeout(function() {
             
             const content = {
                 title: "Crazyfrank\u0027s Blog",
@@ -191,7 +262,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     }
                 }
             });
-        });
+        }, 600);
         </script>
     </body>
 </html>

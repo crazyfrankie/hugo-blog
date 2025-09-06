@@ -5,7 +5,77 @@
 {{- partial "plugin/analytics.html" . -}}
 
 <script>window.config={"search":{"maxResultLength":10,"snippetLength":30,"highlightTag":"em","noResultsFound":"没有找到结果"},"toc":{"enable":true,"auto":true}};</script>
+
+<script>
+window.ClipboardJS = function(element) {
+  this.element = element;
+  this.callbacks = {};
+  element.addEventListener('click', () => {
+    const text = element.getAttribute('data-clipboard-text');
+    navigator.clipboard.writeText(text).then(() => {
+      if (this.callbacks.success) this.callbacks.success();
+    });
+  });
+};
+window.ClipboardJS.prototype.on = function(event, callback) {
+  this.callbacks[event] = callback;
+};
+</script>
+
 <script src="/js/theme.js"></script>
+
+<script>
+// 修复 admonition 收起功能
+document.addEventListener('DOMContentLoaded', function() {
+  setTimeout(function() {
+    document.querySelectorAll('.details.admonition').forEach(function(details) {
+      const summary = details.querySelector('.details-summary');
+      if (summary) {
+        summary.addEventListener('click', function() {
+          details.classList.toggle('open');
+        });
+      }
+    });
+  }, 300);
+});
+</script>
+
+<script>
+// 代码块功能 - 延迟执行避免冲突
+setTimeout(function() {
+  document.querySelectorAll('.code-block').forEach(function(codeBlock) {
+    const codeTitle = codeBlock.querySelector('.code-header > .code-title');
+    const copyBtn = codeBlock.querySelector('.code-header .copy');
+    
+    if (codeTitle && !codeTitle.hasAttribute('data-cb-init')) {
+      codeTitle.setAttribute('data-cb-init', 'true');
+      codeTitle.addEventListener('click', function() {
+        codeBlock.classList.toggle('open');
+      });
+    }
+    
+    if (copyBtn && !copyBtn.hasAttribute('data-cb-init')) {
+      copyBtn.setAttribute('data-cb-init', 'true');
+      const code = codeBlock.querySelector('code');
+      if (code) {
+        copyBtn.addEventListener('click', function() {
+          navigator.clipboard.writeText(code.innerText).then(function() {
+            const codeLines = code.querySelectorAll('span.cl');
+            if (codeLines.length > 0) {
+              codeLines.forEach(function(codeLine) {
+                codeLine.classList.add('animate__animated', 'animate__flash');
+                setTimeout(function() {
+                  codeLine.classList.remove('animate__animated', 'animate__flash');
+                }, 1000);
+              });
+            }
+          });
+        });
+      }
+    }
+  });
+}, 500);
+</script>
 
 <style>
 .menu-item.language {

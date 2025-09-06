@@ -20,9 +20,12 @@ In architecture, "decentralization" doesn't necessarily mean "completely no cent
 {{< lightbox src="/images/decentration/img-1.png" alt="Centralized Architecture Diagram" width="1200px" >}}
 
 Taking the [ELK](https://www.elastic.co/elastic-stack) log processing architecture as an example:
-> Brief introduction to the diagram structure:
-> ELK is a log processing architecture where `AppServer` (microservices) logs are uniformly collected by `LogStash Agent` for proxy collection, analyzed, filtered, and then sent to remote `Elastic Search` for storage.
-> `Elastic Search` stores data in compressed shards and provides various APIs for user queries and operations. Users can also intuitively configure `Kibana Web` for convenient log querying and data report generation.
+
+{{< admonition note "ELK Production" >}}
+Brief introduction to the diagram structure:
+ELK is a log processing architecture where `AppServer` (microservices) logs are uniformly collected by `LogStash Agent` for proxy collection, analyzed, filtered, and then sent to remote `Elastic Search` for storage.
+`Elastic Search` stores data in compressed shards and provides various APIs for user queries and operations. Users can also intuitively configure `Kibana Web` for convenient log querying and data report generation.
+{{< /admonition >}}
 
 In traditional centralized systems, all requests need to be processed through a central server, the `Server` role, which in this case is `LogStash`. This often creates single points of failure and centralized hotspot issues: `Once Logstash fails, the entire pipeline breaks`. Although the diagram shows only two machines, it can be scaled, but essentially this architectural pattern remains unchanged. Logstash is still heavy, resource-intensive, and has high latency. Meanwhile, the number of microservices continues to grow.
 

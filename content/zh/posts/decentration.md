@@ -20,9 +20,13 @@ tags: ["分布式系统", "去中心化", "系统设计"]
 {{< lightbox src="/images/decentration/img-1.png" alt="中心化架构图" width="1200px" >}}
 
 以 [ELK](https://www.elastic.co/cn/elastic-stack) 日志处理架构为例，
-> 这里简单介绍一下图示结构：
-> ELK 是一种日志处理架构，主要思想是将 `AppServer` 也就是各个微服务的日志统一使用 `LogStash Agent` 进行代理收集，经过分析、过滤后发送给远端的 `Elastic Search` 进行存储，
-> `Elastic Search` 将数据以分片的形式压缩存储并提供多种 API 供用户查询，操作；用户同样的也可以直观的配置 `Kibana Web` 方便的对日志查询，并生成数据报表
+
+{{< admonition note "ELK 介绍" >}}
+这里简单介绍一下图示结构：
+ELK 是一种日志处理架构，主要思想是将 `AppServer` 也就是各个微服务的日志统一使用 `LogStash Agent` 进行代理收集，经过分析、过滤后发送给远端的 `Elastic Search` 进行存储，
+`Elastic Search` 将数据以分片的形式压缩存储并提供多种 API 供用户查询，操作；用户同样的也可以直观的配置 `Kibana Web` 方便的对日志查询，并生成数据报表
+
+{{< /admonition >}}
 
 在传统的中心化系统中，所有的请求都需要通过中央服务器处理，也就是 `Server` 角色，在本例中也就是 `LogStash` ，这往往会形成单点故障、集中式的热点问题：`一旦 Logstash 出问题，全链路就断了`。图中示例虽然只画了两台机器，其实可以扩展，
 但本质上这种架构模式没有改变，Logstash 依然很重，占资源多，延迟高。同时，微服务的数量也在不断增多。

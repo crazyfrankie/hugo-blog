@@ -60,7 +60,7 @@
         {{- /* Load JavaScript scripts and CSS */ -}}
         {{- partial "assets.html" . -}}
         <script>
-        document.addEventListener('DOMContentLoaded', function() {
+        setTimeout(function() {
             // 从Hugo配置获取内容
             const content = {
                 title: "{{ .Site.Params.home.profile.title }}",
@@ -86,7 +86,7 @@
                     }
                 }
             });
-        });
+        }, 600);
         </script>
     </body>
 </html>

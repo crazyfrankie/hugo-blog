@@ -1,16 +1,4 @@
-<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
-    <channel>
-        <title>All Posts - Crazyfrank&#39;s Blog</title>
-        <link>http://localhost:1313/en/posts/</link>
-        <description>All Posts | Crazyfrank&#39;s Blog</description>
-        <generator>Hugo -- gohugo.io</generator><language>en-US</language><managingEditor>axu9417@gmail.com (crazyfrank)</managingEditor>
-            <webMaster>axu9417@gmail.com (crazyfrank)</webMaster><atom:link href="http://localhost:1313/en/posts/" rel="self" type="application/rss+xml" /><item>
-    <title>Understanding Decentralization Through Log Processing</title>
-    <link>http://localhost:1313/en/decentration/</link>
-    <pubDate>Fri, 05 Sep 2025 10:00:00 &#43;0800</pubDate>
-    <author>crazyfrank</author>
-    <guid>http://localhost:1313/en/decentration/</guid>
-    <description><![CDATA[<p>This article explores decentralized system design concepts and implementation approaches through the lens of log processing.</p>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>All Posts - Crazyfrank's Blog</title><link>https://hugo.crazyfrank.top/en/posts/</link><description>All Posts | Crazyfrank's Blog</description><generator>Hugo -- gohugo.io</generator><language>en-US</language><managingEditor>axu9417@gmail.com (crazyfrank)</managingEditor><webMaster>axu9417@gmail.com (crazyfrank)</webMaster><atom:link href="https://hugo.crazyfrank.top/en/posts/" rel="self" type="application/rss+xml"/><item><title>Understanding Decentralization Through Log Processing</title><link>https://hugo.crazyfrank.top/en/decentration/</link><pubDate>Fri, 05 Sep 2025 10:00:00 +0800</pubDate><author>crazyfrank</author><guid>https://hugo.crazyfrank.top/en/decentration/</guid><description><![CDATA[<p>This article explores decentralized system design concepts and implementation approaches through the lens of log processing.</p>
 <h2 id="overview-of-decentralized-systems">Overview of Decentralized Systems</h2>
 <p>Decentralization is a key concept in distributed system design that improves system reliability and fault tolerance by distributing control across multiple nodes.</p>
 <p>In architecture, &ldquo;decentralization&rdquo; doesn&rsquo;t necessarily mean &ldquo;completely no center,&rdquo; but rather:</p>
@@ -41,15 +29,4 @@ function closeLightbox() {
 }
 </script>
 
-<p>Taking the <a href="https://www.elastic.co/elastic-stack" target="_blank" rel="noopener noreffer ">ELK</a> log processing architecture as an example:</p>]]></description>
-</item>
-<item>
-    <title>realisation</title>
-    <link>http://localhost:1313/en/life/</link>
-    <pubDate>Mon, 01 Sep 2025 10:00:00 &#43;0800</pubDate>
-    <author>crazyfrank</author>
-    <guid>http://localhost:1313/en/life/</guid>
-    <description><![CDATA[<p>Man&rsquo;s physical body is the past and his consciousness is the present and future.</p>]]></description>
-</item>
-</channel>
-</rss>
+<p>Taking the <a href="https://www.elastic.co/elastic-stack" target="_blank" rel="noopener noreffer ">ELK</a> log processing architecture as an example:</p>]]></description></item><item><title>realisation</title><link>https://hugo.crazyfrank.top/en/life/</link><pubDate>Mon, 01 Sep 2025 10:00:00 +0800</pubDate><author>crazyfrank</author><guid>https://hugo.crazyfrank.top/en/life/</guid><description>&lt;p>Man&amp;rsquo;s physical body is the past and his consciousness is the present and future.&lt;/p></description></item></channel></rss>

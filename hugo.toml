@@ -352,9 +352,9 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
     anchorLineNos = false
     codeFences = true
     guessSyntax = false
-    lineNos = false
-    lineNumbersInTable = true
-    noClasses = true
+    lineNos = true
+    lineNumbersInTable = false
+    noClasses = false
   # Goldmark is from Hugo 0.60 the default library used for Markdown
   [markup.goldmark]
     [markup.goldmark.extensions]

@@ -17,6 +17,15 @@
 <p>去中心化是分布式系统设计中的重要概念，它通过将控制权分散到多个节点来提高系统的可靠性和容错性。</p>]]></description>
 </item>
 <item>
+    <title>DDD 的一些思考</title>
+    <link>http://localhost:1313/ddd/</link>
+    <pubDate>Thu, 04 Sep 2025 10:00:00 &#43;0800</pubDate>
+    <author>crazyfrank</author>
+    <guid>http://localhost:1313/ddd/</guid>
+    <description><![CDATA[<h2 id="项目介绍">项目介绍</h2>
+<p>叠甲，写这篇文章主要是分享在看 DDD 的项目实践中的一些学习感悟，因为本人懒得看理论，所以都只是猜测 DDD 要这么设计。具体还是要参考 DDD 官方网站： <a href="https://domain-driven-design.org/zh/ddd-concept-reference.html" target="_blank" rel="noopener noreffer ">DDD 概念介绍</a></p>]]></description>
+</item>
+<item>
     <title>感悟</title>
     <link>http://localhost:1313/life/</link>
     <pubDate>Mon, 01 Sep 2025 10:00:00 &#43;0800</pubDate>
