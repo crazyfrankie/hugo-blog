@@ -2,19 +2,10 @@
     xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
     xmlns:xhtml="http://www.w3.org/1999/xhtml"
     ><url>
-            <loc>http://localhost:1313/en/categories/backend/</loc><lastmod>2025-09-06T20:56:37&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority><xhtml:link
-                        rel="alternate"
-                        hreflang="zh"
-                        href="http://localhost:1313/categories/backend/"
-                        /><xhtml:link
-                    rel="alternate"
-                    hreflang="en"
-                    href="http://localhost:1313/en/categories/backend/"
-                    /></url><url>
-            <loc>http://localhost:1313/en/tags/decentralization/</loc><lastmod>2025-09-06T20:56:37&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>http://localhost:1313/en/tags/distributed-systems/</loc><lastmod>2025-09-06T20:56:37&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>http://localhost:1313/en/tags/system-design/</loc><lastmod>2025-09-06T20:56:37&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>http://localhost:1313/en/tags/</loc><lastmod>2025-09-06T20:56:37&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority><xhtml:link
+            <loc>http://localhost:1313/en/tags/decentralization/</loc><lastmod>2025-09-07T16:39:13&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>http://localhost:1313/en/tags/distributed-systems/</loc><lastmod>2025-09-07T16:39:13&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>http://localhost:1313/en/tags/system-design/</loc><lastmod>2025-09-07T16:39:13&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>http://localhost:1313/en/tags/</loc><lastmod>2025-09-07T16:39:13&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority><xhtml:link
                         rel="alternate"
                         hreflang="zh"
                         href="http://localhost:1313/tags/"
@@ -23,7 +14,7 @@
                     hreflang="en"
                     href="http://localhost:1313/en/tags/"
                     /></url><url>
-            <loc>http://localhost:1313/en/decentration/</loc><lastmod>2025-09-06T20:56:37&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority><xhtml:link
+            <loc>http://localhost:1313/en/decentration/</loc><lastmod>2025-09-07T16:39:13&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority><xhtml:link
                         rel="alternate"
                         hreflang="zh"
                         href="http://localhost:1313/decentration/"
@@ -32,7 +23,7 @@
                     hreflang="en"
                     href="http://localhost:1313/en/decentration/"
                     /></url><url>
-            <loc>http://localhost:1313/en/tags/ddd/</loc><lastmod>2025-09-06T20:56:37&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority><xhtml:link
+            <loc>http://localhost:1313/en/tags/ddd/</loc><lastmod>2025-09-07T16:39:13&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority><xhtml:link
                         rel="alternate"
                         hreflang="zh"
                         href="http://localhost:1313/tags/ddd/"
@@ -41,7 +32,7 @@
                     hreflang="en"
                     href="http://localhost:1313/en/tags/ddd/"
                     /></url><url>
-            <loc>http://localhost:1313/en/ddd/</loc><lastmod>2025-09-06T20:56:37&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority><xhtml:link
+            <loc>http://localhost:1313/en/ddd/</loc><lastmod>2025-09-07T16:39:13&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority><xhtml:link
                         rel="alternate"
                         hreflang="zh"
                         href="http://localhost:1313/ddd/"
@@ -50,7 +41,17 @@
                     hreflang="en"
                     href="http://localhost:1313/en/ddd/"
                     /></url><url>
-            <loc>http://localhost:1313/en/tags/cache/</loc><lastmod>2025-09-02T10:00:00&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority><xhtml:link
+            <loc>http://localhost:1313/en/tags/log/</loc><lastmod>2025-09-03T10:00:00&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>http://localhost:1313/en/log-error/</loc><lastmod>2025-09-03T10:00:00&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority><xhtml:link
+                        rel="alternate"
+                        hreflang="zh"
+                        href="http://localhost:1313/log-error/"
+                        /><xhtml:link
+                    rel="alternate"
+                    hreflang="en"
+                    href="http://localhost:1313/en/log-error/"
+                    /></url><url>
+            <loc>http://localhost:1313/en/tags/cache/</loc><lastmod>2025-09-07T16:39:13&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority><xhtml:link
                         rel="alternate"
                         hreflang="zh"
                         href="http://localhost:1313/tags/cache/"
@@ -59,8 +60,8 @@
                     hreflang="en"
                     href="http://localhost:1313/en/tags/cache/"
                     /></url><url>
-            <loc>http://localhost:1313/en/tags/data-consistency/</loc><lastmod>2025-09-02T10:00:00&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>http://localhost:1313/en/tags/db/</loc><lastmod>2025-09-02T10:00:00&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority><xhtml:link
+            <loc>http://localhost:1313/en/tags/data-consistency/</loc><lastmod>2025-09-07T16:39:13&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>http://localhost:1313/en/tags/db/</loc><lastmod>2025-09-07T16:39:13&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority><xhtml:link
                         rel="alternate"
                         hreflang="zh"
                         href="http://localhost:1313/tags/db/"
@@ -69,7 +70,7 @@
                     hreflang="en"
                     href="http://localhost:1313/en/tags/db/"
                     /></url><url>
-            <loc>http://localhost:1313/en/db-cache/</loc><lastmod>2025-09-02T10:00:00&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority><xhtml:link
+            <loc>http://localhost:1313/en/db-cache/</loc><lastmod>2025-09-07T16:39:13&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority><xhtml:link
                         rel="alternate"
                         hreflang="zh"
                         href="http://localhost:1313/db-cache/"
@@ -86,6 +87,15 @@
                     rel="alternate"
                     hreflang="en"
                     href="http://localhost:1313/en/life/"
+                    /></url><url>
+            <loc>http://localhost:1313/en/categories/backend/</loc><lastmod>2025-09-07T16:39:13&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority><xhtml:link
+                        rel="alternate"
+                        hreflang="zh"
+                        href="http://localhost:1313/categories/backend/"
+                        /><xhtml:link
+                    rel="alternate"
+                    hreflang="en"
+                    href="http://localhost:1313/en/categories/backend/"
                     /></url><url>
             <loc>http://localhost:1313/en/categories/</loc><lastmod>2025-09-06T15:32:54&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority><xhtml:link
                         rel="alternate"
@@ -105,7 +115,7 @@
                     hreflang="en"
                     href="http://localhost:1313/en/search/"
                     /></url><url>
-            <loc>http://localhost:1313/en/categories/frontend/</loc><changefreq>weekly</changefreq><priority>0.5</priority><xhtml:link
+            <loc>http://localhost:1313/en/categories/frontend/</loc><lastmod>2025-09-07T16:39:13&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority><xhtml:link
                         rel="alternate"
                         hreflang="zh"
                         href="http://localhost:1313/categories/frontend/"
@@ -131,6 +141,15 @@
                     rel="alternate"
                     hreflang="en"
                     href="http://localhost:1313/en/categories/life/"
+                    /></url><url>
+            <loc>http://localhost:1313/en/categories/log/</loc><changefreq>weekly</changefreq><priority>0.5</priority><xhtml:link
+                        rel="alternate"
+                        hreflang="zh"
+                        href="http://localhost:1313/categories/log/"
+                        /><xhtml:link
+                    rel="alternate"
+                    hreflang="en"
+                    href="http://localhost:1313/en/categories/log/"
                     /></url><url>
             <loc>http://localhost:1313/en/posts/</loc><lastmod>2025-09-05T21:54:12&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority><xhtml:link
                         rel="alternate"

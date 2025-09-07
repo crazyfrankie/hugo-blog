@@ -24,6 +24,17 @@
 <p>叠甲，写这篇文章主要是分享在看 DDD 的项目实践中的一些学习感悟，因为本人懒得看理论，所以都只是猜测 DDD 要这么设计。具体还是要参考 DDD 官方网站： <a href="https://domain-driven-design.org/zh/ddd-concept-reference.html" target="_blank" rel="noopener noreffer ">DDD 概念介绍</a></p>]]></description>
 </item>
 <item>
+    <title>日志与 Error</title>
+    <link>http://localhost:1313/log-error/</link>
+    <pubDate>Wed, 03 Sep 2025 10:00:00 &#43;0800</pubDate>
+    <author>crazyfrank</author>
+    <guid>http://localhost:1313/log-error/</guid>
+    <description><![CDATA[<h2 id="日志与-error">日志与 Error</h2>
+<p>一般来说在我们的项目中，按照严格分层的结构划分的话，大致是 <code>handler</code>、<code>service</code>（DDD 中细分为 <code>application</code> 和
+<code>domain</code> ），<code>dao</code>。</p>
+<p>对于 <code>dao</code> 层，如果出现错误，我们的处理方式是直接上抛，选择性的打日志处理错误，比如可能有些接口涉及到在 <code>dao</code>层进行参数校验、手动管理事务等，需要日志记录，但错误仍然是直接上抛。</p>]]></description>
+</item>
+<item>
     <title>DB-Cache 一致性问题</title>
     <link>http://localhost:1313/db-cache/</link>
     <pubDate>Tue, 02 Sep 2025 10:00:00 &#43;0800</pubDate>

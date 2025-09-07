@@ -164,6 +164,15 @@ function closeLightbox() {
         <a href="/en/ddd/">Read More</a><div class="post-tags">
                 <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/en/tags/ddd/">DDD</a>,&nbsp;<a href="/en/tags/system-design/">System Design</a></div></div>
 </article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/en/log-error/">Logs and Errors</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="https://hugo.crazyfrank.top/" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>crazyfrank</a></span>&nbsp;<span class="post-publish">published on <time datetime="2025-09-03">2025-09-03</time></span>&nbsp;<span class="post-category">included in <a href="/en/categories/technology/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Technology</a>&nbsp;<a href="/en/categories/backend/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Backend</a></span></div><div class="content"><h2 id="logs-and-errors">Logs and Errors</h2>
+<p>Generally speaking, in our project, if we strictly divide it according to a hierarchical structure, it is roughly <code>handler</code>, <code>service</code> (which is further subdivided into <code>application</code> in DDD), and
+<code>domain</code>, <code>dao</code>.</p>
+<p>For the <code>dao</code> layer, if an error occurs, we deal with it by directly up-throwing and selectively logging the error, for example,
+there may be some interfaces that involve parameter validation at the <code>dao</code> layer, manually managing transactions, and so on, which require logging, but the error is still directly up-throwing.</p></div><div class="post-footer">
+        <a href="/en/log-error/">Read More</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/en/tags/system-design/">System Design</a>,&nbsp;<a href="/en/tags/log/">Log</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
         <a href="/en/db-cache/">DB-Cache Consistency Problem</a>
     </h1><div class="post-meta"><span class="post-author"><a href="https://hugo.crazyfrank.top/" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>crazyfrank</a></span>&nbsp;<span class="post-publish">published on <time datetime="2025-09-02">2025-09-02</time></span>&nbsp;<span class="post-category">included in <a href="/en/categories/technology/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Technology</a>&nbsp;<a href="/en/categories/backend/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Backend</a></span></div><div class="content"><p>How to ensure the consistency between cache and database is a topic that has been discussed over and over again.</p>
 <p>But many people still have a lot of doubts about this issue:</p>

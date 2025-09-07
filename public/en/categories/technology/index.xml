@@ -24,11 +24,18 @@
       <description>&lt;h2 id=&#34;project-introduction&#34;&gt;Project Introduction&lt;/h2&gt;&#xA;&lt;p&gt;I&amp;rsquo;m writing this article mainly to share some learning insights from the project practice of DDD. Since I&amp;rsquo;m too lazy to read the theory, I&amp;rsquo;m just guessing how DDD should be designed. For more details, please refer to the DDD official website: &lt;a href=&#34;https://domain-driven-design.org/zh/ddd-concept-reference.html&#34; target=&#34;_blank&#34; rel=&#34;noopener noreffer &#34;&gt;DDD Concept Introduction&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;Recently, ByteDance has open-sourced their open-coze. The front end is React + TS, and the back end uses Go. Since I didn&amp;rsquo;t use Py or TS, and I have a bit more knowledge of Go, I started learning it.&lt;/p&gt;</description>
     </item>
     <item>
+      <title>Logs and Errors</title>
+      <link>http://localhost:1313/en/log-error/</link>
+      <pubDate>Wed, 03 Sep 2025 10:00:00 +0800</pubDate><author>axu9417@gmail.com (crazyfrank)</author>
+      <guid>http://localhost:1313/en/log-error/</guid>
+      <description>&lt;h2 id=&#34;logs-and-errors&#34;&gt;Logs and Errors&lt;/h2&gt;&#xA;&lt;p&gt;Generally speaking, in our project, if we strictly divide it according to a hierarchical structure, it is roughly &lt;code&gt;handler&lt;/code&gt;, &lt;code&gt;service&lt;/code&gt; (which is further subdivided into &lt;code&gt;application&lt;/code&gt; in DDD), and&#xA;&lt;code&gt;domain&lt;/code&gt;, &lt;code&gt;dao&lt;/code&gt;.&lt;/p&gt;&#xA;&lt;p&gt;For the &lt;code&gt;dao&lt;/code&gt; layer, if an error occurs, we deal with it by directly up-throwing and selectively logging the error, for example,&#xA;there may be some interfaces that involve parameter validation at the &lt;code&gt;dao&lt;/code&gt; layer, manually managing transactions, and so on, which require logging, but the error is still directly up-throwing.&lt;/p&gt;</description>
+    </item>
+    <item>
       <title>DB-Cache Consistency Problem</title>
       <link>http://localhost:1313/en/db-cache/</link>
       <pubDate>Tue, 02 Sep 2025 10:00:00 +0800</pubDate><author>axu9417@gmail.com (crazyfrank)</author>
       <guid>http://localhost:1313/en/db-cache/</guid>
-      <description>&lt;p&gt;How to ensure the consistency between cache and database is a topic that has been discussed over and over again.&lt;/p&gt;&#xA;&lt;p&gt;But many people still have a lot of doubts about this issue:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Should the cache be updated or deleted?&lt;/li&gt;&#xA;&lt;li&gt;Should I choose to update the database first and then delete the cache, or to delete the cache first and then update the database?&lt;/li&gt;&#xA;&lt;li&gt;Why introduce message queues to ensure consistency?&lt;/li&gt;&#xA;&lt;li&gt;What problems may arise from delaying double deletion? Should we use it or not?&lt;/li&gt;&#xA;&lt;li&gt;&amp;hellip;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;Introducing cache improves performance&lt;/p&gt;</description>
+      <description>&lt;p&gt;How to ensure the consistency between cache and database is a topic that has been discussed over and over again.&lt;/p&gt;&#xA;&lt;p&gt;But many people still have a lot of doubts about this issue:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Should the cache be updated or deleted?&lt;/li&gt;&#xA;&lt;li&gt;Should I choose to update the database first and then delete the cache, or to delete the cache first and then update the database?&lt;/li&gt;&#xA;&lt;li&gt;Why introduce message queues to ensure consistency?&lt;/li&gt;&#xA;&lt;li&gt;What problems may arise from delaying double deletion? Should we use it or not?&lt;/li&gt;&#xA;&lt;li&gt;&amp;hellip;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;introducing-cache-improves-performance&#34;&gt;Introducing cache improves performance&lt;/h2&gt;&#xA;&lt;p&gt;Let&amp;rsquo;s start with the simplest scenario.&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

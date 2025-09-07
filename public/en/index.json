@@ -10,6 +10,11 @@
   "uri": "/en/ddd/"
 },
 {
+  "title": "Logs and Errors",
+  "content": "Logs and Errors Generally speaking, in our project, if we strictly divide it according to a hierarchical structure, it is roughly handler, service (which is further subdivided into application in DDD), and domain, dao.\nFor the dao layer, if an error occurs, we deal with it by directly up-throwing and selectively logging the error, for example, there may be some interfaces that involve parameter validation at the dao layer, manually managing transactions, and so on, which require logging, but the …",
+  "uri": "/en/log-error/"
+},
+{
   "title": "DB-Cache Consistency Problem",
   "content": "How to ensure the consistency between cache and database is a topic that has been discussed over and over again.\nBut many people still have a lot of doubts about this issue:\nShould the cache be updated or deleted? Should I choose to update the database first and then delete the cache, or to delete the cache first and then update the database? Why introduce message queues to ensure consistency? What problems may arise from delaying double deletion? Should we use it or not? \u0026amp;hellip; Introducing …",
   "uri": "/en/db-cache/"

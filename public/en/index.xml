@@ -56,6 +56,18 @@ function closeLightbox() {
 <p>Recently, ByteDance has open-sourced their open-coze. The front end is React + TS, and the back end uses Go. Since I didn&rsquo;t use Py or TS, and I have a bit more knowledge of Go, I started learning it.</p>]]></description>
 </item>
 <item>
+    <title>Logs and Errors</title>
+    <link>http://localhost:1313/en/log-error/</link>
+    <pubDate>Wed, 03 Sep 2025 10:00:00 &#43;0800</pubDate>
+    <author>crazyfrank</author>
+    <guid>http://localhost:1313/en/log-error/</guid>
+    <description><![CDATA[<h2 id="logs-and-errors">Logs and Errors</h2>
+<p>Generally speaking, in our project, if we strictly divide it according to a hierarchical structure, it is roughly <code>handler</code>, <code>service</code> (which is further subdivided into <code>application</code> in DDD), and
+<code>domain</code>, <code>dao</code>.</p>
+<p>For the <code>dao</code> layer, if an error occurs, we deal with it by directly up-throwing and selectively logging the error, for example,
+there may be some interfaces that involve parameter validation at the <code>dao</code> layer, manually managing transactions, and so on, which require logging, but the error is still directly up-throwing.</p>]]></description>
+</item>
+<item>
     <title>DB-Cache Consistency Problem</title>
     <link>http://localhost:1313/en/db-cache/</link>
     <pubDate>Tue, 02 Sep 2025 10:00:00 &#43;0800</pubDate>
