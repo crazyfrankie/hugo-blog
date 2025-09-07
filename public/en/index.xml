@@ -56,6 +56,24 @@ function closeLightbox() {
 <p>Recently, ByteDance has open-sourced their open-coze. The front end is React + TS, and the back end uses Go. Since I didn&rsquo;t use Py or TS, and I have a bit more knowledge of Go, I started learning it.</p>]]></description>
 </item>
 <item>
+    <title>DB-Cache Consistency Problem</title>
+    <link>http://localhost:1313/en/db-cache/</link>
+    <pubDate>Tue, 02 Sep 2025 10:00:00 &#43;0800</pubDate>
+    <author>crazyfrank</author>
+    <guid>http://localhost:1313/en/db-cache/</guid>
+    <description><![CDATA[<p>How to ensure the consistency between cache and database is a topic that has been discussed over and over again.</p>
+<p>But many people still have a lot of doubts about this issue:</p>
+<ul>
+<li>Should the cache be updated or deleted?</li>
+<li>Should I choose to update the database first and then delete the cache, or to delete the cache first and then update the database?</li>
+<li>Why introduce message queues to ensure consistency?</li>
+<li>What problems may arise from delaying double deletion? Should we use it or not?</li>
+<li>&hellip;</li>
+</ul>
+<h2 id="introducing-cache-improves-performance">Introducing cache improves performance</h2>
+<p>Let&rsquo;s start with the simplest scenario.</p>]]></description>
+</item>
+<item>
     <title>realisation</title>
     <link>http://localhost:1313/en/life/</link>
     <pubDate>Mon, 01 Sep 2025 10:00:00 &#43;0800</pubDate>

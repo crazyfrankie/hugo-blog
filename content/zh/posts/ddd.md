@@ -2,7 +2,7 @@
 title: "DDD 的一些思考"
 date: 2025-09-04T10:00:00+08:00
 draft: false
-categories: ["技术"]
+categories: ["技术", "后端"]
 tags: ["DDD", "系统设计"]
 ---
 

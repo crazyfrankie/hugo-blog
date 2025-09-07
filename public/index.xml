@@ -1,36 +1,54 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
         <title>Crazyfrank 的博客</title>
-        <link>https://hugo.crazyfrank.top/</link>
+        <link>http://localhost:1313/</link>
         <description>Crazyfrank 的中文博客</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>axu9417@gmail.com (crazyfrank)</managingEditor>
             <webMaster>axu9417@gmail.com (crazyfrank)</webMaster>
-            <atom:link href="https://hugo.crazyfrank.top/index.xml" rel="self" type="application/rss+xml" />
+            <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
         <item>
     <title>以日志处理浅谈去中心化</title>
-    <link>https://hugo.crazyfrank.top/decentration/</link>
+    <link>http://localhost:1313/decentration/</link>
     <pubDate>Fri, 05 Sep 2025 10:00:00 &#43;0800</pubDate>
     <author>crazyfrank</author>
-    <guid>https://hugo.crazyfrank.top/decentration/</guid>
+    <guid>http://localhost:1313/decentration/</guid>
     <description><![CDATA[<p>本文通过日志处理的角度来探讨去中心化系统的设计思路和实现方案。</p>
 <h2 id="去中心化系统概述">去中心化系统概述</h2>
 <p>去中心化是分布式系统设计中的重要概念，它通过将控制权分散到多个节点来提高系统的可靠性和容错性。</p>]]></description>
 </item>
 <item>
     <title>DDD 的一些思考</title>
-    <link>https://hugo.crazyfrank.top/ddd/</link>
+    <link>http://localhost:1313/ddd/</link>
     <pubDate>Thu, 04 Sep 2025 10:00:00 &#43;0800</pubDate>
     <author>crazyfrank</author>
-    <guid>https://hugo.crazyfrank.top/ddd/</guid>
+    <guid>http://localhost:1313/ddd/</guid>
     <description><![CDATA[<h2 id="项目介绍">项目介绍</h2>
 <p>叠甲，写这篇文章主要是分享在看 DDD 的项目实践中的一些学习感悟，因为本人懒得看理论，所以都只是猜测 DDD 要这么设计。具体还是要参考 DDD 官方网站： <a href="https://domain-driven-design.org/zh/ddd-concept-reference.html" target="_blank" rel="noopener noreffer ">DDD 概念介绍</a></p>]]></description>
 </item>
 <item>
+    <title>DB-Cache 一致性问题</title>
+    <link>http://localhost:1313/db-cache/</link>
+    <pubDate>Tue, 02 Sep 2025 10:00:00 &#43;0800</pubDate>
+    <author>crazyfrank</author>
+    <guid>http://localhost:1313/db-cache/</guid>
+    <description><![CDATA[<p>如何保证缓存和数据库一致性，这是一个老生常谈的话题了。</p>
+<p>但很多人对这个问题，依旧有很多疑惑：</p>
+<ul>
+<li>到底是更新缓存还是删缓存？</li>
+<li>到底选择先更新数据库，再删除缓存，还是先删除缓存，再更新数据库？</li>
+<li>为什么要引入消息队列保证一致性？</li>
+<li>延迟双删会有什么问题？到底要不要用？</li>
+<li>…</li>
+</ul>
+<h2 id="引入缓存提高性能">引入缓存提高性能</h2>
+<p>我们从最简单的场景开始讲起。</p>]]></description>
+</item>
+<item>
     <title>感悟</title>
-    <link>https://hugo.crazyfrank.top/life/</link>
+    <link>http://localhost:1313/life/</link>
     <pubDate>Mon, 01 Sep 2025 10:00:00 &#43;0800</pubDate>
     <author>crazyfrank</author>
-    <guid>https://hugo.crazyfrank.top/life/</guid>
+    <guid>http://localhost:1313/life/</guid>
     <description><![CDATA[<p>人的肉体是过去，意识是现在和未来。</p>]]></description>
 </item>
 </channel>

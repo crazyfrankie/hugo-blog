@@ -2,7 +2,7 @@
 title: "Understanding Decentralization Through Log Processing"
 date: 2025-09-05T10:00:00+08:00
 draft: false
-categories: ["Technology"]
+categories: ["Technology", "Backend"]
 tags: ["Distributed Systems", "Decentralization", "System Design"]
 ---
 

@@ -2,7 +2,7 @@
 title: "Some Thoughts on DDD"
 date: 2025-09-04T10:00:00+08:00
 draft: false
-categories: ["Technology"]
+categories: ["Technology", "Backend"]
 tags: ["DDD", "System Design"]
 ---
 

@@ -2,7 +2,7 @@
 title: "以日志处理浅谈去中心化"
 date: 2025-09-05T10:00:00+08:00
 draft: false
-categories: ["技术"]
+categories: ["技术", "后端"]
 tags: ["分布式系统", "去中心化", "系统设计"]
 ---
 

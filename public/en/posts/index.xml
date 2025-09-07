@@ -1,15 +1,15 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
         <title>All Posts - Crazyfrank&#39;s Blog</title>
-        <link>https://hugo.crazyfrank.top/en/posts/</link>
+        <link>http://localhost:1313/en/posts/</link>
         <description>All Posts | Crazyfrank&#39;s Blog</description>
         <generator>Hugo -- gohugo.io</generator><language>en-US</language><managingEditor>axu9417@gmail.com (crazyfrank)</managingEditor>
-            <webMaster>axu9417@gmail.com (crazyfrank)</webMaster><atom:link href="https://hugo.crazyfrank.top/en/posts/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>axu9417@gmail.com (crazyfrank)</webMaster><atom:link href="http://localhost:1313/en/posts/" rel="self" type="application/rss+xml" /><item>
     <title>Understanding Decentralization Through Log Processing</title>
-    <link>https://hugo.crazyfrank.top/en/decentration/</link>
+    <link>http://localhost:1313/en/decentration/</link>
     <pubDate>Fri, 05 Sep 2025 10:00:00 &#43;0800</pubDate>
     <author>crazyfrank</author>
-    <guid>https://hugo.crazyfrank.top/en/decentration/</guid>
+    <guid>http://localhost:1313/en/decentration/</guid>
     <description><![CDATA[<p>This article explores decentralized system design concepts and implementation approaches through the lens of log processing.</p>
 <h2 id="overview-of-decentralized-systems">Overview of Decentralized Systems</h2>
 <p>Decentralization is a key concept in distributed system design that improves system reliability and fault tolerance by distributing control across multiple nodes.</p>
@@ -45,20 +45,37 @@ function closeLightbox() {
 </item>
 <item>
     <title>Some Thoughts on DDD</title>
-    <link>https://hugo.crazyfrank.top/en/ddd/</link>
+    <link>http://localhost:1313/en/ddd/</link>
     <pubDate>Thu, 04 Sep 2025 10:00:00 &#43;0800</pubDate>
     <author>crazyfrank</author>
-    <guid>https://hugo.crazyfrank.top/en/ddd/</guid>
+    <guid>http://localhost:1313/en/ddd/</guid>
     <description><![CDATA[<h2 id="project-introduction">Project Introduction</h2>
 <p>I&rsquo;m writing this article mainly to share some learning insights from the project practice of DDD. Since I&rsquo;m too lazy to read the theory, I&rsquo;m just guessing how DDD should be designed. For more details, please refer to the DDD official website: <a href="https://domain-driven-design.org/zh/ddd-concept-reference.html" target="_blank" rel="noopener noreffer ">DDD Concept Introduction</a></p>
 <p>Recently, ByteDance has open-sourced their open-coze. The front end is React + TS, and the back end uses Go. Since I didn&rsquo;t use Py or TS, and I have a bit more knowledge of Go, I started learning it.</p>]]></description>
 </item>
 <item>
+    <title>DB-Cache Consistency Problem</title>
+    <link>http://localhost:1313/en/db-cache/</link>
+    <pubDate>Tue, 02 Sep 2025 10:00:00 &#43;0800</pubDate>
+    <author>crazyfrank</author>
+    <guid>http://localhost:1313/en/db-cache/</guid>
+    <description><![CDATA[<p>How to ensure the consistency between cache and database is a topic that has been discussed over and over again.</p>
+<p>But many people still have a lot of doubts about this issue:</p>
+<ul>
+<li>Should the cache be updated or deleted?</li>
+<li>Should I choose to update the database first and then delete the cache, or to delete the cache first and then update the database?</li>
+<li>Why introduce message queues to ensure consistency?</li>
+<li>What problems may arise from delaying double deletion? Should we use it or not?</li>
+<li>&hellip;</li>
+</ul>
+<p>Introducing cache improves performance</p>]]></description>
+</item>
+<item>
     <title>realisation</title>
-    <link>https://hugo.crazyfrank.top/en/life/</link>
+    <link>http://localhost:1313/en/life/</link>
     <pubDate>Mon, 01 Sep 2025 10:00:00 &#43;0800</pubDate>
     <author>crazyfrank</author>
-    <guid>https://hugo.crazyfrank.top/en/life/</guid>
+    <guid>http://localhost:1313/en/life/</guid>
     <description><![CDATA[<p>Man&rsquo;s physical body is the past and his consciousness is the present and future.</p>]]></description>
 </item>
 </channel>

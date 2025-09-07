@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>后端 on Crazyfrank 的博客</title>
+    <link>http://localhost:1313/categories/%E5%90%8E%E7%AB%AF/</link>
+    <description>Recent content in 后端 on Crazyfrank 的博客</description>
+    <generator>Hugo</generator>
+    <language>zh-CN</language>
+    <managingEditor>axu9417@gmail.com (crazyfrank)</managingEditor>
+    <webMaster>axu9417@gmail.com (crazyfrank)</webMaster>
+    <lastBuildDate>Sat, 06 Sep 2025 20:56:37 +0800</lastBuildDate>
+    <atom:link href="http://localhost:1313/categories/%E5%90%8E%E7%AB%AF/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>以日志处理浅谈去中心化</title>
+      <link>http://localhost:1313/decentration/</link>
+      <pubDate>Fri, 05 Sep 2025 10:00:00 +0800</pubDate><author>axu9417@gmail.com (crazyfrank)</author>
+      <guid>http://localhost:1313/decentration/</guid>
+      <description>&lt;p&gt;本文通过日志处理的角度来探讨去中心化系统的设计思路和实现方案。&lt;/p&gt;&#xA;&lt;h2 id=&#34;去中心化系统概述&#34;&gt;去中心化系统概述&lt;/h2&gt;&#xA;&lt;p&gt;去中心化是分布式系统设计中的重要概念，它通过将控制权分散到多个节点来提高系统的可靠性和容错性。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>DDD 的一些思考</title>
+      <link>http://localhost:1313/ddd/</link>
+      <pubDate>Thu, 04 Sep 2025 10:00:00 +0800</pubDate><author>axu9417@gmail.com (crazyfrank)</author>
+      <guid>http://localhost:1313/ddd/</guid>
+      <description>&lt;h2 id=&#34;项目介绍&#34;&gt;项目介绍&lt;/h2&gt;&#xA;&lt;p&gt;叠甲，写这篇文章主要是分享在看 DDD 的项目实践中的一些学习感悟，因为本人懒得看理论，所以都只是猜测 DDD 要这么设计。具体还是要参考 DDD 官方网站： &lt;a href=&#34;https://domain-driven-design.org/zh/ddd-concept-reference.html&#34; target=&#34;_blank&#34; rel=&#34;noopener noreffer &#34;&gt;DDD 概念介绍&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>DB-Cache 一致性问题</title>
+      <link>http://localhost:1313/db-cache/</link>
+      <pubDate>Tue, 02 Sep 2025 10:00:00 +0800</pubDate><author>axu9417@gmail.com (crazyfrank)</author>
+      <guid>http://localhost:1313/db-cache/</guid>
+      <description>&lt;p&gt;如何保证缓存和数据库一致性，这是一个老生常谈的话题了。&lt;/p&gt;&#xA;&lt;p&gt;但很多人对这个问题，依旧有很多疑惑：&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;到底是更新缓存还是删缓存？&lt;/li&gt;&#xA;&lt;li&gt;到底选择先更新数据库，再删除缓存，还是先删除缓存，再更新数据库？&lt;/li&gt;&#xA;&lt;li&gt;为什么要引入消息队列保证一致性？&lt;/li&gt;&#xA;&lt;li&gt;延迟双删会有什么问题？到底要不要用？&lt;/li&gt;&#xA;&lt;li&gt;…&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;引入缓存提高性能&#34;&gt;引入缓存提高性能&lt;/h2&gt;&#xA;&lt;p&gt;我们从最简单的场景开始讲起。&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

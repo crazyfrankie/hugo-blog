@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-    <head>
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
-        <title>DDD 的一些思考 - Crazyfrank 的博客</title><meta name="Description" content="Crazyfrank 的中文博客"><meta property="og:url" content="https://hugo.crazyfrank.top/ddd/">
+        <title>DDD 的一些思考 - Crazyfrank 的博客</title><meta name="Description" content="Crazyfrank 的中文博客"><meta property="og:url" content="http://localhost:1313/ddd/">
   <meta property="og:site_name" content="Crazyfrank 的博客">
   <meta property="og:title" content="DDD 的一些思考">
   <meta property="og:description" content="项目介绍 叠甲，写这篇文章主要是分享在看 DDD 的项目实践中的一些学习感悟，因为本人懒得看理论，所以都只是猜测 DDD 要这么设计。具体还是要参考 DDD 官方网站： DDD 概念介绍">
@@ -15,17 +15,17 @@
     <meta property="article:modified_time" content="2025-09-06T20:56:37+08:00">
     <meta property="article:tag" content="DDD">
     <meta property="article:tag" content="系统设计">
-    <meta property="og:image" content="https://hugo.crazyfrank.top/logo.png">
+    <meta property="og:image" content="http://localhost:1313/logo.png">
 
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:image" content="https://hugo.crazyfrank.top/logo.png">
+  <meta name="twitter:image" content="http://localhost:1313/logo.png">
   <meta name="twitter:title" content="DDD 的一些思考">
   <meta name="twitter:description" content="项目介绍 叠甲，写这篇文章主要是分享在看 DDD 的项目实践中的一些学习感悟，因为本人懒得看理论，所以都只是猜测 DDD 要这么设计。具体还是要参考 DDD 官方网站： DDD 概念介绍">
 <meta name="application-name" content="Crazyfrank&#39;s Blog">
 <meta name="apple-mobile-web-app-title" content="Crazyfrank&#39;s Blog">
-<meta name="referrer" content="no-referrer" /><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/favicon.svg"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://hugo.crazyfrank.top/ddd/" /><link rel="prev" href="https://hugo.crazyfrank.top/life/" /><link rel="next" href="https://hugo.crazyfrank.top/decentration/" /><link rel="stylesheet" href="/css/style.min.0b4294dead3bcb53946d16fb4769f4b9032c426ec3a33609afe9b90ccc391015.css" integrity="sha256-C0KU3q07y1OUbRb7R2n0uQMsQm7DozYJr+m5DMw5EBU="><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.7.2/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.7.2/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
+<meta name="referrer" content="no-referrer" /><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/favicon.svg"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://localhost:1313/ddd/" /><link rel="prev" href="http://localhost:1313/db-cache/" /><link rel="next" href="http://localhost:1313/decentration/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/fontawesome-free/css/all.min.css"></noscript><link rel="preload" href="/lib/animate/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
@@ -33,9 +33,9 @@
         "inLanguage": "zh-CN",
         "mainEntityOfPage": {
             "@type": "WebPage",
-            "@id": "https:\/\/hugo.crazyfrank.top\/ddd\/"
+            "@id": "http:\/\/localhost:1313\/ddd\/"
         },"genre": "posts","keywords": "DDD, 系统设计","wordcount":  893 ,
-        "url": "https:\/\/hugo.crazyfrank.top\/ddd\/","datePublished": "2025-09-04T10:00:00+08:00","dateModified": "2025-09-06T20:56:37+08:00","publisher": {
+        "url": "http:\/\/localhost:1313\/ddd\/","datePublished": "2025-09-04T10:00:00+08:00","dateModified": "2025-09-06T20:56:37+08:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
                 "@type": "Person",
@@ -127,7 +127,7 @@
             <h2 class="toc-title">目录</h2>
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">DDD 的一些思考</h1><div class="post-meta">
-            <div class="post-meta-line"><span class="post-author"><a href="https://hugo.crazyfrank.top/" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>crazyfrank</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/%E6%8A%80%E6%9C%AF/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>技术</a></span></div>
+            <div class="post-meta-line"><span class="post-author"><a href="https://hugo.crazyfrank.top/" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>crazyfrank</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/%E6%8A%80%E6%9C%AF/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>技术</a>&nbsp;<a href="/categories/%E5%90%8E%E7%AB%AF/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>后端</a></span></div>
             <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2025-09-04">2025-09-04</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;约 893 字&nbsp;
                 <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;预计阅读 2 分钟&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
@@ -184,7 +184,7 @@
         <div class="post-info-line">
             <div class="post-info-md"></div>
             <div class="post-info-share">
-                <span><a href="javascript:void(0);" title="分享到 X" data-sharer="x" data-url="https://hugo.crazyfrank.top/ddd/" data-title="DDD 的一些思考" data-hashtags="DDD,系统设计"><i class="fab fa-x-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 Facebook" data-sharer="facebook" data-url="https://hugo.crazyfrank.top/ddd/" data-hashtag="DDD"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 Hacker News" data-sharer="hackernews" data-url="https://hugo.crazyfrank.top/ddd/" data-title="DDD 的一些思考"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 Line" data-sharer="line" data-url="https://hugo.crazyfrank.top/ddd/" data-title="DDD 的一些思考"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@14.9.0/icons/line.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 微博" data-sharer="weibo" data-url="https://hugo.crazyfrank.top/ddd/" data-title="DDD 的一些思考"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 Diaspora" data-sharer="diaspora" data-url="https://hugo.crazyfrank.top/ddd/" data-title="DDD 的一些思考" data-description=""><i class="fab fa-diaspora fa-fw" aria-hidden="true"></i></a><a href="https://t.me/share/url?url=https%3a%2f%2fhugo.crazyfrank.top%2fddd%2f&amp;text=DDD%20%e7%9a%84%e4%b8%80%e4%ba%9b%e6%80%9d%e8%80%83" target="_blank" title="分享到 Telegram"><i class="fab fa-telegram fa-fw" aria-hidden="true"></i></a></span>
+                <span><a href="javascript:void(0);" title="分享到 X" data-sharer="x" data-url="http://localhost:1313/ddd/" data-title="DDD 的一些思考" data-hashtags="DDD,系统设计"><i class="fab fa-x-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 Facebook" data-sharer="facebook" data-url="http://localhost:1313/ddd/" data-hashtag="DDD"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 Hacker News" data-sharer="hackernews" data-url="http://localhost:1313/ddd/" data-title="DDD 的一些思考"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 Line" data-sharer="line" data-url="http://localhost:1313/ddd/" data-title="DDD 的一些思考"><i data-svg-src="/lib/simple-icons/icons/line.min.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 微博" data-sharer="weibo" data-url="http://localhost:1313/ddd/" data-title="DDD 的一些思考"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 Diaspora" data-sharer="diaspora" data-url="http://localhost:1313/ddd/" data-title="DDD 的一些思考" data-description=""><i class="fab fa-diaspora fa-fw" aria-hidden="true"></i></a><a href="https://t.me/share/url?url=http%3a%2f%2flocalhost%3a1313%2fddd%2f&amp;text=DDD%20%e7%9a%84%e4%b8%80%e4%ba%9b%e6%80%9d%e8%80%83" target="_blank" title="分享到 Telegram"><i class="fab fa-telegram fa-fw" aria-hidden="true"></i></a></span>
             </div>
         </div>
     </div>
@@ -196,7 +196,7 @@
         </section>
     </div>
 
-    <div class="post-nav"><a href="/life/" class="prev" rel="prev" title="感悟"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>感悟</a>
+    <div class="post-nav"><a href="/db-cache/" class="prev" rel="prev" title="DB-Cache 一致性问题"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>DB-Cache 一致性问题</a>
             <a href="/decentration/" class="next" rel="next" title="以日志处理浅谈去中心化">以日志处理浅谈去中心化<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
 </div>
 </article></div>

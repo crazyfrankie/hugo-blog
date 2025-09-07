@@ -10,6 +10,11 @@
   "uri": "/en/ddd/"
 },
 {
+  "title": "DB-Cache Consistency Problem",
+  "content": "How to ensure the consistency between cache and database is a topic that has been discussed over and over again.\nBut many people still have a lot of doubts about this issue:\nShould the cache be updated or deleted? Should I choose to update the database first and then delete the cache, or to delete the cache first and then update the database? Why introduce message queues to ensure consistency? What problems may arise from delaying double deletion? Should we use it or not? \u0026amp;hellip; Introducing …",
+  "uri": "/en/db-cache/"
+},
+{
   "title": "realisation",
   "content": "Man\u0026amp;rsquo;s physical body is the past and his consciousness is the present and future.\n",
   "uri": "/en/life/"
