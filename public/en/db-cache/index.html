@@ -171,24 +171,52 @@ Should the cache be updated or deleted? Should I choose to update the database f
 <h2 id="introducing-cache-improves-performance">Introducing cache improves performance</h2>
 <p>Let&rsquo;s start with the simplest scenario.</p>
 <p>If your business is in its infancy and the traffic is very small, then whether it is a read request or a write request, you can directly operate the database. At this time, your architecture model is like this:</p>
-<p><img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="/images/db-cache/img-1.png"
-        data-srcset="/images/db-cache/img-1.png, /images/db-cache/img-1.png 1.5x, /images/db-cache/img-1.png 2x"
-        data-sizes="auto"
-        alt="/images/db-cache/img-1.png"
-        title="/images/db-cache/img-1.png" /></p>
+
+
+
+
+<div class="lightbox-container">
+  <img src="/images/db-cache/img-1.png" alt="" style="width: 1200px; cursor: pointer;" onclick="openLightbox('\/images\/db-cache\/img-1.png')">
+</div>
+
+<div id="lightbox" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 1000; cursor: pointer;" onclick="closeLightbox()">
+  <img id="lightbox-img" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); max-width: 90%; max-height: 90%;">
+</div>
+
+<script>
+function openLightbox(src) {
+  document.getElementById('lightbox-img').src = src;
+  document.getElementById('lightbox').style.display = 'block';
+}
+function closeLightbox() {
+  document.getElementById('lightbox').style.display = 'none';
+}
+</script>
+
 <p>However, as your business volume grows, the number of project requests becomes increasingly large. If you read data from the database every time at this point, there will definitely be performance issues.</p>
 <p>At this stage, the common practice is to introduce &ldquo;caching&rdquo; to enhance read performance, and the architectural model becomes like this:</p>
-<p><img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="/images/db-cache/img-2.png"
-        data-srcset="/images/db-cache/img-2.png, /images/db-cache/img-2.png 1.5x, /images/db-cache/img-2.png 2x"
-        data-sizes="auto"
-        alt="/images/db-cache/img-2.png"
-        title="/images/db-cache/img-2.png" /></p>
+
+
+
+
+<div class="lightbox-container">
+  <img src="/images/db-cache/img-2.png" alt="" style="width: 1200px; cursor: pointer;" onclick="openLightbox('\/images\/db-cache\/img-2.png')">
+</div>
+
+<div id="lightbox" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 1000; cursor: pointer;" onclick="closeLightbox()">
+  <img id="lightbox-img" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); max-width: 90%; max-height: 90%;">
+</div>
+
+<script>
+function openLightbox(src) {
+  document.getElementById('lightbox-img').src = src;
+  document.getElementById('lightbox').style.display = 'block';
+}
+function closeLightbox() {
+  document.getElementById('lightbox').style.display = 'none';
+}
+</script>
+
 <p>Among the current outstanding cache middleware, Redis stands out. It not only has extremely high performance but also offers many friendly data types, which can well meet our business needs.</p>
 <p>But after introducing cache, you will face a problem: <strong>Previously, the data only existed in the database, but now it needs to be read in the cache. How exactly should it be stored?</strong></p>
 <p>The simplest and most direct solution is to &ldquo;flush all the data into the cache&rdquo; :</p>
@@ -197,14 +225,28 @@ Should the cache be updated or deleted? Should I choose to update the database f
 <li>Write requests only update the database, not the cache</li>
 <li>Start a scheduled task to update the database data to the cache at regular intervals</li>
 </ul>
-<p><img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="/images/db-cache/img-3.png"
-        data-srcset="/images/db-cache/img-3.png, /images/db-cache/img-3.png 1.5x, /images/db-cache/img-3.png 2x"
-        data-sizes="auto"
-        alt="/images/db-cache/img-3.png"
-        title="/images/db-cache/img-3.png" /></p>
+
+
+
+
+<div class="lightbox-container">
+  <img src="/images/db-cache/img-3.png" alt="" style="width: 1200px; cursor: pointer;" onclick="openLightbox('\/images\/db-cache\/img-3.png')">
+</div>
+
+<div id="lightbox" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 1000; cursor: pointer;" onclick="closeLightbox()">
+  <img id="lightbox-img" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); max-width: 90%; max-height: 90%;">
+</div>
+
+<script>
+function openLightbox(src) {
+  document.getElementById('lightbox-img').src = src;
+  document.getElementById('lightbox').style.display = 'block';
+}
+function closeLightbox() {
+  document.getElementById('lightbox').style.display = 'none';
+}
+</script>
+
 <p>The advantage of this solution is that all read requests can directly &ldquo;hit&rdquo; the cache without the need to check the database, resulting in extremely high performance.</p>
 <p>However, the drawbacks are also quite obvious. There are two problems:</p>
 <ol>
@@ -222,14 +264,28 @@ Should the cache be updated or deleted? Should I choose to update the database f
 <li>A read request first reads the cache. If the cache does not exist, it reads from the database and rebuilds the cache</li>
 <li>At the same time, the expiration time is set for all the data written into the cache</li>
 </ul>
-<p><img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="/images/db-cache/img-4.png"
-        data-srcset="/images/db-cache/img-4.png, /images/db-cache/img-4.png 1.5x, /images/db-cache/img-4.png 2x"
-        data-sizes="auto"
-        alt="/images/db-cache/img-4.png"
-        title="/images/db-cache/img-4.png" /></p>
+
+
+
+
+<div class="lightbox-container">
+  <img src="/images/db-cache/img-4.png" alt="" style="width: 1200px; cursor: pointer;" onclick="openLightbox('\/images\/db-cache\/img-4.png')">
+</div>
+
+<div id="lightbox" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 1000; cursor: pointer;" onclick="closeLightbox()">
+  <img id="lightbox-img" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); max-width: 90%; max-height: 90%;">
+</div>
+
+<script>
+function openLightbox(src) {
+  document.getElementById('lightbox-img').src = src;
+  document.getElementById('lightbox').style.display = 'block';
+}
+function closeLightbox() {
+  document.getElementById('lightbox').style.display = 'none';
+}
+</script>
+
 <p>In this way, the data that is not frequently accessed in the cache will gradually &ldquo;expire&rdquo; and be eliminated over time. Eventually, what is retained in the cache are all frequently accessed &ldquo;hot data&rdquo;, and the utilization rate of the cache is maximized.</p>
 <p>Let&rsquo;s take a look at the issue of data consistency again.</p>
 <p>To ensure that the cache and the database are &ldquo;real-time&rdquo; consistent, it is no longer possible to use scheduled tasks to refresh the cache.</p>
@@ -352,27 +408,55 @@ That is to say, although A occurred before B, the time B spent operating on the 
 <li><strong>Maintenance cost</strong> : Message queues are generally used in our projects, and the maintenance cost has not increased significantly</li>
 </ul>
 <p>So, introducing a message queue to solve this problem is quite appropriate. At this point, the architectural model becomes like this:</p>
-<p><img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="/images/db-cache/img-5.png"
-        data-srcset="/images/db-cache/img-5.png, /images/db-cache/img-5.png 1.5x, /images/db-cache/img-5.png 2x"
-        data-sizes="auto"
-        alt="/images/db-cache/img-5.png"
-        title="/images/db-cache/img-5.png" /></p>
+
+
+
+
+<div class="lightbox-container">
+  <img src="/images/db-cache/img-5.png" alt="" style="width: 1200px; cursor: pointer;" onclick="openLightbox('\/images\/db-cache\/img-5.png')">
+</div>
+
+<div id="lightbox" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 1000; cursor: pointer;" onclick="closeLightbox()">
+  <img id="lightbox-img" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); max-width: 90%; max-height: 90%;">
+</div>
+
+<script>
+function openLightbox(src) {
+  document.getElementById('lightbox-img').src = src;
+  document.getElementById('lightbox').style.display = 'block';
+}
+function closeLightbox() {
+  document.getElementById('lightbox').style.display = 'none';
+}
+</script>
+
 <p>Then, if you really don&rsquo;t want to write a message queue in the application, is there a simpler solution that can still ensure consistency?</p>
 <p>There are still solutions. This is a relatively popular solution in recent years: <strong>subscribe to the database change log and then operate the cache</strong>.</p>
 <p>Specifically, when our business application modifies data, it &ldquo;only needs&rdquo; to modify the database without operating the cache.</p>
 <p>Then when should the cache be operated? This is related to the &ldquo;change log&rdquo; of the database.</p>
 <p>Take MySQL as an example. When a piece of data is modified, MySQL will generate a change log (Binlog). We can subscribe to this log to obtain the specific operation data, and then delete the corresponding cache based on this data.</p>
-<p><img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="/images/db-cache/img-6.png"
-        data-srcset="/images/db-cache/img-6.png, /images/db-cache/img-6.png 1.5x, /images/db-cache/img-6.png 2x"
-        data-sizes="auto"
-        alt="/images/db-cache/img-6.png"
-        title="/images/db-cache/img-6.png" /></p>
+
+
+
+
+<div class="lightbox-container">
+  <img src="/images/db-cache/img-6.png" alt="" style="width: 1200px; cursor: pointer;" onclick="openLightbox('\/images\/db-cache\/img-6.png')">
+</div>
+
+<div id="lightbox" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 1000; cursor: pointer;" onclick="closeLightbox()">
+  <img id="lightbox-img" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); max-width: 90%; max-height: 90%;">
+</div>
+
+<script>
+function openLightbox(src) {
+  document.getElementById('lightbox-img').src = src;
+  document.getElementById('lightbox').style.display = 'block';
+}
+function closeLightbox() {
+  document.getElementById('lightbox').style.display = 'none';
+}
+</script>
+
 <p>Subscribe to change logs. Currently, there are also relatively mature open-source middleware available, such as Alibaba&rsquo;s canal. The advantages of using this solution lie in:</p>
 <ul>
 <li>

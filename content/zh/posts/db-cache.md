@@ -21,13 +21,13 @@ tags: ["数据一致性", "DB", "Cache"]
 
 如果你的业务处于起步阶段，流量非常小，那无论是读请求还是写请求，直接操作数据库即可，这时你的架构模型是这样的：
 
-![](/images/db-cache/img-1.png)
+{{< lightbox src="/images/db-cache/img-1.png" width="1200px" >}}
 
 但随着业务量的增长，你的项目请求量越来越大，这时如果每次都从数据库中读数据，那肯定会有性能问题。
 
 这个阶段通常的做法是，引入「缓存」来提高读性能，架构模型就变成了这样：
 
-![](/images/db-cache/img-2.png)
+{{< lightbox src="/images/db-cache/img-2.png" width="1200px" >}}
 
 当下优秀的缓存中间件，当属 Redis 莫属，它不仅性能非常高，还提供了很多友好的数据类型，可以很好地满足我们的业务需求。
 
@@ -39,7 +39,7 @@ tags: ["数据一致性", "DB", "Cache"]
   * 写请求只更新数据库，不更新缓存
   * 启动一个定时任务，定时把数据库的数据，更新到缓存中
 
-![](/images/db-cache/img-3.png)
+{{< lightbox src="/images/db-cache/img-3.png" width="1200px" >}}
 
 这个方案的优点是，所有读请求都可以直接「命中」缓存，不需要再查数据库，性能非常高。
 
@@ -64,7 +64,7 @@ tags: ["数据一致性", "DB", "Cache"]
   * 读请求先读缓存，如果缓存不存在，则从数据库读取，并重建缓存
   * 同时，写入缓存中的数据，都设置失效时间
 
-![](/images/db-cache/img-4.png)
+{{< lightbox src="/images/db-cache/img-4.png" width="1200px" >}}
 
 这样一来，缓存中不经常访问的数据，随着时间的推移，都会逐渐「过期」淘汰掉，最终缓存中保留的，都是经常被访问的「热数据」，缓存利用率得以最大化。
 
@@ -253,7 +253,7 @@ tags: ["数据一致性", "DB", "Cache"]
 
 所以，引入消息队列来解决这个问题，是比较合适的。这时架构模型就变成了这样：
 
-![](/images/db-cache/img-5.png)
+{{< lightbox src="/images/db-cache/img-5.png" width="1200px" >}}
 
 那如果你确实不想在应用中去写消息队列，是否有更简单的方案，同时又可以保证一致性呢？
 
@@ -266,7 +266,7 @@ tags: ["数据一致性", "DB", "Cache"]
 拿 MySQL 举例，当一条数据发生修改时，MySQL
 就会产生一条变更日志（Binlog），我们可以订阅这个日志，拿到具体操作的数据，然后再根据这条数据，去删除对应的缓存。
 
-![](/images/db-cache/img-6.png)
+{{< lightbox src="/images/db-cache/img-6.png" width="1200px" >}}
 
 订阅变更日志，目前也有了比较成熟的开源中间件，例如阿里的 canal，使用这种方案的优点在于：
 

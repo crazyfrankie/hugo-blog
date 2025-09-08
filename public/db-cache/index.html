@@ -28,7 +28,7 @@
 到底是更新缓存还是删缓存？ 到底选择先更新数据库，再删除缓存，还是先删除缓存，再更新数据库？ 为什么要引入消息队列保证一致性？ 延迟双删会有什么问题？到底要不要用？ … 引入缓存提高性能 我们从最简单的场景开始讲起。">
 <meta name="application-name" content="Crazyfrank&#39;s Blog">
 <meta name="apple-mobile-web-app-title" content="Crazyfrank&#39;s Blog">
-<meta name="referrer" content="no-referrer" /><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/favicon.svg"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://localhost:1313/db-cache/" /><link rel="prev" href="http://localhost:1313/life/" /><link rel="next" href="http://localhost:1313/log-error/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<meta name="referrer" content="no-referrer" /><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/favicon.svg"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://localhost:1313/db-cache/" /><link rel="prev" href="http://localhost:1313/load-balance/" /><link rel="next" href="http://localhost:1313/log-error/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="/lib/fontawesome-free/css/all.min.css"></noscript><link rel="preload" href="/lib/animate/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
     {
@@ -171,24 +171,52 @@
 <h2 id="引入缓存提高性能">引入缓存提高性能</h2>
 <p>我们从最简单的场景开始讲起。</p>
 <p>如果你的业务处于起步阶段，流量非常小，那无论是读请求还是写请求，直接操作数据库即可，这时你的架构模型是这样的：</p>
-<p><img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="/images/db-cache/img-1.png"
-        data-srcset="/images/db-cache/img-1.png, /images/db-cache/img-1.png 1.5x, /images/db-cache/img-1.png 2x"
-        data-sizes="auto"
-        alt="/images/db-cache/img-1.png"
-        title="/images/db-cache/img-1.png" /></p>
+
+
+
+
+<div class="lightbox-container">
+  <img src="/images/db-cache/img-1.png" alt="" style="width: 1200px; cursor: pointer;" onclick="openLightbox('\/images\/db-cache\/img-1.png')">
+</div>
+
+<div id="lightbox" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 1000; cursor: pointer;" onclick="closeLightbox()">
+  <img id="lightbox-img" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); max-width: 90%; max-height: 90%;">
+</div>
+
+<script>
+function openLightbox(src) {
+  document.getElementById('lightbox-img').src = src;
+  document.getElementById('lightbox').style.display = 'block';
+}
+function closeLightbox() {
+  document.getElementById('lightbox').style.display = 'none';
+}
+</script>
+
 <p>但随着业务量的增长，你的项目请求量越来越大，这时如果每次都从数据库中读数据，那肯定会有性能问题。</p>
 <p>这个阶段通常的做法是，引入「缓存」来提高读性能，架构模型就变成了这样：</p>
-<p><img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="/images/db-cache/img-2.png"
-        data-srcset="/images/db-cache/img-2.png, /images/db-cache/img-2.png 1.5x, /images/db-cache/img-2.png 2x"
-        data-sizes="auto"
-        alt="/images/db-cache/img-2.png"
-        title="/images/db-cache/img-2.png" /></p>
+
+
+
+
+<div class="lightbox-container">
+  <img src="/images/db-cache/img-2.png" alt="" style="width: 1200px; cursor: pointer;" onclick="openLightbox('\/images\/db-cache\/img-2.png')">
+</div>
+
+<div id="lightbox" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 1000; cursor: pointer;" onclick="closeLightbox()">
+  <img id="lightbox-img" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); max-width: 90%; max-height: 90%;">
+</div>
+
+<script>
+function openLightbox(src) {
+  document.getElementById('lightbox-img').src = src;
+  document.getElementById('lightbox').style.display = 'block';
+}
+function closeLightbox() {
+  document.getElementById('lightbox').style.display = 'none';
+}
+</script>
+
 <p>当下优秀的缓存中间件，当属 Redis 莫属，它不仅性能非常高，还提供了很多友好的数据类型，可以很好地满足我们的业务需求。</p>
 <p>但引入缓存之后，你就会面临一个问题：<strong>之前数据只存在数据库中，现在要放到缓存中读取，具体要怎么存呢？</strong></p>
 <p>最简单直接的方案是「全量数据刷到缓存中」：</p>
@@ -197,14 +225,28 @@
 <li>写请求只更新数据库，不更新缓存</li>
 <li>启动一个定时任务，定时把数据库的数据，更新到缓存中</li>
 </ul>
-<p><img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="/images/db-cache/img-3.png"
-        data-srcset="/images/db-cache/img-3.png, /images/db-cache/img-3.png 1.5x, /images/db-cache/img-3.png 2x"
-        data-sizes="auto"
-        alt="/images/db-cache/img-3.png"
-        title="/images/db-cache/img-3.png" /></p>
+
+
+
+
+<div class="lightbox-container">
+  <img src="/images/db-cache/img-3.png" alt="" style="width: 1200px; cursor: pointer;" onclick="openLightbox('\/images\/db-cache\/img-3.png')">
+</div>
+
+<div id="lightbox" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 1000; cursor: pointer;" onclick="closeLightbox()">
+  <img id="lightbox-img" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); max-width: 90%; max-height: 90%;">
+</div>
+
+<script>
+function openLightbox(src) {
+  document.getElementById('lightbox-img').src = src;
+  document.getElementById('lightbox').style.display = 'block';
+}
+function closeLightbox() {
+  document.getElementById('lightbox').style.display = 'none';
+}
+</script>
+
 <p>这个方案的优点是，所有读请求都可以直接「命中」缓存，不需要再查数据库，性能非常高。</p>
 <p>但缺点也很明显，有 2 个问题：</p>
 <ol>
@@ -222,14 +264,28 @@
 <li>读请求先读缓存，如果缓存不存在，则从数据库读取，并重建缓存</li>
 <li>同时，写入缓存中的数据，都设置失效时间</li>
 </ul>
-<p><img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="/images/db-cache/img-4.png"
-        data-srcset="/images/db-cache/img-4.png, /images/db-cache/img-4.png 1.5x, /images/db-cache/img-4.png 2x"
-        data-sizes="auto"
-        alt="/images/db-cache/img-4.png"
-        title="/images/db-cache/img-4.png" /></p>
+
+
+
+
+<div class="lightbox-container">
+  <img src="/images/db-cache/img-4.png" alt="" style="width: 1200px; cursor: pointer;" onclick="openLightbox('\/images\/db-cache\/img-4.png')">
+</div>
+
+<div id="lightbox" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 1000; cursor: pointer;" onclick="closeLightbox()">
+  <img id="lightbox-img" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); max-width: 90%; max-height: 90%;">
+</div>
+
+<script>
+function openLightbox(src) {
+  document.getElementById('lightbox-img').src = src;
+  document.getElementById('lightbox').style.display = 'block';
+}
+function closeLightbox() {
+  document.getElementById('lightbox').style.display = 'none';
+}
+</script>
+
 <p>这样一来，缓存中不经常访问的数据，随着时间的推移，都会逐渐「过期」淘汰掉，最终缓存中保留的，都是经常被访问的「热数据」，缓存利用率得以最大化。</p>
 <p>再来看数据一致性问题。</p>
 <p>要想保证缓存和数据库「实时」一致，那就不能再用定时任务刷新缓存了。</p>
@@ -352,28 +408,56 @@
 <li><strong>维护成本</strong> ：我们项目中一般都会用到消息队列，维护成本并没有新增很多</li>
 </ul>
 <p>所以，引入消息队列来解决这个问题，是比较合适的。这时架构模型就变成了这样：</p>
-<p><img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="/images/db-cache/img-5.png"
-        data-srcset="/images/db-cache/img-5.png, /images/db-cache/img-5.png 1.5x, /images/db-cache/img-5.png 2x"
-        data-sizes="auto"
-        alt="/images/db-cache/img-5.png"
-        title="/images/db-cache/img-5.png" /></p>
+
+
+
+
+<div class="lightbox-container">
+  <img src="/images/db-cache/img-5.png" alt="" style="width: 1200px; cursor: pointer;" onclick="openLightbox('\/images\/db-cache\/img-5.png')">
+</div>
+
+<div id="lightbox" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 1000; cursor: pointer;" onclick="closeLightbox()">
+  <img id="lightbox-img" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); max-width: 90%; max-height: 90%;">
+</div>
+
+<script>
+function openLightbox(src) {
+  document.getElementById('lightbox-img').src = src;
+  document.getElementById('lightbox').style.display = 'block';
+}
+function closeLightbox() {
+  document.getElementById('lightbox').style.display = 'none';
+}
+</script>
+
 <p>那如果你确实不想在应用中去写消息队列，是否有更简单的方案，同时又可以保证一致性呢？</p>
 <p>方案还是有的，这就是近几年比较流行的解决方案：<strong>订阅数据库变更日志，再操作缓存</strong> 。</p>
 <p>具体来讲就是，我们的业务应用在修改数据时，「只需」修改数据库，无需操作缓存。</p>
 <p>那什么时候操作缓存呢？这就和数据库的「变更日志」有关了。</p>
 <p>拿 MySQL 举例，当一条数据发生修改时，MySQL
 就会产生一条变更日志（Binlog），我们可以订阅这个日志，拿到具体操作的数据，然后再根据这条数据，去删除对应的缓存。</p>
-<p><img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="/images/db-cache/img-6.png"
-        data-srcset="/images/db-cache/img-6.png, /images/db-cache/img-6.png 1.5x, /images/db-cache/img-6.png 2x"
-        data-sizes="auto"
-        alt="/images/db-cache/img-6.png"
-        title="/images/db-cache/img-6.png" /></p>
+
+
+
+
+<div class="lightbox-container">
+  <img src="/images/db-cache/img-6.png" alt="" style="width: 1200px; cursor: pointer;" onclick="openLightbox('\/images\/db-cache\/img-6.png')">
+</div>
+
+<div id="lightbox" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 1000; cursor: pointer;" onclick="closeLightbox()">
+  <img id="lightbox-img" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); max-width: 90%; max-height: 90%;">
+</div>
+
+<script>
+function openLightbox(src) {
+  document.getElementById('lightbox-img').src = src;
+  document.getElementById('lightbox').style.display = 'block';
+}
+function closeLightbox() {
+  document.getElementById('lightbox').style.display = 'none';
+}
+</script>
+
 <p>订阅变更日志，目前也有了比较成熟的开源中间件，例如阿里的 canal，使用这种方案的优点在于：</p>
 <ul>
 <li><strong>无需考虑写消息队列失败情况</strong> ：只要写 MySQL 成功，Binlog 肯定会有</li>
@@ -456,7 +540,7 @@
         </section>
     </div>
 
-    <div class="post-nav"><a href="/life/" class="prev" rel="prev" title="感悟"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>感悟</a>
+    <div class="post-nav"><a href="/load-balance/" class="prev" rel="prev" title="负载均衡"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>负载均衡</a>
             <a href="/log-error/" class="next" rel="next" title="日志与 Error">日志与 Error<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
 </div>
 </article></div>

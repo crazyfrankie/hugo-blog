@@ -8,7 +8,7 @@
     <language>en-US</language>
     <managingEditor>axu9417@gmail.com (crazyfrank)</managingEditor>
     <webMaster>axu9417@gmail.com (crazyfrank)</webMaster>
-    <lastBuildDate>Sun, 07 Sep 2025 16:39:13 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 07 Sep 2025 17:06:35 +0800</lastBuildDate>
     <atom:link href="http://localhost:1313/en/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Decentralization</title>
@@ -64,6 +64,20 @@
       <link>http://localhost:1313/en/tags/db/</link>
       <pubDate>Tue, 02 Sep 2025 10:00:00 +0800</pubDate><author>axu9417@gmail.com (crazyfrank)</author>
       <guid>http://localhost:1313/en/tags/db/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Load Balancing</title>
+      <link>http://localhost:1313/en/tags/load-balancing/</link>
+      <pubDate>Tue, 02 Sep 2025 10:00:00 +0800</pubDate><author>axu9417@gmail.com (crazyfrank)</author>
+      <guid>http://localhost:1313/en/tags/load-balancing/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Microservices</title>
+      <link>http://localhost:1313/en/tags/microservices/</link>
+      <pubDate>Tue, 02 Sep 2025 10:00:00 +0800</pubDate><author>axu9417@gmail.com (crazyfrank)</author>
+      <guid>http://localhost:1313/en/tags/microservices/</guid>
       <description></description>
     </item>
   </channel>

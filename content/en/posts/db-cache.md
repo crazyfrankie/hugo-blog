@@ -21,13 +21,13 @@ Let's start with the simplest scenario.
 
 If your business is in its infancy and the traffic is very small, then whether it is a read request or a write request, you can directly operate the database. At this time, your architecture model is like this:
 
-![](/images/db-cache/img-1.png)
+{{< lightbox src="/images/db-cache/img-1.png" width="1200px" >}}
 
 However, as your business volume grows, the number of project requests becomes increasingly large. If you read data from the database every time at this point, there will definitely be performance issues.
 
 At this stage, the common practice is to introduce "caching" to enhance read performance, and the architectural model becomes like this:
 
-![](/images/db-cache/img-2.png)
+{{< lightbox src="/images/db-cache/img-2.png" width="1200px" >}}
 
 Among the current outstanding cache middleware, Redis stands out. It not only has extremely high performance but also offers many friendly data types, which can well meet our business needs.
 
@@ -39,7 +39,7 @@ The simplest and most direct solution is to "flush all the data into the cache" 
 - Write requests only update the database, not the cache
 - Start a scheduled task to update the database data to the cache at regular intervals
 
-![](/images/db-cache/img-3.png)
+{{< lightbox src="/images/db-cache/img-3.png" width="1200px" >}}
 
 The advantage of this solution is that all read requests can directly "hit" the cache without the need to check the database, resulting in extremely high performance.
 
@@ -63,7 +63,7 @@ We can optimize it in this way:
 - A read request first reads the cache. If the cache does not exist, it reads from the database and rebuilds the cache
 - At the same time, the expiration time is set for all the data written into the cache
 
-![](/images/db-cache/img-4.png)
+{{< lightbox src="/images/db-cache/img-4.png" width="1200px" >}}
 
 In this way, the data that is not frequently accessed in the cache will gradually "expire" and be eliminated over time. Eventually, what is retained in the cache are all frequently accessed "hot data", and the utilization rate of the cache is maximized.
 
@@ -251,7 +251,7 @@ As for the issues of queue writing failure and the maintenance cost of message q
 
 So, introducing a message queue to solve this problem is quite appropriate. At this point, the architectural model becomes like this:
 
-![](/images/db-cache/img-5.png)
+{{< lightbox src="/images/db-cache/img-5.png" width="1200px" >}}
 
 Then, if you really don't want to write a message queue in the application, is there a simpler solution that can still ensure consistency?
 
@@ -263,7 +263,7 @@ Then when should the cache be operated? This is related to the "change log" of t
 
 Take MySQL as an example. When a piece of data is modified, MySQL will generate a change log (Binlog). We can subscribe to this log to obtain the specific operation data, and then delete the corresponding cache based on this data.
 
-![](/images/db-cache/img-6.png)
+{{< lightbox src="/images/db-cache/img-6.png" width="1200px" >}}
 
 Subscribe to change logs. Currently, there are also relatively mature open-source middleware available, such as Alibaba's canal. The advantages of using this solution lie in:
 

@@ -1,0 +1,856 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>负载均衡 - Crazyfrank 的博客</title><meta name="Description" content="Crazyfrank 的中文博客"><meta property="og:url" content="http://localhost:1313/load-balance/">
+  <meta property="og:site_name" content="Crazyfrank 的博客">
+  <meta property="og:title" content="负载均衡">
+  <meta property="og:description" content="概览 在分布式环境下，各个微服务都会有不同的实例，服务注册和服务发现解决了“有哪些可用实例”的问题，剩下面临的就是，“这么多可用实例，我该把请求发给谁？”。直觉来说，大部分人如果听过一些专业名词，此时会直接想到“负载均衡”。那负载均衡到底是什么呢？">
+  <meta property="og:locale" content="zh_CN">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2025-09-02T10:00:00+08:00">
+    <meta property="article:modified_time" content="2025-09-02T10:00:00+08:00">
+    <meta property="article:tag" content="负载均衡">
+    <meta property="article:tag" content="系统设计">
+    <meta property="article:tag" content="微服务">
+    <meta property="og:image" content="http://localhost:1313/logo.png">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="http://localhost:1313/logo.png">
+  <meta name="twitter:title" content="负载均衡">
+  <meta name="twitter:description" content="概览 在分布式环境下，各个微服务都会有不同的实例，服务注册和服务发现解决了“有哪些可用实例”的问题，剩下面临的就是，“这么多可用实例，我该把请求发给谁？”。直觉来说，大部分人如果听过一些专业名词，此时会直接想到“负载均衡”。那负载均衡到底是什么呢？">
+<meta name="application-name" content="Crazyfrank&#39;s Blog">
+<meta name="apple-mobile-web-app-title" content="Crazyfrank&#39;s Blog">
+<meta name="referrer" content="no-referrer" /><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/favicon.svg"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://localhost:1313/load-balance/" /><link rel="prev" href="http://localhost:1313/life/" /><link rel="next" href="http://localhost:1313/db-cache/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/fontawesome-free/css/all.min.css"></noscript><link rel="preload" href="/lib/animate/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "负载均衡",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "http:\/\/localhost:1313\/load-balance\/"
+        },"genre": "posts","keywords": "负载均衡, 系统设计, 微服务","wordcount":  4812 ,
+        "url": "http:\/\/localhost:1313\/load-balance\/","datePublished": "2025-09-02T10:00:00+08:00","dateModified": "2025-09-02T10:00:00+08:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "crazyfrank"
+            },"description": ""
+    }
+    </script><script src="https://cdn.jsdelivr.net/npm/typeit@8.7.1/dist/index.umd.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><link rel="stylesheet" href="/css/header-links.css">
+        <script src="/js/header-links.js"></script>
+    </head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script>
+          const query = window.matchMedia('(prefers-color-scheme: dark)');
+          function applyTheme() {
+            let theme = window.localStorage?.getItem('theme') || 'auto';
+            let isDark = theme === 'dark' || (theme === 'auto' && query.matches);
+            document.body.setAttribute('theme', isDark? 'dark' : 'light');
+            document.body.setAttribute('cfg-theme', theme);
+          }
+
+          applyTheme();
+          query.addEventListener('change', applyTheme);
+        </script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="Crazyfrank 的博客"><span class="header-title-pre"><i class='far fa-kiss-wink-heart fa-fw' aria-hidden='true'></i></span><span id="id-1" class="typeit"></span></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><a class="menu-item" href="/search/"> 搜索 </a><a class="menu-item" href="/en/"> 🇺🇸 English </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="搜索标题或内容..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="清空">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a><a href="javascript:void(0);" class="menu-item language" title="选择语言">
+                    <i class="fa fa-globe fa-fw" aria-hidden="true"></i>                      
+                    <select class="language-select" id="language-select-desktop" onchange="location = this.value;"><option value="/load-balance/" selected>简体中文</option><option value="/en/load-balance/">English</option></select>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Crazyfrank 的博客"><span class="header-title-pre"><i class='far fa-kiss-wink-heart fa-fw' aria-hidden='true'></i></span><span id="id-2" class="typeit"></span></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="搜索标题或内容..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        取消
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item" href="/search/" title="">搜索</a><a class="menu-item" href="/en/" title="">🇺🇸 English</a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a><a href="javascript:void(0);" class="menu-item" title="选择语言">
+                    <i class="fa fa-globe fa-fw" aria-hidden="true"></i>
+                    <select class="language-select" onchange="location = this.value;"><option value="/load-balance/" selected>简体中文</option><option value="/en/load-balance/">English</option></select>
+                </a></div>
+    </div>
+</header><div class="search-dropdown desktop">
+        <div id="search-dropdown-desktop"></div>
+    </div>
+    <div class="search-dropdown mobile">
+        <div id="search-dropdown-mobile"></div>
+    </div><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">目录</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">负载均衡</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="https://hugo.crazyfrank.top/" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>crazyfrank</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/%E6%8A%80%E6%9C%AF/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>技术</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2025-09-02">2025-09-02</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;约 4812 字&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;预计阅读 10 分钟&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#概览">概览</a></li>
+    <li><a href="#负载均衡的本质">负载均衡的本质</a></li>
+    <li><a href="#负载均衡算法">负载均衡算法</a>
+      <ul>
+        <li><a href="#轮询">轮询</a>
+          <ul>
+            <li><a href="#加权轮询">加权轮询</a></li>
+            <li><a href="#平滑的加权轮询">平滑的加权轮询</a></li>
+          </ul>
+        </li>
+        <li><a href="#随机">随机</a>
+          <ul>
+            <li><a href="#加权随机">加权随机</a></li>
+          </ul>
+        </li>
+        <li><a href="#哈希">哈希</a>
+          <ul>
+            <li><a href="#加权哈希">加权哈希</a></li>
+            <li><a href="#一致性哈希">一致性哈希</a></li>
+          </ul>
+        </li>
+        <li><a href="#最少连接数">最少连接数</a></li>
+        <li><a href="#最少活跃数">最少活跃数</a></li>
+        <li><a href="#最快响应时间">最快响应时间</a></li>
+      </ul>
+    </li>
+    <li><a href="#总结">总结</a>
+      <ul>
+        <li><a href="#负载均衡总结">负载均衡总结</a></li>
+        <li><a href="#权重效果">权重效果</a></li>
+        <li><a href="#微服务框架的局限性">微服务框架的局限性</a></li>
+        <li><a href="#设计自己的负载均衡算法">设计自己的负载均衡算法</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h2 id="概览">概览</h2>
+<p>在分布式环境下，各个微服务都会有不同的实例，服务注册和服务发现解决了“有哪些可用实例”的问题，剩下面临的就是，“这么多可用实例，我该把请求发给谁？”。直觉来说，大部分人如果听过一些专业名词，此时会直接想到“负载均衡”。那负载均衡到底是什么呢？</p>
+<blockquote>
+<p>负载均衡是在支持应用程序的资源池中平均分配网络流量的一种方法。现代应用程序必须同时处理数百万用户，并以快速、可靠的方式将正确的文本、视频、图像和其他数据返回给每个用户。为了处理如此高的流量，大多数应用程序都有许多资源服务器，它们之间包含很多重复数据。负载均衡器是位于用户与服务器组之间的设备，充当不可见的协调者，确保均等使用所有资源服务器。
+—— aws</p></blockquote>
+<p>事实上负载均衡是手段而不是目的。因此从目的上来说，我们其实不需要搞什么负载均衡，我们的目的就是把请求转发给“最适合”处理这个请求的节点。最适合意味着：<br>
+– 如果这个请求需要很多内存，那么将它转发给内存多的节点。<br>
+– 如果这个请求是 CPU 密集的，那么将它转发给 CPU 比较空闲的请求。<br>
+– ……<br>
+显然，在大多数时候，我们会希望将请求转发给“能够最快返回响应”的那个节点。</p>
+<h2 id="负载均衡的本质">负载均衡的本质</h2>
+<p>在这种情况下：负载均衡本质上是一个简化模型。也就是说，如果我们的目标是挑选出那个最适合的节点，我们就得设立一个标准。而这个标准，被简化为“负载”
+。换言之，我们认为负载最轻的就是最适合的。而考虑到所有的节点都提供同等的服务，那么你每次挑选负载最轻的节点，就造成所有的节点负载是大致均衡的。<br>
+举个例子，假设就像现在有一个餐厅，一共有五个服务员，当一些菜做好后，此时可能部分服务员正在给其他客人上菜，有的很空闲，此时如何将这些菜品分发给服务员以达到高效让所有客人都吃上菜的过程就可以看作负载均衡。在这个情景下，对于负载的概念其实就是每个服务员正在处理多少盘菜，多的叫高负载，少的叫低负载。</p>
+<h2 id="负载均衡算法">负载均衡算法</h2>
+<p>上面提到了负载均衡的概念和本质，那么如何实现负载均衡呢？我们把实现负载均衡的这个过程所使用的规则或者说方法叫做负载均衡算法。大致可以分为两类：静态负载均衡算法和动态负载均衡算法。<br>
+<strong>静态负载均衡算法：静态负载均衡算法遵循固定规则，与当前服务器状态无关。</strong><br>
+主要有：轮询、加权轮询、随机、加权随机、哈希、一致性哈希。</p>
+<h3 id="轮询">轮询</h3>
+<p>轮询算法的效果很不错，而且应该是应用最广泛的负载均衡算法了。轮询的思路非常简单的，也就是一个个节点的轮流过去。虽然轮询的算法很简单（实现也很简单），但是它效果很不错。应该说，绝大多数情况下，直接使用轮询算法不会有任何问题。但是轮询本身有两个假设：<br>
+• 所有服务器的处理能力是一样的。<br>
+• 所有请求所需的资源也是一样的。<br>
+而在实践中，这两个假设，尤其是第二个假设，并不成立。因此轮询用多了，难免会遇到偶发性的负载不均衡问题。<br>
+典型例子就是某个节点收到了一个大请求，直接把自己打爆了。</p>
+<h4 id="加权轮询">加权轮询</h4>
+<p>加权轮询是对轮询的一个改进。算法大体上还是轮询，但是不再是一个请求一个节点这样轮询，而是按照权重来轮询。权重多的会多分到几个请求，权重小的就少分几个请求。权重大多数时候都是代表了服务端节点的处理能力（重要性、优先级等）。还有一些比较罕见的情况是在多活的场景下，同机房、同城的节点会有更高的权重。<br>
+那么如何获得权重？在注册中心模型下，权重基本上是通过注册中心来传递的。也就是每一个服务端节点在启动的时候会把自己的权重信息也注册进去。客户端在服务发现的过程中，就能获得对应的权重信息。但是普通的加权轮询，有一个缺陷：权重高的服务端节点会连续收到多个请求。如下图，B
+会连续收到两个请求，C 会连续收到三个请求。</p>
+
+
+
+
+<div class="lightbox-container">
+  <img src="/images/load-balance/img-1.png" alt="" style="width: 700px; cursor: pointer;" onclick="openLightbox('\/images\/load-balance\/img-1.png')">
+</div>
+
+<div id="lightbox" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 1000; cursor: pointer;" onclick="closeLightbox()">
+  <img id="lightbox-img" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); max-width: 90%; max-height: 90%;">
+</div>
+
+<script>
+function openLightbox(src) {
+  document.getElementById('lightbox-img').src = src;
+  document.getElementById('lightbox').style.display = 'block';
+}
+function closeLightbox() {
+  document.getElementById('lightbox').style.display = 'none';
+}
+</script>
+
+<h4 id="平滑的加权轮询">平滑的加权轮询</h4>
+<p>加权轮询算法是在加权算法的基础上，引入了一个 <code>currentWeight</code>（当前权重）的概念。每次选中一个节点之后，就降低
+<code>currentWeight</code>。于是一个节点就有两个权重了：初始权重和当前权重。整个算法的步骤是：<br>
+• 计算所有的初始权重的和，也就是总权重。<br>
+• 每一个节点，都让自己的当前权重加上初始权重。<br>
+• 选出当前权重最大的节点，发送请求。<br>
+• 将选中的节点的当前权重减去总权重。<br>
+代码示例：</p>
+<div class="code-block code-line-numbers" style="counter-reset: code-block 0">
+    <div class="code-header language-go">
+        <span class="code-title"><i class="arrow fas fa-angle-right fa-fw" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h fa-fw" aria-hidden="true"></i></span>
+        <span class="copy" title="复制到剪贴板"><i class="far fa-copy fa-fw" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="cm">/*
+</span></span></span><span class="line"><span class="cl"><span class="cm">   平滑加权轮询算法的实现
+</span></span></span><span class="line"><span class="cl"><span class="cm">*/</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">loadbalance</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="p">(</span>
+</span></span><span class="line"><span class="cl">	<span class="s">&#34;fmt&#34;</span>
+</span></span><span class="line"><span class="cl">	<span class="s">&#34;sync&#34;</span>
+</span></span><span class="line"><span class="cl">	<span class="s">&#34;testing&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">type</span> <span class="nx">Node</span> <span class="kd">struct</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">name</span>       <span class="kt">string</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">weight</span>     <span class="kt">int</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">currWeight</span> <span class="kt">int</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="p">(</span><span class="nx">n</span> <span class="o">*</span><span class="nx">Node</span><span class="p">)</span> <span class="nf">Invoke</span><span class="p">()</span> <span class="p">{}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">type</span> <span class="nx">Balancer</span> <span class="kd">struct</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">nodes</span> <span class="p">[]</span><span class="o">*</span><span class="nx">Node</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">mux</span>   <span class="nx">sync</span><span class="p">.</span><span class="nx">Mutex</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">t</span>     <span class="o">*</span><span class="nx">testing</span><span class="p">.</span><span class="nx">T</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">TestSmoothWRR</span><span class="p">(</span><span class="nx">t</span> <span class="o">*</span><span class="nx">testing</span><span class="p">.</span><span class="nx">T</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// 模拟单个服务的三个节点</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">nodes</span> <span class="o">:=</span> <span class="p">[]</span><span class="o">*</span><span class="nx">Node</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="p">{</span>
+</span></span><span class="line"><span class="cl">			<span class="nx">name</span><span class="p">:</span>       <span class="s">&#34;A&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">			<span class="nx">weight</span><span class="p">:</span>     <span class="mi">10</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">			<span class="nx">currWeight</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">		<span class="p">},</span>
+</span></span><span class="line"><span class="cl">		<span class="p">{</span>
+</span></span><span class="line"><span class="cl">			<span class="nx">name</span><span class="p">:</span>       <span class="s">&#34;B&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">			<span class="nx">weight</span><span class="p">:</span>     <span class="mi">20</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">			<span class="nx">currWeight</span><span class="p">:</span> <span class="mi">20</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">		<span class="p">},</span>
+</span></span><span class="line"><span class="cl">		<span class="p">{</span>
+</span></span><span class="line"><span class="cl">			<span class="nx">name</span><span class="p">:</span>       <span class="s">&#34;C&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">			<span class="nx">weight</span><span class="p">:</span>     <span class="mi">30</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">			<span class="nx">currWeight</span><span class="p">:</span> <span class="mi">30</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">		<span class="p">},</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="nx">bl</span> <span class="o">:=</span> <span class="o">&amp;</span><span class="nx">Balancer</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="nx">nodes</span><span class="p">:</span> <span class="nx">nodes</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">		<span class="nx">t</span><span class="p">:</span>     <span class="nx">t</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="mi">1</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;=</span> <span class="mi">6</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="nx">t</span><span class="p">.</span><span class="nf">Log</span><span class="p">(</span><span class="nx">fmt</span><span class="p">.</span><span class="nf">Sprintf</span><span class="p">(</span><span class="s">&#34;第 %d 个请求发送前,nodes %v&#34;</span><span class="p">,</span> <span class="nx">i</span><span class="p">,</span> <span class="nf">convert</span><span class="p">(</span><span class="nx">nodes</span><span class="p">)))</span>
+</span></span><span class="line"><span class="cl">		<span class="nx">target</span> <span class="o">:=</span> <span class="nx">bl</span><span class="p">.</span><span class="nf">pick</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">		<span class="c1">// 模拟 rpc 调用</span>
+</span></span><span class="line"><span class="cl">		<span class="nx">target</span><span class="p">.</span><span class="nf">Invoke</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">		<span class="nx">t</span><span class="p">.</span><span class="nf">Log</span><span class="p">(</span><span class="nx">fmt</span><span class="p">.</span><span class="nf">Sprintf</span><span class="p">(</span><span class="s">&#34;第 %d 个请求发送后,nodes %v&#34;</span><span class="p">,</span> <span class="nx">i</span><span class="p">,</span> <span class="nf">convert</span><span class="p">(</span><span class="nx">nodes</span><span class="p">)))</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="p">(</span><span class="nx">b</span> <span class="o">*</span><span class="nx">Balancer</span><span class="p">)</span> <span class="nf">pick</span><span class="p">()</span> <span class="o">*</span><span class="nx">Node</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">b</span><span class="p">.</span><span class="nx">mux</span><span class="p">.</span><span class="nf">Lock</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">	<span class="k">defer</span> <span class="nx">b</span><span class="p">.</span><span class="nx">mux</span><span class="p">.</span><span class="nf">Unlock</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">total</span> <span class="o">:=</span> <span class="mi">0</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// 计算总权重</span>
+</span></span><span class="line"><span class="cl">	<span class="k">for</span> <span class="nx">_</span><span class="p">,</span> <span class="nx">n</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">b</span><span class="p">.</span><span class="nx">nodes</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="nx">total</span> <span class="o">+=</span> <span class="nx">n</span><span class="p">.</span><span class="nx">weight</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// 计算当前权重</span>
+</span></span><span class="line"><span class="cl">	<span class="k">for</span> <span class="nx">_</span><span class="p">,</span> <span class="nx">n</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">b</span><span class="p">.</span><span class="nx">nodes</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="nx">n</span><span class="p">.</span><span class="nx">currWeight</span> <span class="p">=</span> <span class="nx">n</span><span class="p">.</span><span class="nx">currWeight</span> <span class="o">+</span> <span class="nx">n</span><span class="p">.</span><span class="nx">weight</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="c1">// 挑选节点</span>
+</span></span><span class="line"><span class="cl">	<span class="kd">var</span> <span class="nx">target</span> <span class="o">*</span><span class="nx">Node</span>
+</span></span><span class="line"><span class="cl">	<span class="k">for</span> <span class="nx">_</span><span class="p">,</span> <span class="nx">n</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">b</span><span class="p">.</span><span class="nx">nodes</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="k">if</span> <span class="nx">target</span> <span class="o">==</span> <span class="kc">nil</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">			<span class="nx">target</span> <span class="p">=</span> <span class="nx">n</span>
+</span></span><span class="line"><span class="cl">		<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">			<span class="k">if</span> <span class="nx">target</span><span class="p">.</span><span class="nx">currWeight</span> <span class="p">&lt;</span> <span class="nx">n</span><span class="p">.</span><span class="nx">currWeight</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">				<span class="nx">target</span> <span class="p">=</span> <span class="nx">n</span>
+</span></span><span class="line"><span class="cl">			<span class="p">}</span>
+</span></span><span class="line"><span class="cl">		<span class="p">}</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="nx">b</span><span class="p">.</span><span class="nx">t</span><span class="p">.</span><span class="nf">Log</span><span class="p">(</span><span class="s">&#34;选中的节点的当前权重&#34;</span><span class="p">,</span> <span class="nx">target</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">target</span><span class="p">.</span><span class="nx">currWeight</span> <span class="p">=</span> <span class="nx">target</span><span class="p">.</span><span class="nx">currWeight</span> <span class="o">-</span> <span class="nx">total</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">b</span><span class="p">.</span><span class="nx">t</span><span class="p">.</span><span class="nf">Log</span><span class="p">(</span><span class="s">&#34;选中的节点减去总权重后的权重&#34;</span><span class="p">,</span> <span class="nx">target</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="k">return</span> <span class="nx">target</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">convert</span><span class="p">(</span><span class="nx">src</span> <span class="p">[]</span><span class="o">*</span><span class="nx">Node</span><span class="p">)</span> <span class="p">[]</span><span class="nx">Node</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">dst</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">([]</span><span class="nx">Node</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="nx">src</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">	<span class="k">for</span> <span class="nx">_</span><span class="p">,</span> <span class="nx">n</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">src</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="nx">dst</span> <span class="p">=</span> <span class="nb">append</span><span class="p">(</span><span class="nx">dst</span><span class="p">,</span> <span class="nx">Node</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">			<span class="nx">name</span><span class="p">:</span>       <span class="nx">n</span><span class="p">.</span><span class="nx">name</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">			<span class="nx">weight</span><span class="p">:</span>     <span class="nx">n</span><span class="p">.</span><span class="nx">weight</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">			<span class="nx">currWeight</span><span class="p">:</span> <span class="nx">n</span><span class="p">.</span><span class="nx">currWeight</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">		<span class="p">})</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="k">return</span> <span class="nx">dst</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div></div>
+<p>输出结果：</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-bash">
+        <span class="code-title"><i class="arrow fas fa-angle-right fa-fw" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h fa-fw" aria-hidden="true"></i></span>
+        <span class="copy" title="复制到剪贴板"><i class="far fa-copy fa-fw" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">weighted_test.go:53: 第 <span class="m">1</span> 个请求发送前,nodes <span class="o">[{</span>A <span class="m">10</span> 10<span class="o">}</span> <span class="o">{</span>B <span class="m">20</span> 20<span class="o">}</span> <span class="o">{</span>C <span class="m">30</span> 30<span class="o">}]</span>
+</span></span><span class="line"><span class="cl">weighted_test.go:86: 选中的节点的当前权重 <span class="p">&amp;</span><span class="o">{</span>C <span class="m">30</span> 60<span class="o">}</span>
+</span></span><span class="line"><span class="cl">weighted_test.go:88: 选中的节点减去总权重后的权重 <span class="p">&amp;</span><span class="o">{</span>C <span class="m">30</span> 0<span class="o">}</span>
+</span></span><span class="line"><span class="cl">weighted_test.go:57: 第 <span class="m">1</span> 个请求发送后,nodes <span class="o">[{</span>A <span class="m">10</span> 20<span class="o">}</span> <span class="o">{</span>B <span class="m">20</span> 40<span class="o">}</span> <span class="o">{</span>C <span class="m">30</span> 0<span class="o">}]</span>
+</span></span><span class="line"><span class="cl">weighted_test.go:53: 第 <span class="m">2</span> 个请求发送前,nodes <span class="o">[{</span>A <span class="m">10</span> 20<span class="o">}</span> <span class="o">{</span>B <span class="m">20</span> 40<span class="o">}</span> <span class="o">{</span>C <span class="m">30</span> 0<span class="o">}]</span>
+</span></span><span class="line"><span class="cl">weighted_test.go:86: 选中的节点的当前权重 <span class="p">&amp;</span><span class="o">{</span>B <span class="m">20</span> 60<span class="o">}</span>
+</span></span><span class="line"><span class="cl">weighted_test.go:88: 选中的节点减去总权重后的权重 <span class="p">&amp;</span><span class="o">{</span>B <span class="m">20</span> 0<span class="o">}</span>
+</span></span><span class="line"><span class="cl">weighted_test.go:57: 第 <span class="m">2</span> 个请求发送后,nodes <span class="o">[{</span>A <span class="m">10</span> 30<span class="o">}</span> <span class="o">{</span>B <span class="m">20</span> 0<span class="o">}</span> <span class="o">{</span>C <span class="m">30</span> 30<span class="o">}]</span>
+</span></span><span class="line"><span class="cl">weighted_test.go:53: 第 <span class="m">3</span> 个请求发送前,nodes <span class="o">[{</span>A <span class="m">10</span> 30<span class="o">}</span> <span class="o">{</span>B <span class="m">20</span> 0<span class="o">}</span> <span class="o">{</span>C <span class="m">30</span> 30<span class="o">}]</span>
+</span></span><span class="line"><span class="cl">weighted_test.go:86: 选中的节点的当前权重 <span class="p">&amp;</span><span class="o">{</span>C <span class="m">30</span> 60<span class="o">}</span>
+</span></span><span class="line"><span class="cl">weighted_test.go:88: 选中的节点减去总权重后的权重 <span class="p">&amp;</span><span class="o">{</span>C <span class="m">30</span> 0<span class="o">}</span>
+</span></span><span class="line"><span class="cl">weighted_test.go:57: 第 <span class="m">3</span> 个请求发送后,nodes <span class="o">[{</span>A <span class="m">10</span> 40<span class="o">}</span> <span class="o">{</span>B <span class="m">20</span> 20<span class="o">}</span> <span class="o">{</span>C <span class="m">30</span> 0<span class="o">}]</span>
+</span></span><span class="line"><span class="cl">weighted_test.go:53: 第 <span class="m">4</span> 个请求发送前,nodes <span class="o">[{</span>A <span class="m">10</span> 40<span class="o">}</span> <span class="o">{</span>B <span class="m">20</span> 20<span class="o">}</span> <span class="o">{</span>C <span class="m">30</span> 0<span class="o">}]</span>
+</span></span><span class="line"><span class="cl">weighted_test.go:86: 选中的节点的当前权重 <span class="p">&amp;</span><span class="o">{</span>A <span class="m">10</span> 50<span class="o">}</span>
+</span></span><span class="line"><span class="cl">weighted_test.go:88: 选中的节点减去总权重后的权重 <span class="p">&amp;</span><span class="o">{</span>A <span class="m">10</span> -10<span class="o">}</span>
+</span></span><span class="line"><span class="cl">weighted_test.go:57: 第 <span class="m">4</span> 个请求发送后,nodes <span class="o">[{</span>A <span class="m">10</span> -10<span class="o">}</span> <span class="o">{</span>B <span class="m">20</span> 40<span class="o">}</span> <span class="o">{</span>C <span class="m">30</span> 30<span class="o">}]</span>
+</span></span><span class="line"><span class="cl">weighted_test.go:53: 第 <span class="m">5</span> 个请求发送前,nodes <span class="o">[{</span>A <span class="m">10</span> -10<span class="o">}</span> <span class="o">{</span>B <span class="m">20</span> 40<span class="o">}</span> <span class="o">{</span>C <span class="m">30</span> 30<span class="o">}]</span>
+</span></span><span class="line"><span class="cl">weighted_test.go:86: 选中的节点的当前权重 <span class="p">&amp;</span><span class="o">{</span>B <span class="m">20</span> 60<span class="o">}</span>
+</span></span><span class="line"><span class="cl">weighted_test.go:88: 选中的节点减去总权重后的权重 <span class="p">&amp;</span><span class="o">{</span>B <span class="m">20</span> 0<span class="o">}</span>
+</span></span><span class="line"><span class="cl">weighted_test.go:57: 第 <span class="m">5</span> 个请求发送后,nodes <span class="o">[{</span>A <span class="m">10</span> 0<span class="o">}</span> <span class="o">{</span>B <span class="m">20</span> 0<span class="o">}</span> <span class="o">{</span>C <span class="m">30</span> 60<span class="o">}]</span>
+</span></span><span class="line"><span class="cl">weighted_test.go:53: 第 <span class="m">6</span> 个请求发送前,nodes <span class="o">[{</span>A <span class="m">10</span> 0<span class="o">}</span> <span class="o">{</span>B <span class="m">20</span> 0<span class="o">}</span> <span class="o">{</span>C <span class="m">30</span> 60<span class="o">}]</span>
+</span></span><span class="line"><span class="cl">weighted_test.go:86: 选中的节点的当前权重 <span class="p">&amp;</span><span class="o">{</span>C <span class="m">30</span> 90<span class="o">}</span>
+</span></span><span class="line"><span class="cl">weighted_test.go:88: 选中的节点减去总权重后的权重 <span class="p">&amp;</span><span class="o">{</span>C <span class="m">30</span> 30<span class="o">}</span>
+</span></span><span class="line"><span class="cl">weighted_test.go:57: 第 <span class="m">6</span> 个请求发送后,nodes <span class="o">[{</span>A <span class="m">10</span> 10<span class="o">}</span> <span class="o">{</span>B <span class="m">20</span> 20<span class="o">}</span> <span class="o">{</span>C <span class="m">30</span> 30<span class="o">}]</span></span></span></code></pre></div></div>
+<h3 id="随机">随机</h3>
+<p>随机算法比轮询还要简单，就是随便挑一个。从实现的角度来说，就是生成一个随机数，利用随机数除以总节点数量，得到的余数就是节点的下标。随机算法有两个假设：<br>
+• 所有服务器的处理能力是一样的。<br>
+• 所有请求所需的资源也是一样的。<br>
+并且，随机算法还认为在请求数量足够多的情况下，节点负载是均衡的。当然，如果特别倒霉，也是会遇到负载不均衡的问题。</p>
+<h4 id="加权随机">加权随机</h4>
+<p>加权随机类似于加权轮询，给每一个节点一个权重。如下图，就是加权随机的基本思路。<br>
+• 计算一个总权重 T。<br>
+• 生成一个随机数 r。<br>
+• r 落到总权重的哪个区间，就选择哪个节点。加权随机没有平滑的加权随机这个版本，因为用不上。</p>
+
+
+
+
+<div class="lightbox-container">
+  <img src="/images/load-balance/img-2.png" alt="" style="width: 700px; cursor: pointer;" onclick="openLightbox('\/images\/load-balance\/img-2.png')">
+</div>
+
+<div id="lightbox" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 1000; cursor: pointer;" onclick="closeLightbox()">
+  <img id="lightbox-img" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); max-width: 90%; max-height: 90%;">
+</div>
+
+<script>
+function openLightbox(src) {
+  document.getElementById('lightbox-img').src = src;
+  document.getElementById('lightbox').style.display = 'block';
+}
+function closeLightbox() {
+  document.getElementById('lightbox').style.display = 'none';
+}
+</script>
+
+<h3 id="哈希">哈希</h3>
+<p>哈希算法核心就是根据业务特征来计算一个哈希值，而后除以节点总数的余数，就是目标节点。你可以将哈希和随机结合在一起看，那么随机算法就是用随机数，而哈希算法就是用业务特征来计算哈希值。所谓的业务特征，可以是：<br>
+• 业务 ID<br>
+• 外键<br>
+• 唯一索引<br>
+• ……<br>
+跟你的业务是密切相关的。</p>
+
+
+
+
+<div class="lightbox-container">
+  <img src="/images/load-balance/img-3.png" alt="" style="width: 700px; cursor: pointer;" onclick="openLightbox('\/images\/load-balance\/img-3.png')">
+</div>
+
+<div id="lightbox" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 1000; cursor: pointer;" onclick="closeLightbox()">
+  <img id="lightbox-img" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); max-width: 90%; max-height: 90%;">
+</div>
+
+<script>
+function openLightbox(src) {
+  document.getElementById('lightbox-img').src = src;
+  document.getElementById('lightbox').style.display = 'block';
+}
+function closeLightbox() {
+  document.getElementById('lightbox').style.display = 'none';
+}
+</script>
+
+<h4 id="加权哈希">加权哈希</h4>
+<p>加权哈希算法也类似于加权随机算法。如下图，你用哈希值替代了随机数，就变成了加权哈希算法。</p>
+
+
+
+
+<div class="lightbox-container">
+  <img src="/images/load-balance/img-4.png" alt="" style="width: 700px; cursor: pointer;" onclick="openLightbox('\/images\/load-balance\/img-4.png')">
+</div>
+
+<div id="lightbox" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 1000; cursor: pointer;" onclick="closeLightbox()">
+  <img id="lightbox-img" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); max-width: 90%; max-height: 90%;">
+</div>
+
+<script>
+function openLightbox(src) {
+  document.getElementById('lightbox-img').src = src;
+  document.getElementById('lightbox').style.display = 'block';
+}
+function closeLightbox() {
+  document.getElementById('lightbox').style.display = 'none';
+}
+</script>
+
+<h4 id="一致性哈希">一致性哈希</h4>
+<p>一致性哈希算法是哈希算法的改进，引入了一个类似环。同样是计算哈希值，但是哈希值和节点的关系是：哈希值落在某一个区间内，会被特定的一个节点处理。因此优势就是当增加节点或者减少节点的时候，只有一部分请求命中的节点会发生变化。</p>
+
+
+
+
+<div class="lightbox-container">
+  <img src="/images/load-balance/img-5.png" alt="" style="width: 700px; cursor: pointer;" onclick="openLightbox('\/images\/load-balance\/img-5.png')">
+</div>
+
+<div id="lightbox" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 1000; cursor: pointer;" onclick="closeLightbox()">
+  <img id="lightbox-img" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); max-width: 90%; max-height: 90%;">
+</div>
+
+<script>
+function openLightbox(src) {
+  document.getElementById('lightbox-img').src = src;
+  document.getElementById('lightbox').style.display = 'block';
+}
+function closeLightbox() {
+  document.getElementById('lightbox').style.display = 'none';
+}
+</script>
+
+<p><strong>动态负载均衡算法</strong>
+：尝试实时计算节点的负载。而在实践中，我们其实也不知道怎么定量计算一个节点的负载，所以动态负载均衡算法也只能根据各自的理解，选择一些指标。<br>
+常见的有：<br>
+• 最少连接数。<br>
+• 最少活跃数。<br>
+• 最快响应。</p>
+<p><strong>不过在实际中，这三个算法都不常使用。</strong></p>
+<h3 id="最少连接数">最少连接数</h3>
+<p>基本的想法就是：如果一个节点上的负载很高，那么连到这个节点的连接数量肯定很多。每次挑选节点的时候，客户端看看自己这边所有的候选节点的连接有多少，然后挑选最少连接数的节点。但是这里面有缺陷：<strong>如果是在连接多路复用（偏应用的封装而非底层的多路复用）的情况下，也就是一个连接可以同时被多个请求复用的时候，那么连接数少的，可能负载反而更高</strong>
+。比如说服务端 A 上面的十个连接，可能被 100 个请求复用，但是服务端 C 上面的十二个节点，可能 只有 50
+个请求复用。但现实是，请求多路复用的框架<strong>不多</strong> 。<br>
+<code>grpc</code> 是实现了连接多路复用的，但可惜的是，在使用 grpc 时无法采取这个算法，原因在于，无法获取到 grpc 底层到底有多少个连接。</p>
+
+
+
+
+<div class="lightbox-container">
+  <img src="/images/load-balance/img-6.png" alt="" style="width: 700px; cursor: pointer;" onclick="openLightbox('\/images\/load-balance\/img-6.png')">
+</div>
+
+<div id="lightbox" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 1000; cursor: pointer;" onclick="closeLightbox()">
+  <img id="lightbox-img" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); max-width: 90%; max-height: 90%;">
+</div>
+
+<script>
+function openLightbox(src) {
+  document.getElementById('lightbox-img').src = src;
+  document.getElementById('lightbox').style.display = 'block';
+}
+function closeLightbox() {
+  document.getElementById('lightbox').style.display = 'none';
+}
+</script>
+
+<h3 id="最少活跃数">最少活跃数</h3>
+<p>活跃数是指正在被处理的请求数量。很显然，活跃请求数还是比较准确的。客户端为每一个服务端节点维持一个活跃请求数计数，每次发请求的时候选择一个活跃数最低的节点。</p>
+
+
+
+
+<div class="lightbox-container">
+  <img src="/images/load-balance/img-7.png" alt="" style="width: 700px; cursor: pointer;" onclick="openLightbox('\/images\/load-balance\/img-7.png')">
+</div>
+
+<div id="lightbox" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 1000; cursor: pointer;" onclick="closeLightbox()">
+  <img id="lightbox-img" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); max-width: 90%; max-height: 90%;">
+</div>
+
+<script>
+function openLightbox(src) {
+  document.getElementById('lightbox-img').src = src;
+  document.getElementById('lightbox').style.display = 'block';
+}
+function closeLightbox() {
+  document.getElementById('lightbox').style.display = 'none';
+}
+</script>
+
+<h3 id="最快响应时间">最快响应时间</h3>
+<p>简而言之：每次挑选曾经最快返回响应的节点。这个响应时间可以是：<br>
+• 平均响应时间<br>
+• 99 线<br>
+• 999 线<br>
+正常推荐平均响应时间或者 99 线。<br>
+<strong>它也是这三个中最靠谱的一种算法。</strong></p>
+
+
+
+
+<div class="lightbox-container">
+  <img src="/images/load-balance/img-8.png" alt="" style="width: 700px; cursor: pointer;" onclick="openLightbox('\/images\/load-balance\/img-8.png')">
+</div>
+
+<div id="lightbox" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 1000; cursor: pointer;" onclick="closeLightbox()">
+  <img id="lightbox-img" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); max-width: 90%; max-height: 90%;">
+</div>
+
+<script>
+function openLightbox(src) {
+  document.getElementById('lightbox-img').src = src;
+  document.getElementById('lightbox').style.display = 'block';
+}
+function closeLightbox() {
+  document.getElementById('lightbox').style.display = 'none';
+}
+</script>
+
+<p>它的问题在于，假如有以下情况，某一个大请求打到了 C 节点，将它的平均响应时间拉到了 1 秒，然后剩下的所有请求都只会在 A 和 B
+直接来回跳，原因是客户端一直认为它的平均响应时间是 1
+秒，那它的原因就在于，当它的平均响应时间为一秒后，客户端就再也不会把请求打向它了，根本就不会重新计算它的平均响应时间。造成一种恶性循环，死锁的状况。</p>
+<h2 id="总结">总结</h2>
+<h3 id="负载均衡总结">负载均衡总结</h3>
+<ol>
+<li>要不要考虑服务器处理能力？
+<ul>
+<li>轮询、随机、哈希、最小连接数、最少活跃数都没考虑。</li>
+<li>对应的加权版本，就可以用权重来代表服务器的处理能力。</li>
+</ul>
+</li>
+<li>选择什么指标来表达服务器当前负载？
+<ul>
+<li>（加权）轮询、（加权）随机、哈希什么都没选，依赖于统计。</li>
+<li>选择连接数、请求数、响应时间、错误数……所以你可以随便选几个指标，然后设计自己的负载均衡算法。</li>
+</ul>
+</li>
+<li>是不是所有的请求所需的资源都是一样的？显然不是
+<ul>
+<li>大商家品类极多，大买家订单极多。</li>
+<li>不考虑请求消耗资源的负载均衡，容易出现偶发性的打爆某一台实例的情况。</li>
+</ul>
+</li>
+<li>选什么负载均衡算法？实践中遇事不决用轮询，出了问题再说。</li>
+</ol>
+<h3 id="权重效果">权重效果</h3>
+<p>大多数时候我们都是使用权重来表达服务器的处理能力，或者说重要性、优先级。<br>
+使用权重的算法都要考虑：</p>
+<ol>
+<li>某个实例的权重特别大，可能连续几次都选中它，那么要考虑平滑效果。</li>
+<li>结合实际调用结果来调整权重，例如实例如果返回了错误，那么就降低权重，反之就增加权重。</li>
+<li>一个实例的权重如果是动态调整的，那么就要考虑上限和下限的问题，尤其要考虑调整权重的过程中会不会导致权重变成 0、最大值或者最小值。这三个值可能导致实例完全不被选中，或者一直被选中。</li>
+</ol>
+<h3 id="微服务框架的局限性">微服务框架的局限性</h3>
+<p>前面我们聊到的三个动态负载均衡算法：最少连接数、最少活跃数、最快响应时间算法都是客户端来选择的。但是客户端只知道自己这一边的情况，也就是：</p>
+<ol>
+<li>客户端只知道自己和各个服务端节点的连接数。</li>
+<li>客户端只知道自己发过去，还没收到的响应的请求数。</li>
+<li>客户端只知道自己发过去的请求的响应时间。</li>
+</ol>
+
+
+
+
+<div class="lightbox-container">
+  <img src="/images/load-balance/img-9.png" alt="" style="width: 700px; cursor: pointer;" onclick="openLightbox('\/images\/load-balance\/img-9.png')">
+</div>
+
+<div id="lightbox" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 1000; cursor: pointer;" onclick="closeLightbox()">
+  <img id="lightbox-img" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); max-width: 90%; max-height: 90%;">
+</div>
+
+<script>
+function openLightbox(src) {
+  document.getElementById('lightbox-img').src = src;
+  document.getElementById('lightbox').style.display = 'block';
+}
+function closeLightbox() {
+  document.getElementById('lightbox').style.display = 'none';
+}
+</script>
+
+<p>对于客户端2，如果它要发请求，在它看来，它会选择服务端1，但实际上，服务端3才是连接数最少的，局限在于，客户端2它是不知道客户端1与其他服务端之间的连接的，它只知道自己与其他服务端的连接数。总结为<strong>微服务框架不具备全局信息</strong>
+。但<strong>网关</strong> 是能够具备全局信息的，特别是<strong>单实例网关</strong> ，多实例网关必须要进行数据同步才能做到。</p>
+<h3 id="设计自己的负载均衡算法">设计自己的负载均衡算法</h3>
+<p>核心是根据自己的业务特征来选取一些指标，来表达服务实例的负载。</p>
+<ol>
+<li>错误率等其它服务指标。</li>
+<li>CPU、IO、网络负载等硬件指标。</li>
+</ol>
+<p>而想要知道这些指标，除了客户端统计（有些客户端没法统计，例如每个实例的 CPU），还有一些奇技淫巧：</p>
+<ol>
+<li>服务端将指标的值写入注册中心，注册中心通知客户端。</li>
+<li>服务端每次返回响应的时候，额外带上自己的指标，如 CPU 利用率。</li>
+<li>利用我们的可观测性平台，从观测性平台获得数据。</li>
+</ol>
+
+
+
+
+<div class="lightbox-container">
+  <img src="/images/load-balance/img-10.png" alt="" style="width: 700px; cursor: pointer;" onclick="openLightbox('\/images\/load-balance\/img-10.png')">
+</div>
+
+<div id="lightbox" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 1000; cursor: pointer;" onclick="closeLightbox()">
+  <img id="lightbox-img" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); max-width: 90%; max-height: 90%;">
+</div>
+
+<script>
+function openLightbox(src) {
+  document.getElementById('lightbox-img').src = src;
+  document.getElementById('lightbox').style.display = 'block';
+}
+function closeLightbox() {
+  document.getElementById('lightbox').style.display = 'none';
+}
+</script>
+
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 2025-09-02</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="分享到 X" data-sharer="x" data-url="http://localhost:1313/load-balance/" data-title="负载均衡" data-hashtags="负载均衡,系统设计,微服务"><i class="fab fa-x-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 Facebook" data-sharer="facebook" data-url="http://localhost:1313/load-balance/" data-hashtag="负载均衡"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 Hacker News" data-sharer="hackernews" data-url="http://localhost:1313/load-balance/" data-title="负载均衡"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 Line" data-sharer="line" data-url="http://localhost:1313/load-balance/" data-title="负载均衡"><i data-svg-src="/lib/simple-icons/icons/line.min.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 微博" data-sharer="weibo" data-url="http://localhost:1313/load-balance/" data-title="负载均衡"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 Diaspora" data-sharer="diaspora" data-url="http://localhost:1313/load-balance/" data-title="负载均衡" data-description=""><i class="fab fa-diaspora fa-fw" aria-hidden="true"></i></a><a href="https://t.me/share/url?url=http%3a%2f%2flocalhost%3a1313%2fload-balance%2f&amp;text=%e8%b4%9f%e8%bd%bd%e5%9d%87%e8%a1%a1" target="_blank" title="分享到 Telegram"><i class="fab fa-telegram fa-fw" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/">负载均衡</a>,&nbsp;<a href="/tags/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/">系统设计</a>,&nbsp;<a href="/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1/">微服务</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">首页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/life/" class="prev" rel="prev" title="感悟"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>感悟</a>
+            <a href="/db-cache/" class="next" rel="next" title="DB-Cache 一致性问题">DB-Cache 一致性问题<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.148.2">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.3.1-DEV"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2019 - 2025</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://hugo.crazyfrank.top/" target="_blank">crazyfrank</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="回到顶部">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a>
+        </div>
+
+        <div id="fixed-buttons-hidden"><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><script>window.config={"search":{"maxResultLength":10,"snippetLength":30,"highlightTag":"em","noResultsFound":"没有找到结果"},"toc":{"enable":true,"auto":true}};</script>
+
+<script>
+window.ClipboardJS = function(element) {
+  this.element = element;
+  this.callbacks = {};
+  element.addEventListener('click', () => {
+    const text = element.getAttribute('data-clipboard-text');
+    navigator.clipboard.writeText(text).then(() => {
+      if (this.callbacks.success) this.callbacks.success();
+    });
+  });
+};
+window.ClipboardJS.prototype.on = function(event, callback) {
+  this.callbacks[event] = callback;
+};
+</script>
+
+<script src="/js/theme.js"></script>
+
+<script>
+
+document.addEventListener('DOMContentLoaded', function() {
+  setTimeout(function() {
+    document.querySelectorAll('.details.admonition').forEach(function(details) {
+      const summary = details.querySelector('.details-summary');
+      if (summary) {
+        summary.addEventListener('click', function() {
+          details.classList.toggle('open');
+        });
+      }
+    });
+  }, 300);
+});
+</script>
+
+<script>
+
+setTimeout(function() {
+  document.querySelectorAll('.code-block').forEach(function(codeBlock) {
+    const codeTitle = codeBlock.querySelector('.code-header > .code-title');
+    const copyBtn = codeBlock.querySelector('.code-header .copy');
+    
+    if (codeTitle && !codeTitle.hasAttribute('data-cb-init')) {
+      codeTitle.setAttribute('data-cb-init', 'true');
+      codeTitle.addEventListener('click', function() {
+        codeBlock.classList.toggle('open');
+      });
+    }
+    
+    if (copyBtn && !copyBtn.hasAttribute('data-cb-init')) {
+      copyBtn.setAttribute('data-cb-init', 'true');
+      const code = codeBlock.querySelector('code');
+      if (code) {
+        copyBtn.addEventListener('click', function() {
+          navigator.clipboard.writeText(code.innerText).then(function() {
+            const codeLines = code.querySelectorAll('span.cl');
+            if (codeLines.length > 0) {
+              codeLines.forEach(function(codeLine) {
+                codeLine.classList.add('animate__animated', 'animate__flash');
+                setTimeout(function() {
+                  codeLine.classList.remove('animate__animated', 'animate__flash');
+                }, 1000);
+              });
+            }
+          });
+        });
+      }
+    }
+  });
+}, 500);
+</script>
+
+<style>
+.menu-item.language {
+  display: none !important;
+}
+#language-select-desktop {
+  display: none !important;
+}
+.search-form,
+#search-input,
+.search-loading,
+.search-results {
+  text-align: center !important;
+}
+</style>
+
+<script>
+const originalFetch = window.fetch;
+window.fetch = function(url, options) {
+  if (window.location.pathname.startsWith('/en/') && url === '/index.json') {
+    url = '/en/index.json';
+  }
+  return originalFetch(url, options);
+};
+
+const originalOpen = XMLHttpRequest.prototype.open;
+XMLHttpRequest.prototype.open = function(method, url, ...args) {
+  if (window.location.pathname.startsWith('/en/') && url === '/index.json') {
+    url = '/en/index.json';
+  }
+  return originalOpen.call(this, method, url, ...args);
+};
+
+document.addEventListener('DOMContentLoaded', function() {
+  if (window.location.pathname.includes('/search/')) {
+    const title = document.querySelector('h2');
+    if (title) {
+      title.style.cssText = `
+        text-align: center !important;
+        margin-top: 120px !important;
+        margin-bottom: 60px !important;
+        padding-top: 50px !important;
+      `;
+    }
+  }
+});
+</script>
+<script>
+        setTimeout(function() {
+            
+            const content = {
+                title: "Crazyfrank 的博客",
+                subtitle: "疾风知劲草"
+            };
+            
+            
+            document.querySelectorAll('.typeit').forEach(function(element) {
+                if (element.id) {
+                    let text = '';
+                    if (element.id === 'id-1' || element.id === 'id-2') {
+                        text = content.title;
+                    } else if (element.id === 'id-3') {
+                        text = content.subtitle;
+                    }
+                    
+                    if (text) {
+                        new TypeIt('#' + element.id, {
+                            strings: text,
+                            speed: 100,
+                            waitUntilVisible: true
+                        }).go();
+                    }
+                }
+            });
+        }, 600);
+        </script>
+    </body>
+</html>

@@ -20,6 +20,11 @@
   "uri": "/en/db-cache/"
 },
 {
+  "title": "Load Balancing",
+  "content": "Overview In a distributed environment, each microservice will have different instances. Service registration and service discovery solve the problem of \u0026amp;ldquo;what are the available instances\u0026amp;rdquo;, and the remaining question is \u0026amp;ldquo;who should I send the request to with so many available instances?\u0026amp;rdquo;. The question that remains is, \u0026amp;ldquo;With so many available instances, who do I send the request to? Intuitively, most people, if they have heard of some specialized terminology, will …",
+  "uri": "/en/load-balance/"
+},
+{
   "title": "realisation",
   "content": "Man\u0026amp;rsquo;s physical body is the past and his consciousness is the present and future.\n",
   "uri": "/en/life/"
