@@ -121,6 +121,21 @@
         alt="/images/avatar.jpg"
         title="/images/avatar.jpg" width="640" height="640" /></a></div><h1 class="home-title">Crazyfrank 的博客</h1><div class="home-subtitle"><div id="id-3" class="typeit"></div></div><div class="links"><a href="https://github.com/crazyfrankie" title="GitHub" target="_blank" rel="noopener noreffer me"><i class="fab fa-github fa-fw" aria-hidden="true"></i></a><a href="https://stackoverflow.com/users/https://stackoverflow.com/users/23976013/crazyfrank" title="Stack Overflow" target="_blank" rel="noopener noreffer me"><i class="fab fa-stack-overflow fa-fw" aria-hidden="true"></i></a><a href="mailto:axu9417@gmail.com" title="Email" rel="me"><i class="far fa-envelope fa-fw" aria-hidden="true"></i></a></div></div>
 <article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/zh/posts/mvcc-%E5%8F%8A-mysql-%E6%97%A5%E5%BF%97/">MVCC 及 MySQL 日志</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="https://www.crazyfrank.top/" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>crazyfrank</a></span>&nbsp;<span class="post-publish">发布于 <time datetime="2025-09-02">2025-09-02</time></span>&nbsp;<span class="post-category">收录于 <a href="/zh/categories/%E6%8A%80%E6%9C%AF/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>技术</a>&nbsp;<a href="/zh/categories/%E5%90%8E%E7%AB%AF/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>后端</a></span></div><div class="content"><p>在 <strong>MVCC</strong> 机制下，<strong>Redo Log 和 Bin Log 主要在事务提交时发挥作用</strong> ，它们的作用和触发时机如下：</p>
+<hr>
+<h3 id="事务执行过程中的日志行为">事务执行过程中的日志行为</h3>
+<p>当执行：</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right fa-fw" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h fa-fw" aria-hidden="true"></i></span>
+        <span class="copy" title="复制到剪贴板"><i class="far fa-copy fa-fw" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">UPDATE</span><span class="w"> </span><span class="n">users</span><span class="w"> </span><span class="k">SET</span><span class="w"> </span><span class="n">age</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">26</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w">  </span></span></span></code></pre></div></div>
+<p>MySQL 的 <strong>事务执行顺序</strong> （结合 MVCC + 日志）如下：</p></div><div class="post-footer">
+        <a href="/zh/posts/mvcc-%E5%8F%8A-mysql-%E6%97%A5%E5%BF%97/">阅读全文</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/zh/tags/mysql/">MySQL</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
         <a href="/zh/posts/%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/">负载均衡</a>
     </h1><div class="post-meta"><span class="post-author"><a href="https://www.crazyfrank.top/" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>crazyfrank</a></span>&nbsp;<span class="post-publish">发布于 <time datetime="2025-09-02">2025-09-02</time></span>&nbsp;<span class="post-category">收录于 <a href="/zh/categories/%E6%8A%80%E6%9C%AF/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>技术</a></span></div><div class="content"><h2 id="概览">概览</h2>
 <p>在分布式环境下，各个微服务都会有不同的实例，服务注册和服务发现解决了“有哪些可用实例”的问题，剩下面临的就是，“这么多可用实例，我该把请求发给谁？”。直觉来说，大部分人如果听过一些专业名词，此时会直接想到“负载均衡”。那负载均衡到底是什么呢？</p></div><div class="post-footer">

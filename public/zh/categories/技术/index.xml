@@ -8,7 +8,7 @@
     <language>zh-CN</language>
     <managingEditor>axu9417@gmail.com (crazyfrank)</managingEditor>
     <webMaster>axu9417@gmail.com (crazyfrank)</webMaster>
-    <lastBuildDate>Thu, 11 Sep 2025 14:32:15 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 11 Sep 2025 15:22:44 +0800</lastBuildDate>
     <atom:link href="http://localhost:1313/zh/categories/%E6%8A%80%E6%9C%AF/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>架构设计--评论系统</title>
@@ -16,6 +16,13 @@
       <pubDate>Thu, 11 Sep 2025 10:00:00 +0800</pubDate><author>axu9417@gmail.com (crazyfrank)</author>
       <guid>http://localhost:1313/zh/posts/%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1--%E8%AF%84%E8%AE%BA%E7%B3%BB%E7%BB%9F/</guid>
       <description>&lt;p&gt;架构设计最重要的就是&lt;strong&gt;理解整个产品体系在系统中的定位&lt;/strong&gt;。搞清楚系统背后的背景，才能做出最佳的设计和抽象。不要做需求的翻译机，先理解业务背后的本质，事情的初衷。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>架构设计--评论系统</title>
+      <link>http://localhost:1313/zh/posts/%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1--%E8%AF%84%E8%AE%BA%E7%B3%BB%E7%BB%9F/</link>
+      <pubDate>Thu, 11 Sep 2025 10:00:00 +0800</pubDate><author>axu9417@gmail.com (crazyfrank)</author>
+      <guid>http://localhost:1313/zh/posts/%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1--%E8%AF%84%E8%AE%BA%E7%B3%BB%E7%BB%9F/</guid>
+      <description>&lt;p&gt;今天讲讲旁路缓存策略。&lt;/p&gt;&#xA;&lt;p&gt;一般来说我们在业务中引入缓存，涉及到三种操作数据库和缓存的方式：&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;读穿：&#xA;&lt;ol&gt;&#xA;&lt;li&gt;应用读数据。&lt;/li&gt;&#xA;&lt;li&gt;查 Redis。命中则返回。&lt;/li&gt;&#xA;&lt;li&gt;未命中则查 MySQL。&lt;/li&gt;&#xA;&lt;li&gt;从 MySQL 取到数据后，写入 Redis。&lt;/li&gt;&#xA;&lt;li&gt;返回数据。&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;写穿：&#xA;&lt;ol&gt;&#xA;&lt;li&gt;应用更新数据。&lt;/li&gt;&#xA;&lt;li&gt;代码同时（或在同一个事务中）执行：&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;更新 MySQL 数据库。&lt;/li&gt;&#xA;&lt;li&gt;更新（或失效）Redis 中的对应缓存。&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;旁路缓存：&#xA;&lt;ul&gt;&#xA;&lt;li&gt;读操作：采用 “读穿” 策略。&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Cache Hit -&amp;gt; 返回缓存数据。&lt;/li&gt;&#xA;&lt;li&gt;Cache Miss -&amp;gt; 从 DB 读，回填 Cache，再返回。&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;写操作：先更新数据库，然后删除（失效）缓存。&#xA;&lt;ul&gt;&#xA;&lt;li&gt;这是“旁路缓存”策略的精髓——“先更新数据库，再删缓存”。&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;/ul&gt;</description>
     </item>
     <item>
       <title>以日志处理浅谈去中心化</title>

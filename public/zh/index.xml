@@ -7,6 +7,54 @@
             <webMaster>axu9417@gmail.com (crazyfrank)</webMaster>
             <atom:link href="http://localhost:1313/zh/index.xml" rel="self" type="application/rss+xml" />
         <item>
+    <title>缓存与数据库--一致性的取舍</title>
+    <link>http://localhost:1313/zh/posts/%E7%BC%93%E5%AD%98%E4%B8%8E%E6%95%B0%E6%8D%AE%E5%BA%93--%E4%B8%80%E8%87%B4%E6%80%A7%E7%9A%84%E5%8F%96%E8%88%8D/</link>
+    <pubDate>Thu, 11 Sep 2025 10:00:00 &#43;0800</pubDate>
+    <author>crazyfrank</author>
+    <guid>http://localhost:1313/zh/posts/%E7%BC%93%E5%AD%98%E4%B8%8E%E6%95%B0%E6%8D%AE%E5%BA%93--%E4%B8%80%E8%87%B4%E6%80%A7%E7%9A%84%E5%8F%96%E8%88%8D/</guid>
+    <description><![CDATA[<p>今天讲讲旁路缓存策略。</p>
+<h2 id="概念介绍">概念介绍</h2>
+<p>一般来说我们在业务中引入缓存，涉及到三种操作数据库和缓存的方式：</p>
+<ul>
+<li>读穿：
+<ol>
+<li>应用读数据。</li>
+<li>查 Redis。命中则返回。</li>
+<li>未命中则查 MySQL。</li>
+<li>从 MySQL 取到数据后，写入 Redis。</li>
+<li>返回数据。</li>
+</ol>
+</li>
+<li>写穿：
+<ol>
+<li>应用更新数据。</li>
+<li>代码同时（或在同一个事务中）执行：
+<ul>
+<li>更新 MySQL 数据库。</li>
+<li>更新（或失效）Redis 中的对应缓存。</li>
+</ul>
+</li>
+</ol>
+</li>
+<li>旁路缓存：
+<ul>
+<li>读操作：采用 “读穿” 策略。
+<ul>
+<li>Cache Hit -&gt; 返回缓存数据。</li>
+<li>Cache Miss -&gt; 从 DB 读，回填 Cache，再返回。</li>
+</ul>
+</li>
+<li>写操作：先更新数据库，然后删除（失效）缓存。
+<ul>
+<li>这是“旁路缓存”策略的精髓——“先更新数据库，再删缓存”。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>对于读穿从上面的介绍也可以看出来它不是单独使用的，而写穿，目前没有一个中间件支持同时操作数据库，所以一般不使用，所以日常使用最多的也就说第三种方式：旁路缓存</p>]]></description>
+</item>
+<item>
     <title>架构设计--评论系统</title>
     <link>http://localhost:1313/zh/posts/%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1--%E8%AF%84%E8%AE%BA%E7%B3%BB%E7%BB%9F/</link>
     <pubDate>Thu, 11 Sep 2025 10:00:00 &#43;0800</pubDate>

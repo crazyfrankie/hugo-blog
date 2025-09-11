@@ -5,6 +5,11 @@
   "uri": "/en/posts/architecture-design-comment-system/"
 },
 {
+  "title": "Cache and DB - Consistency Tradeoffs",
+  "content": "Today we talk about bypass caching strategies.\nIntroduction to Concepts Generally speaking we introduce caching in our business, which involves three ways of manipulating the database and caching:\nRead-through: application reads data. it checks Redis. a hit is returned. If there is no hit, check MySQL. Fetch the data from MySQL and write it to Redis. Return the data. Write through: The application updates the data. Code executes simultaneously (or in the same transaction): Update the MySQL …",
+  "uri": "/en/posts/cache-and-db-consistency-tradeoffs/"
+},
+{
   "title": "Understanding Decentralization Through Log Processing",
   "content": "This article explores decentralized system design concepts and implementation approaches through the lens of log processing.\nOverview of Decentralized Systems Decentralization is a key concept in distributed system design that improves system reliability and fault tolerance by distributing control across multiple nodes.\nIn architecture, \u0026amp;ldquo;decentralization\u0026amp;rdquo; doesn\u0026amp;rsquo;t necessarily mean \u0026amp;ldquo;completely no center,\u0026amp;rdquo; but rather:\nAvoid irreplaceable single points of failure by …",
   "uri": "/en/posts/understanding-decentralization-through-log-processing/"

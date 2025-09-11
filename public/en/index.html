@@ -127,6 +127,51 @@
         <a href="/en/posts/architecture-design-comment-system/">Read More</a><div class="post-tags">
                 <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/en/tags/system-design/">System Design</a>,&nbsp;<a href="/en/tags/architecture-design/">Architecture Design</a></div></div>
 </article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/en/posts/cache-and-db-consistency-tradeoffs/">Cache and DB - Consistency Tradeoffs</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="https://www.crazyfrank.top/" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>crazyfrank</a></span>&nbsp;<span class="post-publish">published on <time datetime="2025-09-11">2025-09-11</time></span>&nbsp;<span class="post-category">included in <a href="/en/categories/technology/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Technology</a>&nbsp;<a href="/en/categories/backend/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Backend</a></span></div><div class="content"><p>Today we talk about bypass caching strategies.</p>
+<h2 id="introduction-to-concepts">Introduction to Concepts</h2>
+<p>Generally speaking we introduce caching in our business, which involves three ways of manipulating the database and caching:</p>
+<ul>
+<li>Read-through:
+<ol>
+<li>application reads data.</li>
+<li>it checks Redis. a hit is returned.</li>
+<li>If there is no hit, check MySQL.</li>
+<li>Fetch the data from MySQL and write it to Redis.</li>
+<li>Return the data.</li>
+</ol>
+</li>
+<li>Write through:
+<ol>
+<li>The application updates the data.</li>
+<li>Code executes simultaneously (or in the same transaction):
+<ul>
+<li>Update the MySQL database.</li>
+<li>Update (or invalidate) the corresponding cache in Redis.</li>
+</ul>
+</li>
+</ol>
+</li>
+<li>Bypass the cache:
+<ul>
+<li>Read operations: Use the &ldquo;read-through&rdquo; policy.
+<ul>
+<li>Cache Hit -&gt; return cached data.</li>
+<li>Cache Miss -&gt; Read from DB, backfill Cache and return.</li>
+</ul>
+</li>
+<li>Write operation: first update DB, then delete (invalidate) cache.
+<ul>
+<li>This is the essence of the &ldquo;bypass cache&rdquo; strategy - &ldquo;update the database first, then delete the cache&rdquo;.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>For read-through from the above introduction can also be seen that it is not used alone, and write-through, there is no middleware support for simultaneous operation of the database, so generally do not use, so the most daily use of the third way: bypass caching!</p></div><div class="post-footer">
+        <a href="/en/posts/cache-and-db-consistency-tradeoffs/">Read More</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/en/tags/caching/">Caching</a>,&nbsp;<a href="/en/tags/system-design/">System Design</a>,&nbsp;<a href="/en/tags/architecture-design/">Architecture Design</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
         <a href="/en/posts/understanding-decentralization-through-log-processing/">Understanding Decentralization Through Log Processing</a>
     </h1><div class="post-meta"><span class="post-author"><a href="https://www.crazyfrank.top/" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>crazyfrank</a></span>&nbsp;<span class="post-publish">published on <time datetime="2025-09-05">2025-09-05</time></span>&nbsp;<span class="post-category">included in <a href="/en/categories/technology/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Technology</a>&nbsp;<a href="/en/categories/backend/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Backend</a></span></div><div class="content"><p>This article explores decentralized system design concepts and implementation approaches through the lens of log processing.</p>
 <h2 id="overview-of-decentralized-systems">Overview of Decentralized Systems</h2>
@@ -193,12 +238,6 @@ there may be some interfaces that involve parameter validation at the <code>dao<
 <p>Let&rsquo;s start with the simplest scenario.</p></div><div class="post-footer">
         <a href="/en/posts/db-cache-consistency-problem/">Read More</a><div class="post-tags">
                 <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/en/tags/data-consistency/">Data Consistency</a>,&nbsp;<a href="/en/tags/db/">DB</a>,&nbsp;<a href="/en/tags/cache/">Cache</a></div></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/en/posts/load-balancing/">Load Balancing</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="https://www.crazyfrank.top/" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>crazyfrank</a></span>&nbsp;<span class="post-publish">published on <time datetime="2025-09-02">2025-09-02</time></span>&nbsp;<span class="post-category">included in <a href="/en/categories/technology/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Technology</a></span></div><div class="content"><h2 id="overview">Overview</h2>
-<p>In a distributed environment, each microservice will have different instances. Service registration and service discovery solve the problem of &ldquo;what are the available instances&rdquo;, and the remaining question is &ldquo;who should I send the request to with so many available instances?&rdquo;. The question that remains is, &ldquo;With so many available instances, who do I send the request to? Intuitively, most people, if they have heard of some specialized terminology, will directly think of &ldquo;load balancing&rdquo;. What exactly is load balancing?</p></div><div class="post-footer">
-        <a href="/en/posts/load-balancing/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/en/tags/load-balancing/">Load Balancing</a>,&nbsp;<a href="/en/tags/system-design/">System Design</a>,&nbsp;<a href="/en/tags/microservices/">Microservices</a></div></div>
 </article><ul class="pagination"><li class="page-item active">
                     <span class="page-link">
                         <a href="/en/">1</a>
