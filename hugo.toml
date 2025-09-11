@@ -400,7 +400,6 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
     languageName = "简体中文"
     title = "Crazyfrank 的博客"
     contentDir = "content/zh"
-    publishDir = "public/zh"
     hasCJKLanguage = true
     
     [languages.zh.params]
@@ -450,7 +449,6 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
     languageName = "English"
     title = "Crazyfrank's Blog"
     contentDir = "content/en"
-    publishDir = "public/en"
     hasCJKLanguage = false
     
     [languages.en.params]
