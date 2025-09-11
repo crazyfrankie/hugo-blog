@@ -1,4 +1,4 @@
-baseURL = "https://hugo.crazyfrank.top/"
+baseURL = "https://www.crazyfrank.top/"
 
 # website title
 title = "Crazyfrank's Blog"
@@ -11,6 +11,8 @@ languageCode = "zh-CN"
 languageName = "简体中文"
 # whether to include Chinese/Japanese/Korean
 hasCJKLanguage = true
+# enable multilingual mode
+defaultContentLanguageInSubdir = true
 
 # copyright description used only for seo schema
 copyright = ""
@@ -56,7 +58,7 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
   [params.author]
     name = "crazyfrank"
     email = "axu9417@gmail.com"
-    link = "https://hugo.crazyfrank.top/"
+    link = "https://www.crazyfrank.top/"
 
   # Header config
   [params.header]
@@ -398,6 +400,7 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
     languageName = "简体中文"
     title = "Crazyfrank 的博客"
     contentDir = "content/zh"
+    publishDir = "public/zh"
     hasCJKLanguage = true
     
     [languages.zh.params]
@@ -439,7 +442,7 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
       weight = 5
       identifier = "english"
       name = "🇺🇸 English"
-      url = "/en/"
+      url = "../en/"
 
   [languages.en]
     weight = 2
@@ -447,6 +450,7 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
     languageName = "English"
     title = "Crazyfrank's Blog"
     contentDir = "content/en"
+    publishDir = "public/en"
     hasCJKLanguage = false
     
     [languages.en.params]
@@ -488,4 +492,4 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
       weight = 5
       identifier = "chinese"
       name = "🇨🇳 中文"
-      url = "../"
+      url = "../zh"

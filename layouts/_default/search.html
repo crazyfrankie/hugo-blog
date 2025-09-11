@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', function() {
   let blogIndex = null;
   
   // 加载博客搜索索引
-  fetch('/index.json')
+  fetch('/zh/index.json')
     .then(response => response.json())
     .then(data => {
       // 只保留唯一的文章，去重

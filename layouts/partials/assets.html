@@ -95,7 +95,7 @@ setTimeout(function() {
 <script>
 const originalFetch = window.fetch;
 window.fetch = function(url, options) {
-  if (window.location.pathname.startsWith('/en/') && url === '/index.json') {
+  if (window.location.pathname.startsWith('/en/') && url === '/zh/index.json') {
     url = '/en/index.json';
   }
   return originalFetch(url, options);
@@ -103,7 +103,7 @@ window.fetch = function(url, options) {
 
 const originalOpen = XMLHttpRequest.prototype.open;
 XMLHttpRequest.prototype.open = function(method, url, ...args) {
-  if (window.location.pathname.startsWith('/en/') && url === '/index.json') {
+  if (window.location.pathname.startsWith('/en/') && url === '/zh/index.json') {
     url = '/en/index.json';
   }
   return originalOpen.call(this, method, url, ...args);
