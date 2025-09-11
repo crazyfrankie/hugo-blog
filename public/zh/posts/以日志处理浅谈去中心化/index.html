@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-    <head>
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
-        <title>以日志处理浅谈去中心化 - Crazyfrank 的博客</title><meta name="Description" content="Crazyfrank 的中文博客"><meta property="og:url" content="https://www.crazyfrank.top/zh/posts/%E4%BB%A5%E6%97%A5%E5%BF%97%E5%A4%84%E7%90%86%E6%B5%85%E8%B0%88%E5%8E%BB%E4%B8%AD%E5%BF%83%E5%8C%96/">
+        <title>以日志处理浅谈去中心化 - Crazyfrank 的博客</title><meta name="Description" content="Crazyfrank 的中文博客"><meta property="og:url" content="http://localhost:1313/zh/posts/%E4%BB%A5%E6%97%A5%E5%BF%97%E5%A4%84%E7%90%86%E6%B5%85%E8%B0%88%E5%8E%BB%E4%B8%AD%E5%BF%83%E5%8C%96/">
   <meta property="og:site_name" content="Crazyfrank 的博客">
   <meta property="og:title" content="以日志处理浅谈去中心化">
   <meta property="og:description" content="本文通过日志处理的角度来探讨去中心化系统的设计思路和实现方案。
@@ -17,18 +17,18 @@
     <meta property="article:tag" content="分布式系统">
     <meta property="article:tag" content="去中心化">
     <meta property="article:tag" content="系统设计">
-    <meta property="og:image" content="https://www.crazyfrank.top/logo.png">
+    <meta property="og:image" content="http://localhost:1313/logo.png">
 
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:image" content="https://www.crazyfrank.top/logo.png">
+  <meta name="twitter:image" content="http://localhost:1313/logo.png">
   <meta name="twitter:title" content="以日志处理浅谈去中心化">
   <meta name="twitter:description" content="本文通过日志处理的角度来探讨去中心化系统的设计思路和实现方案。
 去中心化系统概述 去中心化是分布式系统设计中的重要概念，它通过将控制权分散到多个节点来提高系统的可靠性和容错性。">
 <meta name="application-name" content="Crazyfrank&#39;s Blog">
 <meta name="apple-mobile-web-app-title" content="Crazyfrank&#39;s Blog">
-<meta name="referrer" content="no-referrer" /><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/favicon.svg"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://www.crazyfrank.top/zh/posts/%E4%BB%A5%E6%97%A5%E5%BF%97%E5%A4%84%E7%90%86%E6%B5%85%E8%B0%88%E5%8E%BB%E4%B8%AD%E5%BF%83%E5%8C%96/" /><link rel="prev" href="https://www.crazyfrank.top/zh/posts/ddd-%E7%9A%84%E4%B8%80%E4%BA%9B%E6%80%9D%E8%80%83/" /><link rel="next" href="https://www.crazyfrank.top/zh/posts/%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1--%E8%AF%84%E8%AE%BA%E7%B3%BB%E7%BB%9F/" /><link rel="stylesheet" href="/css/style.min.0255131cc06384344faa9cd0e3551c351cc16d6fd498168448b45f36e9e84c46.css" integrity="sha256-AlUTHMBjhDRPqpzQ41UcNRzBbW/UmBaESLRfNunoTEY="><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.7.2/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.7.2/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
+<meta name="referrer" content="no-referrer" /><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/favicon.svg"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://localhost:1313/zh/posts/%E4%BB%A5%E6%97%A5%E5%BF%97%E5%A4%84%E7%90%86%E6%B5%85%E8%B0%88%E5%8E%BB%E4%B8%AD%E5%BF%83%E5%8C%96/" /><link rel="prev" href="http://localhost:1313/zh/posts/ddd-%E7%9A%84%E4%B8%80%E4%BA%9B%E6%80%9D%E8%80%83/" /><link rel="next" href="http://localhost:1313/zh/posts/%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1--%E8%AF%84%E8%AE%BA%E7%B3%BB%E7%BB%9F/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/fontawesome-free/css/all.min.css"></noscript><link rel="preload" href="/lib/animate/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
@@ -36,9 +36,9 @@
         "inLanguage": "zh-CN",
         "mainEntityOfPage": {
             "@type": "WebPage",
-            "@id": "https:\/\/www.crazyfrank.top\/zh\/posts\/%E4%BB%A5%E6%97%A5%E5%BF%97%E5%A4%84%E7%90%86%E6%B5%85%E8%B0%88%E5%8E%BB%E4%B8%AD%E5%BF%83%E5%8C%96\/"
+            "@id": "http:\/\/localhost:1313\/zh\/posts\/%E4%BB%A5%E6%97%A5%E5%BF%97%E5%A4%84%E7%90%86%E6%B5%85%E8%B0%88%E5%8E%BB%E4%B8%AD%E5%BF%83%E5%8C%96\/"
         },"genre": "posts","keywords": "分布式系统, 去中心化, 系统设计","wordcount":  1672 ,
-        "url": "https:\/\/www.crazyfrank.top\/zh\/posts\/%E4%BB%A5%E6%97%A5%E5%BF%97%E5%A4%84%E7%90%86%E6%B5%85%E8%B0%88%E5%8E%BB%E4%B8%AD%E5%BF%83%E5%8C%96\/","datePublished": "2025-09-05T10:00:00+08:00","dateModified": "2025-09-07T16:39:13+08:00","publisher": {
+        "url": "http:\/\/localhost:1313\/zh\/posts\/%E4%BB%A5%E6%97%A5%E5%BF%97%E5%A4%84%E7%90%86%E6%B5%85%E8%B0%88%E5%8E%BB%E4%B8%AD%E5%BF%83%E5%8C%96\/","datePublished": "2025-09-05T10:00:00+08:00","dateModified": "2025-09-07T16:39:13+08:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
                 "@type": "Person",
@@ -344,7 +344,7 @@ function closeLightbox() {
         <div class="post-info-line">
             <div class="post-info-md"></div>
             <div class="post-info-share">
-                <span><a href="javascript:void(0);" title="分享到 X" data-sharer="x" data-url="https://www.crazyfrank.top/zh/posts/%E4%BB%A5%E6%97%A5%E5%BF%97%E5%A4%84%E7%90%86%E6%B5%85%E8%B0%88%E5%8E%BB%E4%B8%AD%E5%BF%83%E5%8C%96/" data-title="以日志处理浅谈去中心化" data-hashtags="分布式系统,去中心化,系统设计"><i class="fab fa-x-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 Facebook" data-sharer="facebook" data-url="https://www.crazyfrank.top/zh/posts/%E4%BB%A5%E6%97%A5%E5%BF%97%E5%A4%84%E7%90%86%E6%B5%85%E8%B0%88%E5%8E%BB%E4%B8%AD%E5%BF%83%E5%8C%96/" data-hashtag="分布式系统"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 Hacker News" data-sharer="hackernews" data-url="https://www.crazyfrank.top/zh/posts/%E4%BB%A5%E6%97%A5%E5%BF%97%E5%A4%84%E7%90%86%E6%B5%85%E8%B0%88%E5%8E%BB%E4%B8%AD%E5%BF%83%E5%8C%96/" data-title="以日志处理浅谈去中心化"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 Line" data-sharer="line" data-url="https://www.crazyfrank.top/zh/posts/%E4%BB%A5%E6%97%A5%E5%BF%97%E5%A4%84%E7%90%86%E6%B5%85%E8%B0%88%E5%8E%BB%E4%B8%AD%E5%BF%83%E5%8C%96/" data-title="以日志处理浅谈去中心化"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@14.9.0/icons/line.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 微博" data-sharer="weibo" data-url="https://www.crazyfrank.top/zh/posts/%E4%BB%A5%E6%97%A5%E5%BF%97%E5%A4%84%E7%90%86%E6%B5%85%E8%B0%88%E5%8E%BB%E4%B8%AD%E5%BF%83%E5%8C%96/" data-title="以日志处理浅谈去中心化"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 Diaspora" data-sharer="diaspora" data-url="https://www.crazyfrank.top/zh/posts/%E4%BB%A5%E6%97%A5%E5%BF%97%E5%A4%84%E7%90%86%E6%B5%85%E8%B0%88%E5%8E%BB%E4%B8%AD%E5%BF%83%E5%8C%96/" data-title="以日志处理浅谈去中心化" data-description=""><i class="fab fa-diaspora fa-fw" aria-hidden="true"></i></a><a href="https://t.me/share/url?url=https%3a%2f%2fwww.crazyfrank.top%2fzh%2fposts%2f%25E4%25BB%25A5%25E6%2597%25A5%25E5%25BF%2597%25E5%25A4%2584%25E7%2590%2586%25E6%25B5%2585%25E8%25B0%2588%25E5%258E%25BB%25E4%25B8%25AD%25E5%25BF%2583%25E5%258C%2596%2f&amp;text=%e4%bb%a5%e6%97%a5%e5%bf%97%e5%a4%84%e7%90%86%e6%b5%85%e8%b0%88%e5%8e%bb%e4%b8%ad%e5%bf%83%e5%8c%96" target="_blank" title="分享到 Telegram"><i class="fab fa-telegram fa-fw" aria-hidden="true"></i></a></span>
+                <span><a href="javascript:void(0);" title="分享到 X" data-sharer="x" data-url="http://localhost:1313/zh/posts/%E4%BB%A5%E6%97%A5%E5%BF%97%E5%A4%84%E7%90%86%E6%B5%85%E8%B0%88%E5%8E%BB%E4%B8%AD%E5%BF%83%E5%8C%96/" data-title="以日志处理浅谈去中心化" data-hashtags="分布式系统,去中心化,系统设计"><i class="fab fa-x-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 Facebook" data-sharer="facebook" data-url="http://localhost:1313/zh/posts/%E4%BB%A5%E6%97%A5%E5%BF%97%E5%A4%84%E7%90%86%E6%B5%85%E8%B0%88%E5%8E%BB%E4%B8%AD%E5%BF%83%E5%8C%96/" data-hashtag="分布式系统"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 Hacker News" data-sharer="hackernews" data-url="http://localhost:1313/zh/posts/%E4%BB%A5%E6%97%A5%E5%BF%97%E5%A4%84%E7%90%86%E6%B5%85%E8%B0%88%E5%8E%BB%E4%B8%AD%E5%BF%83%E5%8C%96/" data-title="以日志处理浅谈去中心化"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 Line" data-sharer="line" data-url="http://localhost:1313/zh/posts/%E4%BB%A5%E6%97%A5%E5%BF%97%E5%A4%84%E7%90%86%E6%B5%85%E8%B0%88%E5%8E%BB%E4%B8%AD%E5%BF%83%E5%8C%96/" data-title="以日志处理浅谈去中心化"><i data-svg-src="/lib/simple-icons/icons/line.min.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 微博" data-sharer="weibo" data-url="http://localhost:1313/zh/posts/%E4%BB%A5%E6%97%A5%E5%BF%97%E5%A4%84%E7%90%86%E6%B5%85%E8%B0%88%E5%8E%BB%E4%B8%AD%E5%BF%83%E5%8C%96/" data-title="以日志处理浅谈去中心化"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 Diaspora" data-sharer="diaspora" data-url="http://localhost:1313/zh/posts/%E4%BB%A5%E6%97%A5%E5%BF%97%E5%A4%84%E7%90%86%E6%B5%85%E8%B0%88%E5%8E%BB%E4%B8%AD%E5%BF%83%E5%8C%96/" data-title="以日志处理浅谈去中心化" data-description=""><i class="fab fa-diaspora fa-fw" aria-hidden="true"></i></a><a href="https://t.me/share/url?url=http%3a%2f%2flocalhost%3a1313%2fzh%2fposts%2f%25E4%25BB%25A5%25E6%2597%25A5%25E5%25BF%2597%25E5%25A4%2584%25E7%2590%2586%25E6%25B5%2585%25E8%25B0%2588%25E5%258E%25BB%25E4%25B8%25AD%25E5%25BF%2583%25E5%258C%2596%2f&amp;text=%e4%bb%a5%e6%97%a5%e5%bf%97%e5%a4%84%e7%90%86%e6%b5%85%e8%b0%88%e5%8e%bb%e4%b8%ad%e5%bf%83%e5%8c%96" target="_blank" title="分享到 Telegram"><i class="fab fa-telegram fa-fw" aria-hidden="true"></i></a></span>
             </div>
         </div>
     </div>

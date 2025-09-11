@@ -2,47 +2,47 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>System Design on Crazyfrank&#39;s Blog</title>
-    <link>https://www.crazyfrank.top/en/tags/system-design/</link>
+    <link>http://localhost:1313/en/tags/system-design/</link>
     <description>Recent content in System Design on Crazyfrank&#39;s Blog</description>
     <generator>Hugo</generator>
     <language>en-US</language>
     <managingEditor>axu9417@gmail.com (crazyfrank)</managingEditor>
     <webMaster>axu9417@gmail.com (crazyfrank)</webMaster>
-    <lastBuildDate>Thu, 11 Sep 2025 10:00:00 +0800</lastBuildDate>
-    <atom:link href="https://www.crazyfrank.top/en/tags/system-design/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 11 Sep 2025 14:32:15 +0800</lastBuildDate>
+    <atom:link href="http://localhost:1313/en/tags/system-design/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Architecture Design-Comment System</title>
-      <link>https://www.crazyfrank.top/en/posts/architecture-design-comment-system/</link>
+      <link>http://localhost:1313/en/posts/architecture-design-comment-system/</link>
       <pubDate>Thu, 11 Sep 2025 10:00:00 +0800</pubDate><author>axu9417@gmail.com (crazyfrank)</author>
-      <guid>https://www.crazyfrank.top/en/posts/architecture-design-comment-system/</guid>
+      <guid>http://localhost:1313/en/posts/architecture-design-comment-system/</guid>
       <description>&lt;p&gt;The most important thing in architectural design is to &lt;strong&gt;understand the positioning of the entire product system in the system&lt;/strong&gt;. Only by figuring out the background behind the system can you make the best design and abstraction. Don’t be a translation machine for demand, first understand the essence behind the business and the original intention of the matter.&lt;/p&gt;&#xA;&lt;p&gt;Comment system, when we go to the small, we are video comment system, when we go to the large, we are commenting platform, we can access various business forms.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Understanding Decentralization Through Log Processing</title>
-      <link>https://www.crazyfrank.top/en/posts/understanding-decentralization-through-log-processing/</link>
+      <link>http://localhost:1313/en/posts/understanding-decentralization-through-log-processing/</link>
       <pubDate>Fri, 05 Sep 2025 10:00:00 +0800</pubDate><author>axu9417@gmail.com (crazyfrank)</author>
-      <guid>https://www.crazyfrank.top/en/posts/understanding-decentralization-through-log-processing/</guid>
-      <description>&lt;p&gt;This article explores decentralized system design concepts and implementation approaches through the lens of log processing.&lt;/p&gt;&#xA;&lt;h2 id=&#34;overview-of-decentralized-systems&#34;&gt;Overview of Decentralized Systems&lt;/h2&gt;&#xA;&lt;p&gt;Decentralization is a key concept in distributed system design that improves system reliability and fault tolerance by distributing control across multiple nodes.&lt;/p&gt;&#xA;&lt;p&gt;In architecture, &amp;ldquo;decentralization&amp;rdquo; doesn&amp;rsquo;t necessarily mean &amp;ldquo;completely no center,&amp;rdquo; but rather:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Avoid irreplaceable single points of failure by using distributed, peer-to-peer nodes to share responsibilities&lt;/li&gt;&#xA;&lt;li&gt;System availability and scalability don&amp;rsquo;t depend on any single critical node&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;log-processing&#34;&gt;Log Processing&lt;/h2&gt;&#xA;&#xA;&#xA;&#xA;&#xA;&lt;div class=&#34;lightbox-container&#34;&gt;&#xA;  &lt;img src=&#34;https://www.crazyfrank.top/images/decentration/img-1.png&#34; alt=&#34;Centralized Architecture Diagram&#34; style=&#34;width: 1200px; cursor: pointer;&#34; onclick=&#34;openLightbox(&#39;\/images\/decentration\/img-1.png&#39;)&#34;&gt;&#xA;&lt;/div&gt;&#xA;&#xA;&lt;div id=&#34;lightbox&#34; style=&#34;display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 1000; cursor: pointer;&#34; onclick=&#34;closeLightbox()&#34;&gt;&#xA;  &lt;img id=&#34;lightbox-img&#34; style=&#34;position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); max-width: 90%; max-height: 90%;&#34;&gt;&#xA;&lt;/div&gt;&#xA;&#xA;&lt;script&gt;&#xA;function openLightbox(src) {&#xA;  document.getElementById(&#39;lightbox-img&#39;).src = src;&#xA;  document.getElementById(&#39;lightbox&#39;).style.display = &#39;block&#39;;&#xA;}&#xA;function closeLightbox() {&#xA;  document.getElementById(&#39;lightbox&#39;).style.display = &#39;none&#39;;&#xA;}&#xA;&lt;/script&gt;&#xA;&#xA;&lt;p&gt;Taking the &lt;a href=&#34;https://www.elastic.co/elastic-stack&#34; target=&#34;_blank&#34; rel=&#34;noopener noreffer &#34;&gt;ELK&lt;/a&gt; log processing architecture as an example:&lt;/p&gt;</description>
+      <guid>http://localhost:1313/en/posts/understanding-decentralization-through-log-processing/</guid>
+      <description>&lt;p&gt;This article explores decentralized system design concepts and implementation approaches through the lens of log processing.&lt;/p&gt;&#xA;&lt;h2 id=&#34;overview-of-decentralized-systems&#34;&gt;Overview of Decentralized Systems&lt;/h2&gt;&#xA;&lt;p&gt;Decentralization is a key concept in distributed system design that improves system reliability and fault tolerance by distributing control across multiple nodes.&lt;/p&gt;&#xA;&lt;p&gt;In architecture, &amp;ldquo;decentralization&amp;rdquo; doesn&amp;rsquo;t necessarily mean &amp;ldquo;completely no center,&amp;rdquo; but rather:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Avoid irreplaceable single points of failure by using distributed, peer-to-peer nodes to share responsibilities&lt;/li&gt;&#xA;&lt;li&gt;System availability and scalability don&amp;rsquo;t depend on any single critical node&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;log-processing&#34;&gt;Log Processing&lt;/h2&gt;&#xA;&#xA;&#xA;&#xA;&#xA;&lt;div class=&#34;lightbox-container&#34;&gt;&#xA;  &lt;img src=&#34;http://localhost:1313/images/decentration/img-1.png&#34; alt=&#34;Centralized Architecture Diagram&#34; style=&#34;width: 1200px; cursor: pointer;&#34; onclick=&#34;openLightbox(&#39;\/images\/decentration\/img-1.png&#39;)&#34;&gt;&#xA;&lt;/div&gt;&#xA;&#xA;&lt;div id=&#34;lightbox&#34; style=&#34;display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 1000; cursor: pointer;&#34; onclick=&#34;closeLightbox()&#34;&gt;&#xA;  &lt;img id=&#34;lightbox-img&#34; style=&#34;position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); max-width: 90%; max-height: 90%;&#34;&gt;&#xA;&lt;/div&gt;&#xA;&#xA;&lt;script&gt;&#xA;function openLightbox(src) {&#xA;  document.getElementById(&#39;lightbox-img&#39;).src = src;&#xA;  document.getElementById(&#39;lightbox&#39;).style.display = &#39;block&#39;;&#xA;}&#xA;function closeLightbox() {&#xA;  document.getElementById(&#39;lightbox&#39;).style.display = &#39;none&#39;;&#xA;}&#xA;&lt;/script&gt;&#xA;&#xA;&lt;p&gt;Taking the &lt;a href=&#34;https://www.elastic.co/elastic-stack&#34; target=&#34;_blank&#34; rel=&#34;noopener noreffer &#34;&gt;ELK&lt;/a&gt; log processing architecture as an example:&lt;/p&gt;</description>
     </item>
     <item>
       <title>Some Thoughts on DDD</title>
-      <link>https://www.crazyfrank.top/en/posts/some-thoughts-on-ddd/</link>
+      <link>http://localhost:1313/en/posts/some-thoughts-on-ddd/</link>
       <pubDate>Thu, 04 Sep 2025 10:00:00 +0800</pubDate><author>axu9417@gmail.com (crazyfrank)</author>
-      <guid>https://www.crazyfrank.top/en/posts/some-thoughts-on-ddd/</guid>
+      <guid>http://localhost:1313/en/posts/some-thoughts-on-ddd/</guid>
       <description>&lt;h2 id=&#34;project-introduction&#34;&gt;Project Introduction&lt;/h2&gt;&#xA;&lt;p&gt;I&amp;rsquo;m writing this article mainly to share some learning insights from the project practice of DDD. Since I&amp;rsquo;m too lazy to read the theory, I&amp;rsquo;m just guessing how DDD should be designed. For more details, please refer to the DDD official website: &lt;a href=&#34;https://domain-driven-design.org/zh/ddd-concept-reference.html&#34; target=&#34;_blank&#34; rel=&#34;noopener noreffer &#34;&gt;DDD Concept Introduction&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;Recently, ByteDance has open-sourced their open-coze. The front end is React + TS, and the back end uses Go. Since I didn&amp;rsquo;t use Py or TS, and I have a bit more knowledge of Go, I started learning it.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Logs and Errors</title>
-      <link>https://www.crazyfrank.top/en/posts/logs-and-errors/</link>
+      <link>http://localhost:1313/en/posts/logs-and-errors/</link>
       <pubDate>Wed, 03 Sep 2025 10:00:00 +0800</pubDate><author>axu9417@gmail.com (crazyfrank)</author>
-      <guid>https://www.crazyfrank.top/en/posts/logs-and-errors/</guid>
+      <guid>http://localhost:1313/en/posts/logs-and-errors/</guid>
       <description>&lt;h2 id=&#34;logs-and-errors&#34;&gt;Logs and Errors&lt;/h2&gt;&#xA;&lt;p&gt;Generally speaking, in our project, if we strictly divide it according to a hierarchical structure, it is roughly &lt;code&gt;handler&lt;/code&gt;, &lt;code&gt;service&lt;/code&gt; (which is further subdivided into &lt;code&gt;application&lt;/code&gt; in DDD), and&#xA;&lt;code&gt;domain&lt;/code&gt;, &lt;code&gt;dao&lt;/code&gt;.&lt;/p&gt;&#xA;&lt;p&gt;For the &lt;code&gt;dao&lt;/code&gt; layer, if an error occurs, we deal with it by directly up-throwing and selectively logging the error, for example,&#xA;there may be some interfaces that involve parameter validation at the &lt;code&gt;dao&lt;/code&gt; layer, manually managing transactions, and so on, which require logging, but the error is still directly up-throwing.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Load Balancing</title>
-      <link>https://www.crazyfrank.top/en/posts/load-balancing/</link>
+      <link>http://localhost:1313/en/posts/load-balancing/</link>
       <pubDate>Tue, 02 Sep 2025 10:00:00 +0800</pubDate><author>axu9417@gmail.com (crazyfrank)</author>
-      <guid>https://www.crazyfrank.top/en/posts/load-balancing/</guid>
+      <guid>http://localhost:1313/en/posts/load-balancing/</guid>
       <description>&lt;h2 id=&#34;overview&#34;&gt;Overview&lt;/h2&gt;&#xA;&lt;p&gt;In a distributed environment, each microservice will have different instances. Service registration and service discovery solve the problem of &amp;ldquo;what are the available instances&amp;rdquo;, and the remaining question is &amp;ldquo;who should I send the request to with so many available instances?&amp;rdquo;. The question that remains is, &amp;ldquo;With so many available instances, who do I send the request to? Intuitively, most people, if they have heard of some specialized terminology, will directly think of &amp;ldquo;load balancing&amp;rdquo;. What exactly is load balancing?&lt;/p&gt;</description>
     </item>
   </channel>

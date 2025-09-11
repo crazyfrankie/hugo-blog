@@ -1,24 +1,24 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
         <title>All Posts - Crazyfrank&#39;s Blog</title>
-        <link>https://www.crazyfrank.top/en/posts/</link>
+        <link>http://localhost:1313/en/posts/</link>
         <description>All Posts | Crazyfrank&#39;s Blog</description>
         <generator>Hugo -- gohugo.io</generator><language>en-US</language><managingEditor>axu9417@gmail.com (crazyfrank)</managingEditor>
-            <webMaster>axu9417@gmail.com (crazyfrank)</webMaster><atom:link href="https://www.crazyfrank.top/en/posts/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>axu9417@gmail.com (crazyfrank)</webMaster><atom:link href="http://localhost:1313/en/posts/" rel="self" type="application/rss+xml" /><item>
     <title>Architecture Design-Comment System</title>
-    <link>https://www.crazyfrank.top/en/posts/architecture-design-comment-system/</link>
+    <link>http://localhost:1313/en/posts/architecture-design-comment-system/</link>
     <pubDate>Thu, 11 Sep 2025 10:00:00 &#43;0800</pubDate>
     <author>crazyfrank</author>
-    <guid>https://www.crazyfrank.top/en/posts/architecture-design-comment-system/</guid>
+    <guid>http://localhost:1313/en/posts/architecture-design-comment-system/</guid>
     <description><![CDATA[<p>The most important thing in architectural design is to <strong>understand the positioning of the entire product system in the system</strong>. Only by figuring out the background behind the system can you make the best design and abstraction. Don’t be a translation machine for demand, first understand the essence behind the business and the original intention of the matter.</p>
 <p>Comment system, when we go to the small, we are video comment system, when we go to the large, we are commenting platform, we can access various business forms.</p>]]></description>
 </item>
 <item>
     <title>Understanding Decentralization Through Log Processing</title>
-    <link>https://www.crazyfrank.top/en/posts/understanding-decentralization-through-log-processing/</link>
+    <link>http://localhost:1313/en/posts/understanding-decentralization-through-log-processing/</link>
     <pubDate>Fri, 05 Sep 2025 10:00:00 &#43;0800</pubDate>
     <author>crazyfrank</author>
-    <guid>https://www.crazyfrank.top/en/posts/understanding-decentralization-through-log-processing/</guid>
+    <guid>http://localhost:1313/en/posts/understanding-decentralization-through-log-processing/</guid>
     <description><![CDATA[<p>This article explores decentralized system design concepts and implementation approaches through the lens of log processing.</p>
 <h2 id="overview-of-decentralized-systems">Overview of Decentralized Systems</h2>
 <p>Decentralization is a key concept in distributed system design that improves system reliability and fault tolerance by distributing control across multiple nodes.</p>
@@ -54,20 +54,20 @@ function closeLightbox() {
 </item>
 <item>
     <title>Some Thoughts on DDD</title>
-    <link>https://www.crazyfrank.top/en/posts/some-thoughts-on-ddd/</link>
+    <link>http://localhost:1313/en/posts/some-thoughts-on-ddd/</link>
     <pubDate>Thu, 04 Sep 2025 10:00:00 &#43;0800</pubDate>
     <author>crazyfrank</author>
-    <guid>https://www.crazyfrank.top/en/posts/some-thoughts-on-ddd/</guid>
+    <guid>http://localhost:1313/en/posts/some-thoughts-on-ddd/</guid>
     <description><![CDATA[<h2 id="project-introduction">Project Introduction</h2>
 <p>I&rsquo;m writing this article mainly to share some learning insights from the project practice of DDD. Since I&rsquo;m too lazy to read the theory, I&rsquo;m just guessing how DDD should be designed. For more details, please refer to the DDD official website: <a href="https://domain-driven-design.org/zh/ddd-concept-reference.html" target="_blank" rel="noopener noreffer ">DDD Concept Introduction</a></p>
 <p>Recently, ByteDance has open-sourced their open-coze. The front end is React + TS, and the back end uses Go. Since I didn&rsquo;t use Py or TS, and I have a bit more knowledge of Go, I started learning it.</p>]]></description>
 </item>
 <item>
     <title>Logs and Errors</title>
-    <link>https://www.crazyfrank.top/en/posts/logs-and-errors/</link>
+    <link>http://localhost:1313/en/posts/logs-and-errors/</link>
     <pubDate>Wed, 03 Sep 2025 10:00:00 &#43;0800</pubDate>
     <author>crazyfrank</author>
-    <guid>https://www.crazyfrank.top/en/posts/logs-and-errors/</guid>
+    <guid>http://localhost:1313/en/posts/logs-and-errors/</guid>
     <description><![CDATA[<h2 id="logs-and-errors">Logs and Errors</h2>
 <p>Generally speaking, in our project, if we strictly divide it according to a hierarchical structure, it is roughly <code>handler</code>, <code>service</code> (which is further subdivided into <code>application</code> in DDD), and
 <code>domain</code>, <code>dao</code>.</p>
@@ -76,10 +76,10 @@ there may be some interfaces that involve parameter validation at the <code>dao<
 </item>
 <item>
     <title>DB-Cache Consistency Problem</title>
-    <link>https://www.crazyfrank.top/en/posts/db-cache-consistency-problem/</link>
+    <link>http://localhost:1313/en/posts/db-cache-consistency-problem/</link>
     <pubDate>Tue, 02 Sep 2025 10:00:00 &#43;0800</pubDate>
     <author>crazyfrank</author>
-    <guid>https://www.crazyfrank.top/en/posts/db-cache-consistency-problem/</guid>
+    <guid>http://localhost:1313/en/posts/db-cache-consistency-problem/</guid>
     <description><![CDATA[<p>How to ensure the consistency between cache and database is a topic that has been discussed over and over again.</p>
 <p>But many people still have a lot of doubts about this issue:</p>
 <ul>
@@ -94,19 +94,19 @@ there may be some interfaces that involve parameter validation at the <code>dao<
 </item>
 <item>
     <title>Load Balancing</title>
-    <link>https://www.crazyfrank.top/en/posts/load-balancing/</link>
+    <link>http://localhost:1313/en/posts/load-balancing/</link>
     <pubDate>Tue, 02 Sep 2025 10:00:00 &#43;0800</pubDate>
     <author>crazyfrank</author>
-    <guid>https://www.crazyfrank.top/en/posts/load-balancing/</guid>
+    <guid>http://localhost:1313/en/posts/load-balancing/</guid>
     <description><![CDATA[<h2 id="overview">Overview</h2>
 <p>In a distributed environment, each microservice will have different instances. Service registration and service discovery solve the problem of &ldquo;what are the available instances&rdquo;, and the remaining question is &ldquo;who should I send the request to with so many available instances?&rdquo;. The question that remains is, &ldquo;With so many available instances, who do I send the request to? Intuitively, most people, if they have heard of some specialized terminology, will directly think of &ldquo;load balancing&rdquo;. What exactly is load balancing?</p>]]></description>
 </item>
 <item>
     <title>MVCC and MySQL Logs</title>
-    <link>https://www.crazyfrank.top/en/posts/mvcc-and-mysql-logs/</link>
+    <link>http://localhost:1313/en/posts/mvcc-and-mysql-logs/</link>
     <pubDate>Tue, 02 Sep 2025 10:00:00 &#43;0800</pubDate>
     <author>crazyfrank</author>
-    <guid>https://www.crazyfrank.top/en/posts/mvcc-and-mysql-logs/</guid>
+    <guid>http://localhost:1313/en/posts/mvcc-and-mysql-logs/</guid>
     <description><![CDATA[<p>Under the <strong>MVCC</strong> mechanism, <strong>Redo Log and Bin Log are mainly useful at transaction commit time</strong> and their roles and trigger timing are as follows:</p>
 <hr>
 <h3 id="logging-behavior-during-transaction-execution">Logging behavior during transaction execution</h3>
@@ -121,10 +121,10 @@ there may be some interfaces that involve parameter validation at the <code>dao<
 </item>
 <item>
     <title>realisation</title>
-    <link>https://www.crazyfrank.top/en/posts/realisation/</link>
+    <link>http://localhost:1313/en/posts/realisation/</link>
     <pubDate>Mon, 01 Sep 2025 10:00:00 &#43;0800</pubDate>
     <author>crazyfrank</author>
-    <guid>https://www.crazyfrank.top/en/posts/realisation/</guid>
+    <guid>http://localhost:1313/en/posts/realisation/</guid>
     <description><![CDATA[<p>Man&rsquo;s physical body is the past and his consciousness is the present and future.</p>]]></description>
 </item>
 </channel>

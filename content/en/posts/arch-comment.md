@@ -12,3 +12,8 @@ Comment system, when we go to the small, we are video comment system, when we go
 - Read comments: Sort by time and popularity.
 - Delete comments: user deletes, author deletes.
 - Management Comments: Author top, backend operation management (search, delete, review, etc.).
+
+## Architecture Overview
+
+We'll use the design of `bilibili` as a reference (it doesn't represent the actual current architectural design).
+{{< lightbox src="/images/arch-comment/img-1.png" width="800px" >}}

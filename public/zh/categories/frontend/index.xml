@@ -2,12 +2,12 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>前端 on Crazyfrank 的博客</title>
-    <link>https://www.crazyfrank.top/zh/categories/frontend/</link>
+    <link>http://localhost:1313/zh/categories/frontend/</link>
     <description>Recent content in 前端 on Crazyfrank 的博客</description>
     <generator>Hugo</generator>
     <language>zh-CN</language>
     <managingEditor>axu9417@gmail.com (crazyfrank)</managingEditor>
     <webMaster>axu9417@gmail.com (crazyfrank)</webMaster>
-    <atom:link href="https://www.crazyfrank.top/zh/categories/frontend/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/zh/categories/frontend/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>
