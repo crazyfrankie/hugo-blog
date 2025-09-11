@@ -53,6 +53,21 @@
 <p>我们从最简单的场景开始讲起。</p>]]></description>
 </item>
 <item>
+    <title>MVCC 及 MySQL 日志</title>
+    <link>http://localhost:1313/mysql-log/</link>
+    <pubDate>Tue, 02 Sep 2025 10:00:00 &#43;0800</pubDate>
+    <author>crazyfrank</author>
+    <guid>http://localhost:1313/mysql-log/</guid>
+    <description><![CDATA[<h2 id="mvcc-及-mysql-日志">MVCC 及 MySQL 日志</h2>
+<p>在 <strong>MVCC</strong> 机制下，<strong>Redo Log 和 Bin Log 主要在事务提交时发挥作用</strong> ，它们的作用和触发时机如下：</p>
+<hr>
+<h3 id="1-事务执行过程中的日志行为"><strong>1. 事务执行过程中的日志行为</strong></h3>
+<p>当执行：</p>
+<pre><code>UPDATE users SET age = 26 WHERE id = 1;  
+</code></pre>
+<p>MySQL 的 <strong>事务执行顺序</strong> （结合 MVCC + 日志）如下：</p>]]></description>
+</item>
+<item>
     <title>负载均衡</title>
     <link>http://localhost:1313/load-balance/</link>
     <pubDate>Tue, 02 Sep 2025 10:00:00 &#43;0800</pubDate>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>MySQL on Crazyfrank 的博客</title>
+    <link>http://localhost:1313/tags/mysql/</link>
+    <description>Recent content in MySQL on Crazyfrank 的博客</description>
+    <generator>Hugo</generator>
+    <language>zh-CN</language>
+    <managingEditor>axu9417@gmail.com (crazyfrank)</managingEditor>
+    <webMaster>axu9417@gmail.com (crazyfrank)</webMaster>
+    <lastBuildDate>Tue, 02 Sep 2025 10:00:00 +0800</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/mysql/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>MVCC 及 MySQL 日志</title>
+      <link>http://localhost:1313/mysql-log/</link>
+      <pubDate>Tue, 02 Sep 2025 10:00:00 +0800</pubDate><author>axu9417@gmail.com (crazyfrank)</author>
+      <guid>http://localhost:1313/mysql-log/</guid>
+      <description>&lt;h2 id=&#34;mvcc-及-mysql-日志&#34;&gt;MVCC 及 MySQL 日志&lt;/h2&gt;&#xA;&lt;p&gt;在 &lt;strong&gt;MVCC&lt;/strong&gt; 机制下，&lt;strong&gt;Redo Log 和 Bin Log 主要在事务提交时发挥作用&lt;/strong&gt; ，它们的作用和触发时机如下：&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h3 id=&#34;1-事务执行过程中的日志行为&#34;&gt;&lt;strong&gt;1. 事务执行过程中的日志行为&lt;/strong&gt;&lt;/h3&gt;&#xA;&lt;p&gt;当执行：&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;UPDATE users SET age = 26 WHERE id = 1;  &#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;MySQL 的 &lt;strong&gt;事务执行顺序&lt;/strong&gt; （结合 MVCC + 日志）如下：&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

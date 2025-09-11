@@ -1,35 +1,49 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-    <head>
-	<meta name="generator" content="Hugo 0.148.2"><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
-        <title>Crazyfrank 的博客</title><meta name="Description" content="欢迎来到我的博客"><meta property="og:url" content="http://localhost:1313/">
+        <title>MVCC 及 MySQL 日志 - Crazyfrank 的博客</title><meta name="Description" content="Crazyfrank 的中文博客"><meta property="og:url" content="http://localhost:1313/mysql-log/">
   <meta property="og:site_name" content="Crazyfrank 的博客">
-  <meta property="og:title" content="首页">
-  <meta property="og:description" content="欢迎来到我的博客">
+  <meta property="og:title" content="MVCC 及 MySQL 日志">
+  <meta property="og:description" content="在 MVCC 机制下，Redo Log 和 Bin Log 主要在事务提交时发挥作用 ，它们的作用和触发时机如下：
+事务执行过程中的日志行为 当执行：
+UPDATE users SET age = 26 WHERE id = 1; MySQL 的 事务执行顺序 （结合 MVCC &#43; 日志）如下：">
   <meta property="og:locale" content="zh_CN">
-  <meta property="og:type" content="website">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2025-09-02T10:00:00+08:00">
+    <meta property="article:modified_time" content="2025-09-02T10:00:00+08:00">
+    <meta property="article:tag" content="MySQL">
     <meta property="og:image" content="http://localhost:1313/logo.png">
 
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:image" content="http://localhost:1313/logo.png">
-  <meta name="twitter:title" content="首页">
-  <meta name="twitter:description" content="欢迎来到我的博客">
+  <meta name="twitter:title" content="MVCC 及 MySQL 日志">
+  <meta name="twitter:description" content="在 MVCC 机制下，Redo Log 和 Bin Log 主要在事务提交时发挥作用 ，它们的作用和触发时机如下：
+事务执行过程中的日志行为 当执行：
+UPDATE users SET age = 26 WHERE id = 1; MySQL 的 事务执行顺序 （结合 MVCC &#43; 日志）如下：">
 <meta name="application-name" content="Crazyfrank&#39;s Blog">
 <meta name="apple-mobile-web-app-title" content="Crazyfrank&#39;s Blog">
-<meta name="referrer" content="no-referrer" /><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/favicon.svg"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://localhost:1313/" /><link rel="alternate" href="/index.xml" type="application/rss+xml" title="Crazyfrank 的博客">
-    <link rel="feed" href="/index.xml" type="application/rss+xml" title="Crazyfrank 的博客"><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<meta name="referrer" content="no-referrer" /><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/favicon.svg"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://localhost:1313/mysql-log/" /><link rel="prev" href="http://localhost:1313/load-balance/" /><link rel="next" href="http://localhost:1313/db-cache/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="/lib/fontawesome-free/css/all.min.css"></noscript><link rel="preload" href="/lib/animate/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
     {
         "@context": "http://schema.org",
-        "@type": "WebSite",
-        "url": "http:\/\/localhost:1313\/","inLanguage": "zh-CN","author": {
+        "@type": "BlogPosting",
+        "headline": "MVCC 及 MySQL 日志",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "http:\/\/localhost:1313\/mysql-log\/"
+        },"genre": "posts","keywords": "MySQL","wordcount":  998 ,
+        "url": "http:\/\/localhost:1313\/mysql-log\/","datePublished": "2025-09-02T10:00:00+08:00","dateModified": "2025-09-02T10:00:00+08:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
                 "@type": "Person",
                 "name": "crazyfrank"
-            },"description": "Crazyfrank 的中文博客","name": "Crazyfrank 的博客"
+            },"description": ""
     }
     </script><script src="https://cdn.jsdelivr.net/npm/typeit@8.7.1/dist/index.umd.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><link rel="stylesheet" href="/css/header-links.css">
@@ -69,7 +83,7 @@
                     <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
                 </a><a href="javascript:void(0);" class="menu-item language" title="选择语言">
                     <i class="fa fa-globe fa-fw" aria-hidden="true"></i>                      
-                    <select class="language-select" id="language-select-desktop" onchange="location = this.value;"><option value="/" selected>简体中文</option><option value="/en/">English</option></select>
+                    <select class="language-select" id="language-select-desktop" onchange="location = this.value;"><option value="/mysql-log/" selected>简体中文</option><option value="/en/mysql-log/">English</option></select>
                 </a></div>
         </div>
     </div>
@@ -103,7 +117,7 @@
                 <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
             </a><a href="javascript:void(0);" class="menu-item" title="选择语言">
                     <i class="fa fa-globe fa-fw" aria-hidden="true"></i>
-                    <select class="language-select" onchange="location = this.value;"><option value="/" selected>简体中文</option><option value="/en/">English</option></select>
+                    <select class="language-select" onchange="location = this.value;"><option value="/mysql-log/" selected>简体中文</option><option value="/en/mysql-log/">English</option></select>
                 </a></div>
     </div>
 </header><div class="search-dropdown desktop">
@@ -112,53 +126,37 @@
     <div class="search-dropdown mobile">
         <div id="search-dropdown-mobile"></div>
     </div><main class="main">
-                <div class="container"><div class="page home" data-home="posts"><div class="home-profile"><div class="home-avatar"><a href="/posts/" title="文章"><img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="/images/avatar.jpg"
-        data-srcset="/images/avatar.jpg, /images/avatar.jpg 1.5x, /images/avatar.jpg 2x"
-        data-sizes="auto"
-        alt="/images/avatar.jpg"
-        title="/images/avatar.jpg" width="640" height="640" /></a></div><h1 class="home-title">Crazyfrank 的博客</h1><div class="home-subtitle"><div id="id-3" class="typeit"></div></div><div class="links"><a href="https://github.com/crazyfrankie" title="GitHub" target="_blank" rel="noopener noreffer me"><i class="fab fa-github fa-fw" aria-hidden="true"></i></a><a href="https://stackoverflow.com/users/https://stackoverflow.com/users/23976013/crazyfrank" title="Stack Overflow" target="_blank" rel="noopener noreffer me"><i class="fab fa-stack-overflow fa-fw" aria-hidden="true"></i></a><a href="mailto:axu9417@gmail.com" title="Email" rel="me"><i class="far fa-envelope fa-fw" aria-hidden="true"></i></a></div></div>
-<article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/decentration/">以日志处理浅谈去中心化</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="https://hugo.crazyfrank.top/" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>crazyfrank</a></span>&nbsp;<span class="post-publish">发布于 <time datetime="2025-09-05">2025-09-05</time></span>&nbsp;<span class="post-category">收录于 <a href="/categories/%E6%8A%80%E6%9C%AF/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>技术</a>&nbsp;<a href="/categories/%E5%90%8E%E7%AB%AF/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>后端</a></span></div><div class="content"><p>本文通过日志处理的角度来探讨去中心化系统的设计思路和实现方案。</p>
-<h2 id="去中心化系统概述">去中心化系统概述</h2>
-<p>去中心化是分布式系统设计中的重要概念，它通过将控制权分散到多个节点来提高系统的可靠性和容错性。</p></div><div class="post-footer">
-        <a href="/decentration/">阅读全文</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/%E5%88%86%E5%B8%83%E5%BC%8F%E7%B3%BB%E7%BB%9F/">分布式系统</a>,&nbsp;<a href="/tags/%E5%8E%BB%E4%B8%AD%E5%BF%83%E5%8C%96/">去中心化</a>,&nbsp;<a href="/tags/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/">系统设计</a></div></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/ddd/">DDD 的一些思考</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="https://hugo.crazyfrank.top/" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>crazyfrank</a></span>&nbsp;<span class="post-publish">发布于 <time datetime="2025-09-04">2025-09-04</time></span>&nbsp;<span class="post-category">收录于 <a href="/categories/%E6%8A%80%E6%9C%AF/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>技术</a>&nbsp;<a href="/categories/%E5%90%8E%E7%AB%AF/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>后端</a></span></div><div class="content"><h2 id="项目介绍">项目介绍</h2>
-<p>叠甲，写这篇文章主要是分享在看 DDD 的项目实践中的一些学习感悟，因为本人懒得看理论，所以都只是猜测 DDD 要这么设计。具体还是要参考 DDD 官方网站： <a href="https://domain-driven-design.org/zh/ddd-concept-reference.html" target="_blank" rel="noopener noreffer ">DDD 概念介绍</a></p></div><div class="post-footer">
-        <a href="/ddd/">阅读全文</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/ddd/">DDD</a>,&nbsp;<a href="/tags/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/">系统设计</a></div></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/log-error/">日志与 Error</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="https://hugo.crazyfrank.top/" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>crazyfrank</a></span>&nbsp;<span class="post-publish">发布于 <time datetime="2025-09-03">2025-09-03</time></span>&nbsp;<span class="post-category">收录于 <a href="/categories/%E6%8A%80%E6%9C%AF/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>技术</a>&nbsp;<a href="/categories/%E5%90%8E%E7%AB%AF/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>后端</a></span></div><div class="content"><h2 id="日志与-error">日志与 Error</h2>
-<p>一般来说在我们的项目中，按照严格分层的结构划分的话，大致是 <code>handler</code>、<code>service</code>（DDD 中细分为 <code>application</code> 和
-<code>domain</code> ），<code>dao</code>。</p>
-<p>对于 <code>dao</code> 层，如果出现错误，我们的处理方式是直接上抛，选择性的打日志处理错误，比如可能有些接口涉及到在 <code>dao</code>层进行参数校验、手动管理事务等，需要日志记录，但错误仍然是直接上抛。</p></div><div class="post-footer">
-        <a href="/log-error/">阅读全文</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/">系统设计</a>,&nbsp;<a href="/tags/%E6%97%A5%E5%BF%97/">日志</a></div></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/db-cache/">DB-Cache 一致性问题</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="https://hugo.crazyfrank.top/" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>crazyfrank</a></span>&nbsp;<span class="post-publish">发布于 <time datetime="2025-09-02">2025-09-02</time></span>&nbsp;<span class="post-category">收录于 <a href="/categories/%E6%8A%80%E6%9C%AF/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>技术</a>&nbsp;<a href="/categories/%E5%90%8E%E7%AB%AF/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>后端</a></span></div><div class="content"><p>如何保证缓存和数据库一致性，这是一个老生常谈的话题了。</p>
-<p>但很多人对这个问题，依旧有很多疑惑：</p>
-<ul>
-<li>到底是更新缓存还是删缓存？</li>
-<li>到底选择先更新数据库，再删除缓存，还是先删除缓存，再更新数据库？</li>
-<li>为什么要引入消息队列保证一致性？</li>
-<li>延迟双删会有什么问题？到底要不要用？</li>
-<li>…</li>
-</ul>
-<h2 id="引入缓存提高性能">引入缓存提高性能</h2>
-<p>我们从最简单的场景开始讲起。</p></div><div class="post-footer">
-        <a href="/db-cache/">阅读全文</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/%E6%95%B0%E6%8D%AE%E4%B8%80%E8%87%B4%E6%80%A7/">数据一致性</a>,&nbsp;<a href="/tags/db/">DB</a>,&nbsp;<a href="/tags/cache/">Cache</a></div></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/mysql-log/">MVCC 及 MySQL 日志</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="https://hugo.crazyfrank.top/" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>crazyfrank</a></span>&nbsp;<span class="post-publish">发布于 <time datetime="2025-09-02">2025-09-02</time></span>&nbsp;<span class="post-category">收录于 <a href="/categories/%E6%8A%80%E6%9C%AF/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>技术</a>&nbsp;<a href="/categories/%E5%90%8E%E7%AB%AF/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>后端</a></span></div><div class="content"><p>在 <strong>MVCC</strong> 机制下，<strong>Redo Log 和 Bin Log 主要在事务提交时发挥作用</strong> ，它们的作用和触发时机如下：</p>
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">目录</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">MVCC 及 MySQL 日志</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="https://hugo.crazyfrank.top/" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>crazyfrank</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/%E6%8A%80%E6%9C%AF/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>技术</a>&nbsp;<a href="/categories/%E5%90%8E%E7%AB%AF/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>后端</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2025-09-02">2025-09-02</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;约 998 字&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;预计阅读 2 分钟&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#事务执行过程中的日志行为">事务执行过程中的日志行为</a>
+          <ul>
+            <li><a href="#1-生成-undo-log历史版本">(1) 生成 Undo Log（历史版本）</a></li>
+            <li><a href="#2-写入-redo-log保证崩溃恢复">(2) 写入 Redo Log（保证崩溃恢复）</a></li>
+            <li><a href="#3-事务提交时写入-bin-log用于主从复制和备份">(3) 事务提交时，写入 Bin Log（用于主从复制和备份）</a></li>
+          </ul>
+        </li>
+        <li><a href="#bin-logredo-logundo-log-在整个事务过程中的作用">Bin Log、Redo Log、Undo Log 在整个事务过程中的作用</a></li>
+        <li><a href="#事务提交顺序为什么需要两阶段提交2pc">事务提交顺序：为什么需要两阶段提交（2PC）？</a></li>
+        <li><a href="#总结">总结</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><p>在 <strong>MVCC</strong> 机制下，<strong>Redo Log 和 Bin Log 主要在事务提交时发挥作用</strong> ，它们的作用和触发时机如下：</p>
 <hr>
 <h3 id="事务执行过程中的日志行为">事务执行过程中的日志行为</h3>
 <p>当执行：</p>
@@ -168,24 +166,130 @@
         <span class="ellipses"><i class="fas fa-ellipsis-h fa-fw" aria-hidden="true"></i></span>
         <span class="copy" title="复制到剪贴板"><i class="far fa-copy fa-fw" aria-hidden="true"></i></span>
     </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">UPDATE</span><span class="w"> </span><span class="n">users</span><span class="w"> </span><span class="k">SET</span><span class="w"> </span><span class="n">age</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">26</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w">  </span></span></span></code></pre></div></div>
-<p>MySQL 的 <strong>事务执行顺序</strong> （结合 MVCC + 日志）如下：</p></div><div class="post-footer">
-        <a href="/mysql-log/">阅读全文</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/mysql/">MySQL</a></div></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/load-balance/">负载均衡</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="https://hugo.crazyfrank.top/" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>crazyfrank</a></span>&nbsp;<span class="post-publish">发布于 <time datetime="2025-09-02">2025-09-02</time></span>&nbsp;<span class="post-category">收录于 <a href="/categories/%E6%8A%80%E6%9C%AF/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>技术</a></span></div><div class="content"><h2 id="概览">概览</h2>
-<p>在分布式环境下，各个微服务都会有不同的实例，服务注册和服务发现解决了“有哪些可用实例”的问题，剩下面临的就是，“这么多可用实例，我该把请求发给谁？”。直觉来说，大部分人如果听过一些专业名词，此时会直接想到“负载均衡”。那负载均衡到底是什么呢？</p></div><div class="post-footer">
-        <a href="/load-balance/">阅读全文</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/">负载均衡</a>,&nbsp;<a href="/tags/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/">系统设计</a>,&nbsp;<a href="/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1/">微服务</a></div></div>
-</article><ul class="pagination"><li class="page-item active">
-                    <span class="page-link">
-                        <a href="/">1</a>
-                    </span>
-                </li><li class="page-item ">
-                    <span class="page-link">
-                        <a href="/page/2/">2</a>
-                    </span>
-                </li></ul></div></div>
+<p>MySQL 的 <strong>事务执行顺序</strong> （结合 MVCC + 日志）如下：</p>
+<h4 id="1-生成-undo-log历史版本">(1) 生成 Undo Log（历史版本）</h4>
+<ul>
+<li><strong>MVCC 机制</strong> ：
+<ul>
+<li>事务修改 <code>age</code> 字段时，不直接覆盖，而是<strong>将旧值写入 Undo Log</strong> （用于回滚和快照读）。</li>
+<li>假设 <code>age</code> 原来是 <code>25</code>，Undo Log 记录： <code>{ trx_id: 1001, row_id: 1, old_value: 25 }</code></li>
+<li><strong>在 Buffer Pool 中修改 age = 26</strong> ，但其他事务可能仍然看到 <code>25</code>（基于 Undo Log）。</li>
+</ul>
+</li>
+</ul>
+<h4 id="2-写入-redo-log保证崩溃恢复">(2) 写入 Redo Log（保证崩溃恢复）</h4>
+<ul>
+<li><strong>MySQL 不直接将数据写入磁盘，而是先记录 Redo Log（WAL 机制）</strong> ：
+<ul>
+<li>Redo Log 记录物理层面的修改： yaml复制编辑<code>{ page_id: 123, offset: 56, new_value: 26, state: PREPARE }</code></li>
+<li><strong>数据页的修改还未刷盘</strong> ，但 Redo Log 已写入 <strong>WAL（Write-Ahead Logging）</strong> ，保证即使崩溃也能恢复。</li>
+</ul>
+</li>
+</ul>
+<h4 id="3-事务提交时写入-bin-log用于主从复制和备份">(3) 事务提交时，写入 Bin Log（用于主从复制和备份）</h4>
+<ul>
+<li><strong>事务提交后</strong> ：
+<ul>
+<li><strong>先写 Bin Log（逻辑日志）</strong> ，记录 SQL 语句： sql复制编辑<code>UPDATE users SET age = 26 WHERE id = 1;</code></li>
+<li><strong>再提交 Redo Log（将 “PREPARE” 状态改为 “COMMIT”）</strong> 。</li>
+<li><strong>数据最终刷新到磁盘（Checkpoint 机制）</strong> ，MySQL 才真正持久化数据。</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="bin-logredo-logundo-log-在整个事务过程中的作用">Bin Log、Redo Log、Undo Log 在整个事务过程中的作用</h3>
+<table>
+  <thead>
+      <tr>
+          <th><strong>日志类型</strong></th>
+          <th><strong>记录内容</strong></th>
+          <th><strong>作用</strong></th>
+          <th><strong>触发时机</strong></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>Undo Log</strong></td>
+          <td><strong>旧数据的历史版本</strong></td>
+          <td><strong>回滚事务 / MVCC 版本控制</strong></td>
+          <td>事务修改数据时</td>
+      </tr>
+      <tr>
+          <td><strong>Redo Log</strong></td>
+          <td><strong>物理数据页的修改</strong></td>
+          <td><strong>崩溃恢复（保证已提交事务不丢失）</strong></td>
+          <td>事务执行过程中（WAL 机制）</td>
+      </tr>
+      <tr>
+          <td><strong>Bin Log</strong></td>
+          <td><strong>SQL 语句（逻辑日志）</strong></td>
+          <td><strong>主从复制、数据恢复</strong></td>
+          <td>事务提交时</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h3 id="事务提交顺序为什么需要两阶段提交2pc">事务提交顺序：为什么需要两阶段提交（2PC）？</h3>
+<p><strong>为了解决 Redo Log 和 Bin Log 可能不一致的问题，MySQL 采用两阶段提交</strong> ：</p>
+<ol>
+<li><strong>Prepare 阶段</strong> ：
+<ul>
+<li><strong>先写 Redo Log，状态是 “PREPARE”</strong> （保证崩溃后仍可恢复）。</li>
+<li><strong>再写 Bin Log</strong> （确保 SQL 语句不会丢失）。</li>
+</ul>
+</li>
+<li><strong>Commit 阶段</strong> ：
+<ul>
+<li><strong>标记 Redo Log 为 “COMMIT”，确保数据最终提交</strong> 。</li>
+</ul>
+</li>
+</ol>
+<p>这样即使 MySQL 在 <strong>Redo Log 和 Bin Log 之间崩溃</strong> ：</p>
+<ul>
+<li><strong>如果 Bin Log 已写入但 Redo Log 还没提交</strong> ，则重启时继续提交事务，保证数据一致性。</li>
+<li><strong>如果 Redo Log 还未写入 “PREPARE” 状态</strong> ，事务直接回滚，防止未提交数据影响数据库。</li>
+</ul>
+<hr>
+<h3 id="总结">总结</h3>
+<p><strong>整个事务的日志流转过程：</strong></p>
+<ol>
+<li><strong>事务开始修改数据</strong> → <strong>生成 Undo Log</strong> （保证回滚能力）。</li>
+<li><strong>事务执行时</strong> → <strong>写入 Redo Log（保证崩溃恢复）</strong> 。</li>
+<li><strong>事务提交时</strong> ：
+<ul>
+<li><strong>先写 Redo Log（标记 “PREPARE” 状态）</strong> 。</li>
+<li><strong>再写 Bin Log（记录 SQL 语句）</strong> 。</li>
+<li><strong>提交 Redo Log（标记 “COMMIT”），最终落盘</strong> 。</li>
+</ul>
+</li>
+</ol>
+<p>这样 <strong>Undo Log 负责回滚，Redo Log 负责崩溃恢复，Bin Log 负责主从复制和备份</strong> ，三者各司其职，共同保证 MySQL
+的事务安全和高效性。</p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 2025-09-02</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="分享到 X" data-sharer="x" data-url="http://localhost:1313/mysql-log/" data-title="MVCC 及 MySQL 日志" data-hashtags="MySQL"><i class="fab fa-x-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 Facebook" data-sharer="facebook" data-url="http://localhost:1313/mysql-log/" data-hashtag="MySQL"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 Hacker News" data-sharer="hackernews" data-url="http://localhost:1313/mysql-log/" data-title="MVCC 及 MySQL 日志"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 Line" data-sharer="line" data-url="http://localhost:1313/mysql-log/" data-title="MVCC 及 MySQL 日志"><i data-svg-src="/lib/simple-icons/icons/line.min.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 微博" data-sharer="weibo" data-url="http://localhost:1313/mysql-log/" data-title="MVCC 及 MySQL 日志"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 Diaspora" data-sharer="diaspora" data-url="http://localhost:1313/mysql-log/" data-title="MVCC 及 MySQL 日志" data-description=""><i class="fab fa-diaspora fa-fw" aria-hidden="true"></i></a><a href="https://t.me/share/url?url=http%3a%2f%2flocalhost%3a1313%2fmysql-log%2f&amp;text=MVCC%20%e5%8f%8a%20MySQL%20%e6%97%a5%e5%bf%97" target="_blank" title="分享到 Telegram"><i class="fab fa-telegram fa-fw" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/mysql/">MySQL</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">首页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/load-balance/" class="prev" rel="prev" title="负载均衡"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>负载均衡</a>
+            <a href="/db-cache/" class="next" rel="next" title="DB-Cache 一致性问题">DB-Cache 一致性问题<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+</article></div>
             </main><footer class="footer">
         <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.148.2">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.3.1-DEV"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
                 </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2019 - 2025</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://hugo.crazyfrank.top/" target="_blank">crazyfrank</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>

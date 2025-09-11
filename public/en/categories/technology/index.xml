@@ -37,5 +37,12 @@
       <guid>http://localhost:1313/en/db-cache/</guid>
       <description>&lt;p&gt;How to ensure the consistency between cache and database is a topic that has been discussed over and over again.&lt;/p&gt;&#xA;&lt;p&gt;But many people still have a lot of doubts about this issue:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Should the cache be updated or deleted?&lt;/li&gt;&#xA;&lt;li&gt;Should I choose to update the database first and then delete the cache, or to delete the cache first and then update the database?&lt;/li&gt;&#xA;&lt;li&gt;Why introduce message queues to ensure consistency?&lt;/li&gt;&#xA;&lt;li&gt;What problems may arise from delaying double deletion? Should we use it or not?&lt;/li&gt;&#xA;&lt;li&gt;&amp;hellip;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;introducing-cache-improves-performance&#34;&gt;Introducing cache improves performance&lt;/h2&gt;&#xA;&lt;p&gt;Let&amp;rsquo;s start with the simplest scenario.&lt;/p&gt;</description>
     </item>
+    <item>
+      <title>Load Balancing</title>
+      <link>http://localhost:1313/en/load-balance/</link>
+      <pubDate>Tue, 02 Sep 2025 10:00:00 +0800</pubDate><author>axu9417@gmail.com (crazyfrank)</author>
+      <guid>http://localhost:1313/en/load-balance/</guid>
+      <description>&lt;h2 id=&#34;overview&#34;&gt;Overview&lt;/h2&gt;&#xA;&lt;p&gt;In a distributed environment, each microservice will have different instances. Service registration and service discovery solve the problem of &amp;ldquo;what are the available instances&amp;rdquo;, and the remaining question is &amp;ldquo;who should I send the request to with so many available instances?&amp;rdquo;. The question that remains is, &amp;ldquo;With so many available instances, who do I send the request to? Intuitively, most people, if they have heard of some specialized terminology, will directly think of &amp;ldquo;load balancing&amp;rdquo;. What exactly is load balancing?&lt;/p&gt;</description>
+    </item>
   </channel>
 </rss>

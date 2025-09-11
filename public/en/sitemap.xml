@@ -4,8 +4,8 @@
     ><url>
             <loc>http://localhost:1313/en/tags/decentralization/</loc><lastmod>2025-09-07T16:39:13&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
             <loc>http://localhost:1313/en/tags/distributed-systems/</loc><lastmod>2025-09-07T16:39:13&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>http://localhost:1313/en/tags/system-design/</loc><lastmod>2025-09-07T17:06:35&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>http://localhost:1313/en/tags/</loc><lastmod>2025-09-07T17:06:35&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority><xhtml:link
+            <loc>http://localhost:1313/en/tags/system-design/</loc><lastmod>2025-09-08T13:18:15&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>http://localhost:1313/en/tags/</loc><lastmod>2025-09-08T13:18:15&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority><xhtml:link
                         rel="alternate"
                         hreflang="zh"
                         href="http://localhost:1313/tags/"
@@ -51,7 +51,7 @@
                     hreflang="en"
                     href="http://localhost:1313/en/log-error/"
                     /></url><url>
-            <loc>http://localhost:1313/en/tags/cache/</loc><lastmod>2025-09-07T16:39:13&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority><xhtml:link
+            <loc>http://localhost:1313/en/tags/cache/</loc><lastmod>2025-09-08T13:18:15&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority><xhtml:link
                         rel="alternate"
                         hreflang="zh"
                         href="http://localhost:1313/tags/cache/"
@@ -60,8 +60,8 @@
                     hreflang="en"
                     href="http://localhost:1313/en/tags/cache/"
                     /></url><url>
-            <loc>http://localhost:1313/en/tags/data-consistency/</loc><lastmod>2025-09-07T16:39:13&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>http://localhost:1313/en/tags/db/</loc><lastmod>2025-09-07T16:39:13&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority><xhtml:link
+            <loc>http://localhost:1313/en/tags/data-consistency/</loc><lastmod>2025-09-08T13:18:15&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>http://localhost:1313/en/tags/db/</loc><lastmod>2025-09-08T13:18:15&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority><xhtml:link
                         rel="alternate"
                         hreflang="zh"
                         href="http://localhost:1313/tags/db/"
@@ -70,7 +70,7 @@
                     hreflang="en"
                     href="http://localhost:1313/en/tags/db/"
                     /></url><url>
-            <loc>http://localhost:1313/en/db-cache/</loc><lastmod>2025-09-07T16:39:13&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority><xhtml:link
+            <loc>http://localhost:1313/en/db-cache/</loc><lastmod>2025-09-08T13:18:15&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority><xhtml:link
                         rel="alternate"
                         hreflang="zh"
                         href="http://localhost:1313/db-cache/"
@@ -79,6 +79,17 @@
                     hreflang="en"
                     href="http://localhost:1313/en/db-cache/"
                     /></url><url>
+            <loc>http://localhost:1313/en/load-balance/</loc><lastmod>2025-09-08T13:18:15&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority><xhtml:link
+                        rel="alternate"
+                        hreflang="zh"
+                        href="http://localhost:1313/load-balance/"
+                        /><xhtml:link
+                    rel="alternate"
+                    hreflang="en"
+                    href="http://localhost:1313/en/load-balance/"
+                    /></url><url>
+            <loc>http://localhost:1313/en/tags/load-balancing/</loc><lastmod>2025-09-08T13:18:15&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>http://localhost:1313/en/tags/microservices/</loc><lastmod>2025-09-08T13:18:15&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
             <loc>http://localhost:1313/en/life/</loc><lastmod>2025-09-06T17:08:38&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority><xhtml:link
                         rel="alternate"
                         hreflang="zh"

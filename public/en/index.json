@@ -25,6 +25,11 @@
   "uri": "/en/load-balance/"
 },
 {
+  "title": "MVCC and MySQL Logs",
+  "content": "Under the MVCC mechanism, Redo Log and Bin Log are mainly useful at transaction commit time and their roles and trigger timing are as follows:\nLogging behavior during transaction execution When executing:\nUPDATE users SET age = 26 WHERE id = 1; MySQL\u0026amp;rsquo;s transaction execution order (combined with MVCC + logging) is as follows:\n(1) Generate Undo Log (historical version) MVCC mechanism: When a transaction modifies the age field, instead of overwriting it directly, it ** writes the old value to …",
+  "uri": "/en/mysql-log/"
+},
+{
   "title": "realisation",
   "content": "Man\u0026amp;rsquo;s physical body is the past and his consciousness is the present and future.\n",
   "uri": "/en/life/"

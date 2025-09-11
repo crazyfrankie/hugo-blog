@@ -8,7 +8,7 @@
     <language>zh-CN</language>
     <managingEditor>axu9417@gmail.com (crazyfrank)</managingEditor>
     <webMaster>axu9417@gmail.com (crazyfrank)</webMaster>
-    <lastBuildDate>Sun, 07 Sep 2025 17:06:35 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 08 Sep 2025 13:18:15 +0800</lastBuildDate>
     <atom:link href="http://localhost:1313/categories/%E6%8A%80%E6%9C%AF/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>以日志处理浅谈去中心化</title>
@@ -37,6 +37,13 @@
       <pubDate>Tue, 02 Sep 2025 10:00:00 +0800</pubDate><author>axu9417@gmail.com (crazyfrank)</author>
       <guid>http://localhost:1313/db-cache/</guid>
       <description>&lt;p&gt;如何保证缓存和数据库一致性，这是一个老生常谈的话题了。&lt;/p&gt;&#xA;&lt;p&gt;但很多人对这个问题，依旧有很多疑惑：&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;到底是更新缓存还是删缓存？&lt;/li&gt;&#xA;&lt;li&gt;到底选择先更新数据库，再删除缓存，还是先删除缓存，再更新数据库？&lt;/li&gt;&#xA;&lt;li&gt;为什么要引入消息队列保证一致性？&lt;/li&gt;&#xA;&lt;li&gt;延迟双删会有什么问题？到底要不要用？&lt;/li&gt;&#xA;&lt;li&gt;…&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;引入缓存提高性能&#34;&gt;引入缓存提高性能&lt;/h2&gt;&#xA;&lt;p&gt;我们从最简单的场景开始讲起。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>MVCC 及 MySQL 日志</title>
+      <link>http://localhost:1313/mysql-log/</link>
+      <pubDate>Tue, 02 Sep 2025 10:00:00 +0800</pubDate><author>axu9417@gmail.com (crazyfrank)</author>
+      <guid>http://localhost:1313/mysql-log/</guid>
+      <description>&lt;h2 id=&#34;mvcc-及-mysql-日志&#34;&gt;MVCC 及 MySQL 日志&lt;/h2&gt;&#xA;&lt;p&gt;在 &lt;strong&gt;MVCC&lt;/strong&gt; 机制下，&lt;strong&gt;Redo Log 和 Bin Log 主要在事务提交时发挥作用&lt;/strong&gt; ，它们的作用和触发时机如下：&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h3 id=&#34;1-事务执行过程中的日志行为&#34;&gt;&lt;strong&gt;1. 事务执行过程中的日志行为&lt;/strong&gt;&lt;/h3&gt;&#xA;&lt;p&gt;当执行：&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;UPDATE users SET age = 26 WHERE id = 1;  &#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;MySQL 的 &lt;strong&gt;事务执行顺序&lt;/strong&gt; （结合 MVCC + 日志）如下：&lt;/p&gt;</description>
     </item>
     <item>
       <title>负载均衡</title>
