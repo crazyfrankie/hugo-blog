@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Log on Crazyfrank&#39;s Blog</title>
-    <link>http://localhost:1313/en/tags/log/</link>
+    <link>https://www.crazyfrank.top/en/tags/log/</link>
     <description>Recent content in Log on Crazyfrank&#39;s Blog</description>
     <generator>Hugo</generator>
     <language>en-US</language>
     <managingEditor>axu9417@gmail.com (crazyfrank)</managingEditor>
     <webMaster>axu9417@gmail.com (crazyfrank)</webMaster>
     <lastBuildDate>Sun, 07 Sep 2025 17:06:35 +0800</lastBuildDate>
-    <atom:link href="http://localhost:1313/en/tags/log/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://www.crazyfrank.top/en/tags/log/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Logs and Errors</title>
-      <link>http://localhost:1313/en/posts/logs-and-errors/</link>
+      <link>https://www.crazyfrank.top/en/posts/logs-and-errors/</link>
       <pubDate>Wed, 03 Sep 2025 10:00:00 +0800</pubDate><author>axu9417@gmail.com (crazyfrank)</author>
-      <guid>http://localhost:1313/en/posts/logs-and-errors/</guid>
+      <guid>https://www.crazyfrank.top/en/posts/logs-and-errors/</guid>
       <description>&lt;h2 id=&#34;logs-and-errors&#34;&gt;Logs and Errors&lt;/h2&gt;&#xA;&lt;p&gt;Generally speaking, in our project, if we strictly divide it according to a hierarchical structure, it is roughly &lt;code&gt;handler&lt;/code&gt;, &lt;code&gt;service&lt;/code&gt; (which is further subdivided into &lt;code&gt;application&lt;/code&gt; in DDD), and&#xA;&lt;code&gt;domain&lt;/code&gt;, &lt;code&gt;dao&lt;/code&gt;.&lt;/p&gt;&#xA;&lt;p&gt;For the &lt;code&gt;dao&lt;/code&gt; layer, if an error occurs, we deal with it by directly up-throwing and selectively logging the error, for example,&#xA;there may be some interfaces that involve parameter validation at the &lt;code&gt;dao&lt;/code&gt; layer, manually managing transactions, and so on, which require logging, but the error is still directly up-throwing.&lt;/p&gt;</description>
     </item>
   </channel>

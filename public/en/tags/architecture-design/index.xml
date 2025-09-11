@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Architecture Design on Crazyfrank&#39;s Blog</title>
+    <link>https://www.crazyfrank.top/en/tags/architecture-design/</link>
+    <description>Recent content in Architecture Design on Crazyfrank&#39;s Blog</description>
+    <generator>Hugo</generator>
+    <language>en-US</language>
+    <managingEditor>axu9417@gmail.com (crazyfrank)</managingEditor>
+    <webMaster>axu9417@gmail.com (crazyfrank)</webMaster>
+    <lastBuildDate>Thu, 11 Sep 2025 10:00:00 +0800</lastBuildDate>
+    <atom:link href="https://www.crazyfrank.top/en/tags/architecture-design/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Architecture Design-Comment System</title>
+      <link>https://www.crazyfrank.top/en/posts/architecture-design-comment-system/</link>
+      <pubDate>Thu, 11 Sep 2025 10:00:00 +0800</pubDate><author>axu9417@gmail.com (crazyfrank)</author>
+      <guid>https://www.crazyfrank.top/en/posts/architecture-design-comment-system/</guid>
+      <description>&lt;p&gt;The most important thing in architectural design is to &lt;strong&gt;understand the positioning of the entire product system in the system&lt;/strong&gt;. Only by figuring out the background behind the system can you make the best design and abstraction. Don’t be a translation machine for demand, first understand the essence behind the business and the original intention of the matter.&lt;/p&gt;&#xA;&lt;p&gt;Comment system, when we go to the small, we are video comment system, when we go to the large, we are commenting platform, we can access various business forms.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

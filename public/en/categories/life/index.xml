@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Life on Crazyfrank&#39;s Blog</title>
-    <link>http://localhost:1313/en/categories/life/</link>
+    <link>https://www.crazyfrank.top/en/categories/life/</link>
     <description>Recent content in Life on Crazyfrank&#39;s Blog</description>
     <generator>Hugo</generator>
     <language>en-US</language>
     <managingEditor>axu9417@gmail.com (crazyfrank)</managingEditor>
     <webMaster>axu9417@gmail.com (crazyfrank)</webMaster>
-    <atom:link href="http://localhost:1313/en/categories/life/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://www.crazyfrank.top/en/categories/life/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>realisation</title>
-      <link>http://localhost:1313/en/posts/realisation/</link>
+      <link>https://www.crazyfrank.top/en/posts/realisation/</link>
       <pubDate>Mon, 01 Sep 2025 10:00:00 +0800</pubDate><author>axu9417@gmail.com (crazyfrank)</author>
-      <guid>http://localhost:1313/en/posts/realisation/</guid>
+      <guid>https://www.crazyfrank.top/en/posts/realisation/</guid>
       <description>&lt;p&gt;Man&amp;rsquo;s physical body is the past and his consciousness is the present and future.&lt;/p&gt;</description>
     </item>
   </channel>

@@ -2,190 +2,200 @@
     xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
     xmlns:xhtml="http://www.w3.org/1999/xhtml"
     ><url>
-            <loc>http://localhost:1313/en/tags/decentralization/</loc><lastmod>2025-09-07T16:39:13&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>http://localhost:1313/en/tags/distributed-systems/</loc><lastmod>2025-09-07T16:39:13&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>http://localhost:1313/en/tags/system-design/</loc><lastmod>2025-09-08T13:18:15&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>http://localhost:1313/en/tags/</loc><lastmod>2025-09-11T13:31:48&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority><xhtml:link
+            <loc>https://www.crazyfrank.top/en/tags/architecture-design/</loc><lastmod>2025-09-11T10:00:00&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://www.crazyfrank.top/en/posts/architecture-design-comment-system/</loc><lastmod>2025-09-11T10:00:00&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority><xhtml:link
                         rel="alternate"
                         hreflang="zh"
-                        href="http://localhost:1313/zh/tags/"
+                        href="https://www.crazyfrank.top/zh/posts/%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1--%E8%AF%84%E8%AE%BA%E7%B3%BB%E7%BB%9F/"
                         /><xhtml:link
                     rel="alternate"
                     hreflang="en"
-                    href="http://localhost:1313/en/tags/"
+                    href="https://www.crazyfrank.top/en/posts/architecture-design-comment-system/"
                     /></url><url>
-            <loc>http://localhost:1313/en/posts/understanding-decentralization-through-log-processing/</loc><lastmod>2025-09-07T16:39:13&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority><xhtml:link
+            <loc>https://www.crazyfrank.top/en/tags/system-design/</loc><lastmod>2025-09-11T10:00:00&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://www.crazyfrank.top/en/tags/</loc><lastmod>2025-09-11T13:31:48&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority><xhtml:link
                         rel="alternate"
                         hreflang="zh"
-                        href="http://localhost:1313/zh/posts/%E4%BB%A5%E6%97%A5%E5%BF%97%E5%A4%84%E7%90%86%E6%B5%85%E8%B0%88%E5%8E%BB%E4%B8%AD%E5%BF%83%E5%8C%96/"
+                        href="https://www.crazyfrank.top/zh/tags/"
                         /><xhtml:link
                     rel="alternate"
                     hreflang="en"
-                    href="http://localhost:1313/en/posts/understanding-decentralization-through-log-processing/"
+                    href="https://www.crazyfrank.top/en/tags/"
                     /></url><url>
-            <loc>http://localhost:1313/en/tags/ddd/</loc><lastmod>2025-09-07T16:39:13&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority><xhtml:link
+            <loc>https://www.crazyfrank.top/en/tags/decentralization/</loc><lastmod>2025-09-07T16:39:13&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://www.crazyfrank.top/en/tags/distributed-systems/</loc><lastmod>2025-09-07T16:39:13&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://www.crazyfrank.top/en/posts/understanding-decentralization-through-log-processing/</loc><lastmod>2025-09-07T16:39:13&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority><xhtml:link
                         rel="alternate"
                         hreflang="zh"
-                        href="http://localhost:1313/zh/tags/ddd/"
+                        href="https://www.crazyfrank.top/zh/posts/%E4%BB%A5%E6%97%A5%E5%BF%97%E5%A4%84%E7%90%86%E6%B5%85%E8%B0%88%E5%8E%BB%E4%B8%AD%E5%BF%83%E5%8C%96/"
                         /><xhtml:link
                     rel="alternate"
                     hreflang="en"
-                    href="http://localhost:1313/en/tags/ddd/"
+                    href="https://www.crazyfrank.top/en/posts/understanding-decentralization-through-log-processing/"
                     /></url><url>
-            <loc>http://localhost:1313/en/posts/some-thoughts-on-ddd/</loc><lastmod>2025-09-07T16:39:13&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority><xhtml:link
+            <loc>https://www.crazyfrank.top/en/tags/ddd/</loc><lastmod>2025-09-07T16:39:13&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority><xhtml:link
                         rel="alternate"
                         hreflang="zh"
-                        href="http://localhost:1313/zh/posts/ddd-%E7%9A%84%E4%B8%80%E4%BA%9B%E6%80%9D%E8%80%83/"
+                        href="https://www.crazyfrank.top/zh/tags/ddd/"
                         /><xhtml:link
                     rel="alternate"
                     hreflang="en"
-                    href="http://localhost:1313/en/posts/some-thoughts-on-ddd/"
+                    href="https://www.crazyfrank.top/en/tags/ddd/"
                     /></url><url>
-            <loc>http://localhost:1313/en/tags/log/</loc><lastmod>2025-09-07T17:06:35&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>http://localhost:1313/en/posts/logs-and-errors/</loc><lastmod>2025-09-07T17:06:35&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority><xhtml:link
+            <loc>https://www.crazyfrank.top/en/posts/some-thoughts-on-ddd/</loc><lastmod>2025-09-07T16:39:13&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority><xhtml:link
                         rel="alternate"
                         hreflang="zh"
-                        href="http://localhost:1313/zh/posts/%E6%97%A5%E5%BF%97%E4%B8%8E-error/"
+                        href="https://www.crazyfrank.top/zh/posts/ddd-%E7%9A%84%E4%B8%80%E4%BA%9B%E6%80%9D%E8%80%83/"
                         /><xhtml:link
                     rel="alternate"
                     hreflang="en"
-                    href="http://localhost:1313/en/posts/logs-and-errors/"
+                    href="https://www.crazyfrank.top/en/posts/some-thoughts-on-ddd/"
                     /></url><url>
-            <loc>http://localhost:1313/en/tags/cache/</loc><lastmod>2025-09-08T13:18:15&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority><xhtml:link
+            <loc>https://www.crazyfrank.top/en/tags/log/</loc><lastmod>2025-09-07T17:06:35&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://www.crazyfrank.top/en/posts/logs-and-errors/</loc><lastmod>2025-09-07T17:06:35&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority><xhtml:link
                         rel="alternate"
                         hreflang="zh"
-                        href="http://localhost:1313/zh/tags/cache/"
+                        href="https://www.crazyfrank.top/zh/posts/%E6%97%A5%E5%BF%97%E4%B8%8E-error/"
                         /><xhtml:link
                     rel="alternate"
                     hreflang="en"
-                    href="http://localhost:1313/en/tags/cache/"
+                    href="https://www.crazyfrank.top/en/posts/logs-and-errors/"
                     /></url><url>
-            <loc>http://localhost:1313/en/tags/data-consistency/</loc><lastmod>2025-09-08T13:18:15&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>http://localhost:1313/en/tags/db/</loc><lastmod>2025-09-08T13:18:15&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority><xhtml:link
+            <loc>https://www.crazyfrank.top/en/tags/cache/</loc><lastmod>2025-09-08T13:18:15&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority><xhtml:link
                         rel="alternate"
                         hreflang="zh"
-                        href="http://localhost:1313/zh/tags/db/"
+                        href="https://www.crazyfrank.top/zh/tags/cache/"
                         /><xhtml:link
                     rel="alternate"
                     hreflang="en"
-                    href="http://localhost:1313/en/tags/db/"
+                    href="https://www.crazyfrank.top/en/tags/cache/"
                     /></url><url>
-            <loc>http://localhost:1313/en/posts/db-cache-consistency-problem/</loc><lastmod>2025-09-08T13:18:15&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority><xhtml:link
+            <loc>https://www.crazyfrank.top/en/tags/data-consistency/</loc><lastmod>2025-09-08T13:18:15&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://www.crazyfrank.top/en/tags/db/</loc><lastmod>2025-09-08T13:18:15&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority><xhtml:link
                         rel="alternate"
                         hreflang="zh"
-                        href="http://localhost:1313/zh/posts/db-cache-%E4%B8%80%E8%87%B4%E6%80%A7%E9%97%AE%E9%A2%98/"
+                        href="https://www.crazyfrank.top/zh/tags/db/"
                         /><xhtml:link
                     rel="alternate"
                     hreflang="en"
-                    href="http://localhost:1313/en/posts/db-cache-consistency-problem/"
+                    href="https://www.crazyfrank.top/en/tags/db/"
                     /></url><url>
-            <loc>http://localhost:1313/en/posts/load-balancing/</loc><lastmod>2025-09-08T13:18:15&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority><xhtml:link
+            <loc>https://www.crazyfrank.top/en/posts/db-cache-consistency-problem/</loc><lastmod>2025-09-08T13:18:15&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority><xhtml:link
                         rel="alternate"
                         hreflang="zh"
-                        href="http://localhost:1313/zh/posts/%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/"
+                        href="https://www.crazyfrank.top/zh/posts/db-cache-%E4%B8%80%E8%87%B4%E6%80%A7%E9%97%AE%E9%A2%98/"
                         /><xhtml:link
                     rel="alternate"
                     hreflang="en"
-                    href="http://localhost:1313/en/posts/load-balancing/"
+                    href="https://www.crazyfrank.top/en/posts/db-cache-consistency-problem/"
                     /></url><url>
-            <loc>http://localhost:1313/en/tags/load-balancing/</loc><lastmod>2025-09-08T13:18:15&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>http://localhost:1313/en/tags/microservices/</loc><lastmod>2025-09-08T13:18:15&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>http://localhost:1313/en/posts/mvcc-and-mysql-logs/</loc><lastmod>2025-09-11T13:31:48&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority><xhtml:link
+            <loc>https://www.crazyfrank.top/en/posts/load-balancing/</loc><lastmod>2025-09-08T13:18:15&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority><xhtml:link
                         rel="alternate"
                         hreflang="zh"
-                        href="http://localhost:1313/zh/posts/mvcc-%E5%8F%8A-mysql-%E6%97%A5%E5%BF%97/"
+                        href="https://www.crazyfrank.top/zh/posts/%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/"
                         /><xhtml:link
                     rel="alternate"
                     hreflang="en"
-                    href="http://localhost:1313/en/posts/mvcc-and-mysql-logs/"
+                    href="https://www.crazyfrank.top/en/posts/load-balancing/"
                     /></url><url>
-            <loc>http://localhost:1313/en/tags/mysql/</loc><lastmod>2025-09-11T13:31:48&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority><xhtml:link
+            <loc>https://www.crazyfrank.top/en/tags/load-balancing/</loc><lastmod>2025-09-08T13:18:15&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://www.crazyfrank.top/en/tags/microservices/</loc><lastmod>2025-09-08T13:18:15&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://www.crazyfrank.top/en/posts/mvcc-and-mysql-logs/</loc><lastmod>2025-09-11T13:31:48&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority><xhtml:link
                         rel="alternate"
                         hreflang="zh"
-                        href="http://localhost:1313/zh/tags/mysql/"
+                        href="https://www.crazyfrank.top/zh/posts/mvcc-%E5%8F%8A-mysql-%E6%97%A5%E5%BF%97/"
                         /><xhtml:link
                     rel="alternate"
                     hreflang="en"
-                    href="http://localhost:1313/en/tags/mysql/"
+                    href="https://www.crazyfrank.top/en/posts/mvcc-and-mysql-logs/"
                     /></url><url>
-            <loc>http://localhost:1313/en/posts/realisation/</loc><lastmod>2025-09-06T17:08:38&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority><xhtml:link
+            <loc>https://www.crazyfrank.top/en/tags/mysql/</loc><lastmod>2025-09-11T13:31:48&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority><xhtml:link
                         rel="alternate"
                         hreflang="zh"
-                        href="http://localhost:1313/zh/posts/%E6%84%9F%E6%82%9F/"
+                        href="https://www.crazyfrank.top/zh/tags/mysql/"
                         /><xhtml:link
                     rel="alternate"
                     hreflang="en"
-                    href="http://localhost:1313/en/posts/realisation/"
+                    href="https://www.crazyfrank.top/en/tags/mysql/"
                     /></url><url>
-            <loc>http://localhost:1313/en/categories/backend/</loc><lastmod>2025-09-07T16:39:13&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority><xhtml:link
+            <loc>https://www.crazyfrank.top/en/posts/realisation/</loc><lastmod>2025-09-06T17:08:38&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority><xhtml:link
                         rel="alternate"
                         hreflang="zh"
-                        href="http://localhost:1313/zh/categories/backend/"
+                        href="https://www.crazyfrank.top/zh/posts/%E6%84%9F%E6%82%9F/"
                         /><xhtml:link
                     rel="alternate"
                     hreflang="en"
-                    href="http://localhost:1313/en/categories/backend/"
+                    href="https://www.crazyfrank.top/en/posts/realisation/"
                     /></url><url>
-            <loc>http://localhost:1313/en/categories/</loc><lastmod>2025-09-06T15:32:54&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority><xhtml:link
+            <loc>https://www.crazyfrank.top/en/categories/backend/</loc><lastmod>2025-09-07T16:39:13&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority><xhtml:link
                         rel="alternate"
                         hreflang="zh"
-                        href="http://localhost:1313/zh/categories/"
+                        href="https://www.crazyfrank.top/zh/categories/backend/"
                         /><xhtml:link
                     rel="alternate"
                     hreflang="en"
-                    href="http://localhost:1313/en/categories/"
+                    href="https://www.crazyfrank.top/en/categories/backend/"
                     /></url><url>
-            <loc>http://localhost:1313/en/search/</loc><lastmod>2025-09-05T18:44:15&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority><xhtml:link
+            <loc>https://www.crazyfrank.top/en/categories/</loc><lastmod>2025-09-06T15:32:54&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority><xhtml:link
                         rel="alternate"
                         hreflang="zh"
-                        href="http://localhost:1313/zh/search/"
+                        href="https://www.crazyfrank.top/zh/categories/"
                         /><xhtml:link
                     rel="alternate"
                     hreflang="en"
-                    href="http://localhost:1313/en/search/"
+                    href="https://www.crazyfrank.top/en/categories/"
                     /></url><url>
-            <loc>http://localhost:1313/en/categories/frontend/</loc><lastmod>2025-09-07T16:39:13&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority><xhtml:link
+            <loc>https://www.crazyfrank.top/en/search/</loc><lastmod>2025-09-05T18:44:15&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority><xhtml:link
                         rel="alternate"
                         hreflang="zh"
-                        href="http://localhost:1313/zh/categories/frontend/"
+                        href="https://www.crazyfrank.top/zh/search/"
                         /><xhtml:link
                     rel="alternate"
                     hreflang="en"
-                    href="http://localhost:1313/en/categories/frontend/"
+                    href="https://www.crazyfrank.top/en/search/"
                     /></url><url>
-            <loc>http://localhost:1313/en/</loc><lastmod>2025-09-05T21:54:12&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority><xhtml:link
+            <loc>https://www.crazyfrank.top/en/categories/frontend/</loc><lastmod>2025-09-07T16:39:13&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority><xhtml:link
                         rel="alternate"
                         hreflang="zh"
-                        href="http://localhost:1313/zh/"
+                        href="https://www.crazyfrank.top/zh/categories/frontend/"
                         /><xhtml:link
                     rel="alternate"
                     hreflang="en"
-                    href="http://localhost:1313/en/"
+                    href="https://www.crazyfrank.top/en/categories/frontend/"
                     /></url><url>
-            <loc>http://localhost:1313/en/categories/life/</loc><lastmod>2025-09-06T15:32:54&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority><xhtml:link
+            <loc>https://www.crazyfrank.top/en/</loc><lastmod>2025-09-05T21:54:12&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority><xhtml:link
                         rel="alternate"
                         hreflang="zh"
-                        href="http://localhost:1313/zh/categories/life/"
+                        href="https://www.crazyfrank.top/zh/"
                         /><xhtml:link
                     rel="alternate"
                     hreflang="en"
-                    href="http://localhost:1313/en/categories/life/"
+                    href="https://www.crazyfrank.top/en/"
                     /></url><url>
-            <loc>http://localhost:1313/en/posts/</loc><lastmod>2025-09-05T21:54:12&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority><xhtml:link
+            <loc>https://www.crazyfrank.top/en/categories/life/</loc><lastmod>2025-09-06T15:32:54&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority><xhtml:link
                         rel="alternate"
                         hreflang="zh"
-                        href="http://localhost:1313/zh/posts/"
+                        href="https://www.crazyfrank.top/zh/categories/life/"
                         /><xhtml:link
                     rel="alternate"
                     hreflang="en"
-                    href="http://localhost:1313/en/posts/"
+                    href="https://www.crazyfrank.top/en/categories/life/"
                     /></url><url>
-            <loc>http://localhost:1313/en/categories/technology/</loc><lastmod>2025-09-05T21:54:12&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority><xhtml:link
+            <loc>https://www.crazyfrank.top/en/posts/</loc><lastmod>2025-09-05T21:54:12&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority><xhtml:link
                         rel="alternate"
                         hreflang="zh"
-                        href="http://localhost:1313/zh/categories/technology/"
+                        href="https://www.crazyfrank.top/zh/posts/"
                         /><xhtml:link
                     rel="alternate"
                     hreflang="en"
-                    href="http://localhost:1313/en/categories/technology/"
+                    href="https://www.crazyfrank.top/en/posts/"
+                    /></url><url>
+            <loc>https://www.crazyfrank.top/en/categories/technology/</loc><lastmod>2025-09-05T21:54:12&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority><xhtml:link
+                        rel="alternate"
+                        hreflang="zh"
+                        href="https://www.crazyfrank.top/zh/categories/technology/"
+                        /><xhtml:link
+                    rel="alternate"
+                    hreflang="en"
+                    href="https://www.crazyfrank.top/en/categories/technology/"
                     /></url></urlset>

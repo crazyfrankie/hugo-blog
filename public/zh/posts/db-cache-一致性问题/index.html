@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
-        <title>DB-Cache 一致性问题 - Crazyfrank 的博客</title><meta name="Description" content="Crazyfrank 的中文博客"><meta property="og:url" content="http://localhost:1313/zh/posts/db-cache-%E4%B8%80%E8%87%B4%E6%80%A7%E9%97%AE%E9%A2%98/">
+        <title>DB-Cache 一致性问题 - Crazyfrank 的博客</title><meta name="Description" content="Crazyfrank 的中文博客"><meta property="og:url" content="https://www.crazyfrank.top/zh/posts/db-cache-%E4%B8%80%E8%87%B4%E6%80%A7%E9%97%AE%E9%A2%98/">
   <meta property="og:site_name" content="Crazyfrank 的博客">
   <meta property="og:title" content="DB-Cache 一致性问题">
   <meta property="og:description" content="如何保证缓存和数据库一致性，这是一个老生常谈的话题了。
@@ -18,19 +18,19 @@
     <meta property="article:tag" content="数据一致性">
     <meta property="article:tag" content="DB">
     <meta property="article:tag" content="Cache">
-    <meta property="og:image" content="http://localhost:1313/logo.png">
+    <meta property="og:image" content="https://www.crazyfrank.top/logo.png">
 
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:image" content="http://localhost:1313/logo.png">
+  <meta name="twitter:image" content="https://www.crazyfrank.top/logo.png">
   <meta name="twitter:title" content="DB-Cache 一致性问题">
   <meta name="twitter:description" content="如何保证缓存和数据库一致性，这是一个老生常谈的话题了。
 但很多人对这个问题，依旧有很多疑惑：
 到底是更新缓存还是删缓存？ 到底选择先更新数据库，再删除缓存，还是先删除缓存，再更新数据库？ 为什么要引入消息队列保证一致性？ 延迟双删会有什么问题？到底要不要用？ … 引入缓存提高性能 我们从最简单的场景开始讲起。">
 <meta name="application-name" content="Crazyfrank&#39;s Blog">
 <meta name="apple-mobile-web-app-title" content="Crazyfrank&#39;s Blog">
-<meta name="referrer" content="no-referrer" /><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/favicon.svg"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://localhost:1313/zh/posts/db-cache-%E4%B8%80%E8%87%B4%E6%80%A7%E9%97%AE%E9%A2%98/" /><link rel="prev" href="http://localhost:1313/zh/posts/mvcc-%E5%8F%8A-mysql-%E6%97%A5%E5%BF%97/" /><link rel="next" href="http://localhost:1313/zh/posts/%E6%97%A5%E5%BF%97%E4%B8%8E-error/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-        <noscript><link rel="stylesheet" href="/lib/fontawesome-free/css/all.min.css"></noscript><link rel="preload" href="/lib/animate/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-        <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
+<meta name="referrer" content="no-referrer" /><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/favicon.svg"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://www.crazyfrank.top/zh/posts/db-cache-%E4%B8%80%E8%87%B4%E6%80%A7%E9%97%AE%E9%A2%98/" /><link rel="prev" href="https://www.crazyfrank.top/zh/posts/mvcc-%E5%8F%8A-mysql-%E6%97%A5%E5%BF%97/" /><link rel="next" href="https://www.crazyfrank.top/zh/posts/%E6%97%A5%E5%BF%97%E4%B8%8E-error/" /><link rel="stylesheet" href="/css/style.min.0255131cc06384344faa9cd0e3551c351cc16d6fd498168448b45f36e9e84c46.css" integrity="sha256-AlUTHMBjhDRPqpzQ41UcNRzBbW/UmBaESLRfNunoTEY="><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.7.2/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.7.2/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
@@ -38,9 +38,9 @@
         "inLanguage": "zh-CN",
         "mainEntityOfPage": {
             "@type": "WebPage",
-            "@id": "http:\/\/localhost:1313\/zh\/posts\/db-cache-%E4%B8%80%E8%87%B4%E6%80%A7%E9%97%AE%E9%A2%98\/"
+            "@id": "https:\/\/www.crazyfrank.top\/zh\/posts\/db-cache-%E4%B8%80%E8%87%B4%E6%80%A7%E9%97%AE%E9%A2%98\/"
         },"genre": "posts","keywords": "数据一致性, DB, Cache","wordcount":  5909 ,
-        "url": "http:\/\/localhost:1313\/zh\/posts\/db-cache-%E4%B8%80%E8%87%B4%E6%80%A7%E9%97%AE%E9%A2%98\/","datePublished": "2025-09-02T10:00:00+08:00","dateModified": "2025-09-08T13:18:15+08:00","publisher": {
+        "url": "https:\/\/www.crazyfrank.top\/zh\/posts\/db-cache-%E4%B8%80%E8%87%B4%E6%80%A7%E9%97%AE%E9%A2%98\/","datePublished": "2025-09-02T10:00:00+08:00","dateModified": "2025-09-08T13:18:15+08:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
                 "@type": "Person",
@@ -528,7 +528,7 @@ function closeLightbox() {
         <div class="post-info-line">
             <div class="post-info-md"></div>
             <div class="post-info-share">
-                <span><a href="javascript:void(0);" title="分享到 X" data-sharer="x" data-url="http://localhost:1313/zh/posts/db-cache-%E4%B8%80%E8%87%B4%E6%80%A7%E9%97%AE%E9%A2%98/" data-title="DB-Cache 一致性问题" data-hashtags="数据一致性,DB,Cache"><i class="fab fa-x-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 Facebook" data-sharer="facebook" data-url="http://localhost:1313/zh/posts/db-cache-%E4%B8%80%E8%87%B4%E6%80%A7%E9%97%AE%E9%A2%98/" data-hashtag="数据一致性"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 Hacker News" data-sharer="hackernews" data-url="http://localhost:1313/zh/posts/db-cache-%E4%B8%80%E8%87%B4%E6%80%A7%E9%97%AE%E9%A2%98/" data-title="DB-Cache 一致性问题"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 Line" data-sharer="line" data-url="http://localhost:1313/zh/posts/db-cache-%E4%B8%80%E8%87%B4%E6%80%A7%E9%97%AE%E9%A2%98/" data-title="DB-Cache 一致性问题"><i data-svg-src="/lib/simple-icons/icons/line.min.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 微博" data-sharer="weibo" data-url="http://localhost:1313/zh/posts/db-cache-%E4%B8%80%E8%87%B4%E6%80%A7%E9%97%AE%E9%A2%98/" data-title="DB-Cache 一致性问题"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 Diaspora" data-sharer="diaspora" data-url="http://localhost:1313/zh/posts/db-cache-%E4%B8%80%E8%87%B4%E6%80%A7%E9%97%AE%E9%A2%98/" data-title="DB-Cache 一致性问题" data-description=""><i class="fab fa-diaspora fa-fw" aria-hidden="true"></i></a><a href="https://t.me/share/url?url=http%3a%2f%2flocalhost%3a1313%2fzh%2fposts%2fdb-cache-%25E4%25B8%2580%25E8%2587%25B4%25E6%2580%25A7%25E9%2597%25AE%25E9%25A2%2598%2f&amp;text=DB-Cache%20%e4%b8%80%e8%87%b4%e6%80%a7%e9%97%ae%e9%a2%98" target="_blank" title="分享到 Telegram"><i class="fab fa-telegram fa-fw" aria-hidden="true"></i></a></span>
+                <span><a href="javascript:void(0);" title="分享到 X" data-sharer="x" data-url="https://www.crazyfrank.top/zh/posts/db-cache-%E4%B8%80%E8%87%B4%E6%80%A7%E9%97%AE%E9%A2%98/" data-title="DB-Cache 一致性问题" data-hashtags="数据一致性,DB,Cache"><i class="fab fa-x-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 Facebook" data-sharer="facebook" data-url="https://www.crazyfrank.top/zh/posts/db-cache-%E4%B8%80%E8%87%B4%E6%80%A7%E9%97%AE%E9%A2%98/" data-hashtag="数据一致性"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 Hacker News" data-sharer="hackernews" data-url="https://www.crazyfrank.top/zh/posts/db-cache-%E4%B8%80%E8%87%B4%E6%80%A7%E9%97%AE%E9%A2%98/" data-title="DB-Cache 一致性问题"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 Line" data-sharer="line" data-url="https://www.crazyfrank.top/zh/posts/db-cache-%E4%B8%80%E8%87%B4%E6%80%A7%E9%97%AE%E9%A2%98/" data-title="DB-Cache 一致性问题"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@14.9.0/icons/line.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 微博" data-sharer="weibo" data-url="https://www.crazyfrank.top/zh/posts/db-cache-%E4%B8%80%E8%87%B4%E6%80%A7%E9%97%AE%E9%A2%98/" data-title="DB-Cache 一致性问题"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 Diaspora" data-sharer="diaspora" data-url="https://www.crazyfrank.top/zh/posts/db-cache-%E4%B8%80%E8%87%B4%E6%80%A7%E9%97%AE%E9%A2%98/" data-title="DB-Cache 一致性问题" data-description=""><i class="fab fa-diaspora fa-fw" aria-hidden="true"></i></a><a href="https://t.me/share/url?url=https%3a%2f%2fwww.crazyfrank.top%2fzh%2fposts%2fdb-cache-%25E4%25B8%2580%25E8%2587%25B4%25E6%2580%25A7%25E9%2597%25AE%25E9%25A2%2598%2f&amp;text=DB-Cache%20%e4%b8%80%e8%87%b4%e6%80%a7%e9%97%ae%e9%a2%98" target="_blank" title="分享到 Telegram"><i class="fab fa-telegram fa-fw" aria-hidden="true"></i></a></span>
             </div>
         </div>
     </div>
@@ -649,7 +649,7 @@ setTimeout(function() {
 <script>
 const originalFetch = window.fetch;
 window.fetch = function(url, options) {
-  if (window.location.pathname.startsWith('/en/') && url === '/index.json') {
+  if (window.location.pathname.startsWith('/en/') && url === '/zh/index.json') {
     url = '/en/index.json';
   }
   return originalFetch(url, options);
@@ -657,7 +657,7 @@ window.fetch = function(url, options) {
 
 const originalOpen = XMLHttpRequest.prototype.open;
 XMLHttpRequest.prototype.open = function(method, url, ...args) {
-  if (window.location.pathname.startsWith('/en/') && url === '/index.json') {
+  if (window.location.pathname.startsWith('/en/') && url === '/zh/index.json') {
     url = '/en/index.json';
   }
   return originalOpen.call(this, method, url, ...args);

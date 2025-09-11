@@ -1,5 +1,10 @@
 [
 {
+  "title": "Architecture Design-Comment System",
+  "content": "The most important thing in architectural design is to understand the positioning of the entire product system in the system. Only by figuring out the background behind the system can you make the best design and abstraction. Don’t be a translation machine for demand, first understand the essence behind the business and the original intention of the matter.\nComment system, when we go to the small, we are video comment system, when we go to the large, we are commenting platform, we can access …",
+  "uri": "/en/posts/architecture-design-comment-system/"
+},
+{
   "title": "Understanding Decentralization Through Log Processing",
   "content": "This article explores decentralized system design concepts and implementation approaches through the lens of log processing.\nOverview of Decentralized Systems Decentralization is a key concept in distributed system design that improves system reliability and fault tolerance by distributing control across multiple nodes.\nIn architecture, \u0026amp;ldquo;decentralization\u0026amp;rdquo; doesn\u0026amp;rsquo;t necessarily mean \u0026amp;ldquo;completely no center,\u0026amp;rdquo; but rather:\nAvoid irreplaceable single points of failure by …",
   "uri": "/en/posts/understanding-decentralization-through-log-processing/"
