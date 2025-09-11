@@ -23,8 +23,8 @@ git submodule update --init --recursive
 echo "Downloading Go modules..."
 go mod download
 
-# 构建 Hugo 站点
+# 构建 Hugo 站点，确保清理目标目录
 echo "Building Hugo site..."
-hugo --gc --minify -D
+hugo --cleanDestinationDir --gc --minify
 
 echo "Build completed successfully!"

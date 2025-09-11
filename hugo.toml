@@ -375,6 +375,19 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
     startLevel = 2
     endLevel = 6
 
+# Media types
+[mediaTypes]
+  [mediaTypes."application/xml"]
+    suffixes = ["xml"]
+
+# Output formats
+[outputFormats]
+  [outputFormats.SITEMAP]
+    mediaType = "application/xml"
+    baseName = "sitemap"
+    isPlainText = true
+    protocol = "https://"
+
 # Sitemap config
 [sitemap]
   changefreq = "weekly"
@@ -387,10 +400,11 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
 
 # Options to make hugo output files
 [outputs]
-  home = ["HTML", "RSS", "JSON"]
+  home = ["HTML", "RSS", "JSON", "SITEMAP"]
   page = ["HTML"]
   section = ["HTML", "RSS"]
   taxonomy = ["HTML", "RSS"]
+  taxonomyTerm = ["HTML", "RSS"]
 
 # Multilingual
 [languages]
