@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>MySQL on Crazyfrank 的博客</title>
-    <link>http://localhost:1313/tags/mysql/</link>
+    <link>https://hugo.crazyfrank.top/tags/mysql/</link>
     <description>Recent content in MySQL on Crazyfrank 的博客</description>
     <generator>Hugo</generator>
     <language>zh-CN</language>
     <managingEditor>axu9417@gmail.com (crazyfrank)</managingEditor>
     <webMaster>axu9417@gmail.com (crazyfrank)</webMaster>
-    <lastBuildDate>Tue, 02 Sep 2025 10:00:00 +0800</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/mysql/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 11 Sep 2025 13:31:48 +0800</lastBuildDate>
+    <atom:link href="https://hugo.crazyfrank.top/tags/mysql/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>MVCC 及 MySQL 日志</title>
-      <link>http://localhost:1313/mysql-log/</link>
+      <link>https://hugo.crazyfrank.top/posts/mvcc-%E5%8F%8A-mysql-%E6%97%A5%E5%BF%97/</link>
       <pubDate>Tue, 02 Sep 2025 10:00:00 +0800</pubDate><author>axu9417@gmail.com (crazyfrank)</author>
-      <guid>http://localhost:1313/mysql-log/</guid>
-      <description>&lt;h2 id=&#34;mvcc-及-mysql-日志&#34;&gt;MVCC 及 MySQL 日志&lt;/h2&gt;&#xA;&lt;p&gt;在 &lt;strong&gt;MVCC&lt;/strong&gt; 机制下，&lt;strong&gt;Redo Log 和 Bin Log 主要在事务提交时发挥作用&lt;/strong&gt; ，它们的作用和触发时机如下：&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h3 id=&#34;1-事务执行过程中的日志行为&#34;&gt;&lt;strong&gt;1. 事务执行过程中的日志行为&lt;/strong&gt;&lt;/h3&gt;&#xA;&lt;p&gt;当执行：&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;UPDATE users SET age = 26 WHERE id = 1;  &#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;MySQL 的 &lt;strong&gt;事务执行顺序&lt;/strong&gt; （结合 MVCC + 日志）如下：&lt;/p&gt;</description>
+      <guid>https://hugo.crazyfrank.top/posts/mvcc-%E5%8F%8A-mysql-%E6%97%A5%E5%BF%97/</guid>
+      <description>&lt;p&gt;在 &lt;strong&gt;MVCC&lt;/strong&gt; 机制下，&lt;strong&gt;Redo Log 和 Bin Log 主要在事务提交时发挥作用&lt;/strong&gt; ，它们的作用和触发时机如下：&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h3 id=&#34;事务执行过程中的日志行为&#34;&gt;事务执行过程中的日志行为&lt;/h3&gt;&#xA;&lt;p&gt;当执行：&lt;/p&gt;&#xA;&lt;div class=&#34;code-block code-line-numbers open&#34; style=&#34;counter-reset: code-block 0&#34;&gt;&#xA;    &lt;div class=&#34;code-header language-sql&#34;&gt;&#xA;        &lt;span class=&#34;code-title&#34;&gt;&lt;i class=&#34;arrow fas fa-angle-right fa-fw&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;&lt;/span&gt;&#xA;        &lt;span class=&#34;ellipses&#34;&gt;&lt;i class=&#34;fas fa-ellipsis-h fa-fw&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;&lt;/span&gt;&#xA;        &lt;span class=&#34;copy&#34; title=&#34;复制到剪贴板&#34;&gt;&lt;i class=&#34;far fa-copy fa-fw&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;&lt;/span&gt;&#xA;    &lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;UPDATE&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;users&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;SET&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;age&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;26&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;WHERE&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;id&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;  &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&#xA;&lt;p&gt;MySQL 的 &lt;strong&gt;事务执行顺序&lt;/strong&gt; （结合 MVCC + 日志）如下：&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

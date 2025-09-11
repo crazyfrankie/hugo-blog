@@ -1,36 +1,36 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
         <title>Crazyfrank 的博客</title>
-        <link>http://localhost:1313/</link>
+        <link>https://hugo.crazyfrank.top/</link>
         <description>Crazyfrank 的中文博客</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>axu9417@gmail.com (crazyfrank)</managingEditor>
             <webMaster>axu9417@gmail.com (crazyfrank)</webMaster>
-            <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+            <atom:link href="https://hugo.crazyfrank.top/index.xml" rel="self" type="application/rss+xml" />
         <item>
     <title>以日志处理浅谈去中心化</title>
-    <link>http://localhost:1313/decentration/</link>
+    <link>https://hugo.crazyfrank.top/posts/%E4%BB%A5%E6%97%A5%E5%BF%97%E5%A4%84%E7%90%86%E6%B5%85%E8%B0%88%E5%8E%BB%E4%B8%AD%E5%BF%83%E5%8C%96/</link>
     <pubDate>Fri, 05 Sep 2025 10:00:00 &#43;0800</pubDate>
     <author>crazyfrank</author>
-    <guid>http://localhost:1313/decentration/</guid>
+    <guid>https://hugo.crazyfrank.top/posts/%E4%BB%A5%E6%97%A5%E5%BF%97%E5%A4%84%E7%90%86%E6%B5%85%E8%B0%88%E5%8E%BB%E4%B8%AD%E5%BF%83%E5%8C%96/</guid>
     <description><![CDATA[<p>本文通过日志处理的角度来探讨去中心化系统的设计思路和实现方案。</p>
 <h2 id="去中心化系统概述">去中心化系统概述</h2>
 <p>去中心化是分布式系统设计中的重要概念，它通过将控制权分散到多个节点来提高系统的可靠性和容错性。</p>]]></description>
 </item>
 <item>
     <title>DDD 的一些思考</title>
-    <link>http://localhost:1313/ddd/</link>
+    <link>https://hugo.crazyfrank.top/posts/ddd-%E7%9A%84%E4%B8%80%E4%BA%9B%E6%80%9D%E8%80%83/</link>
     <pubDate>Thu, 04 Sep 2025 10:00:00 &#43;0800</pubDate>
     <author>crazyfrank</author>
-    <guid>http://localhost:1313/ddd/</guid>
+    <guid>https://hugo.crazyfrank.top/posts/ddd-%E7%9A%84%E4%B8%80%E4%BA%9B%E6%80%9D%E8%80%83/</guid>
     <description><![CDATA[<h2 id="项目介绍">项目介绍</h2>
 <p>叠甲，写这篇文章主要是分享在看 DDD 的项目实践中的一些学习感悟，因为本人懒得看理论，所以都只是猜测 DDD 要这么设计。具体还是要参考 DDD 官方网站： <a href="https://domain-driven-design.org/zh/ddd-concept-reference.html" target="_blank" rel="noopener noreffer ">DDD 概念介绍</a></p>]]></description>
 </item>
 <item>
     <title>日志与 Error</title>
-    <link>http://localhost:1313/log-error/</link>
+    <link>https://hugo.crazyfrank.top/posts/%E6%97%A5%E5%BF%97%E4%B8%8E-error/</link>
     <pubDate>Wed, 03 Sep 2025 10:00:00 &#43;0800</pubDate>
     <author>crazyfrank</author>
-    <guid>http://localhost:1313/log-error/</guid>
+    <guid>https://hugo.crazyfrank.top/posts/%E6%97%A5%E5%BF%97%E4%B8%8E-error/</guid>
     <description><![CDATA[<h2 id="日志与-error">日志与 Error</h2>
 <p>一般来说在我们的项目中，按照严格分层的结构划分的话，大致是 <code>handler</code>、<code>service</code>（DDD 中细分为 <code>application</code> 和
 <code>domain</code> ），<code>dao</code>。</p>
@@ -38,10 +38,10 @@
 </item>
 <item>
     <title>DB-Cache 一致性问题</title>
-    <link>http://localhost:1313/db-cache/</link>
+    <link>https://hugo.crazyfrank.top/posts/db-cache-%E4%B8%80%E8%87%B4%E6%80%A7%E9%97%AE%E9%A2%98/</link>
     <pubDate>Tue, 02 Sep 2025 10:00:00 &#43;0800</pubDate>
     <author>crazyfrank</author>
-    <guid>http://localhost:1313/db-cache/</guid>
+    <guid>https://hugo.crazyfrank.top/posts/db-cache-%E4%B8%80%E8%87%B4%E6%80%A7%E9%97%AE%E9%A2%98/</guid>
     <description><![CDATA[<p>如何保证缓存和数据库一致性，这是一个老生常谈的话题了。</p>
 <p>但很多人对这个问题，依旧有很多疑惑：</p>
 <ul>
@@ -56,10 +56,10 @@
 </item>
 <item>
     <title>MVCC 及 MySQL 日志</title>
-    <link>http://localhost:1313/mysql-log/</link>
+    <link>https://hugo.crazyfrank.top/posts/mvcc-%E5%8F%8A-mysql-%E6%97%A5%E5%BF%97/</link>
     <pubDate>Tue, 02 Sep 2025 10:00:00 &#43;0800</pubDate>
     <author>crazyfrank</author>
-    <guid>http://localhost:1313/mysql-log/</guid>
+    <guid>https://hugo.crazyfrank.top/posts/mvcc-%E5%8F%8A-mysql-%E6%97%A5%E5%BF%97/</guid>
     <description><![CDATA[<p>在 <strong>MVCC</strong> 机制下，<strong>Redo Log 和 Bin Log 主要在事务提交时发挥作用</strong> ，它们的作用和触发时机如下：</p>
 <hr>
 <h3 id="事务执行过程中的日志行为">事务执行过程中的日志行为</h3>
@@ -74,19 +74,19 @@
 </item>
 <item>
     <title>负载均衡</title>
-    <link>http://localhost:1313/load-balance/</link>
+    <link>https://hugo.crazyfrank.top/posts/%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/</link>
     <pubDate>Tue, 02 Sep 2025 10:00:00 &#43;0800</pubDate>
     <author>crazyfrank</author>
-    <guid>http://localhost:1313/load-balance/</guid>
+    <guid>https://hugo.crazyfrank.top/posts/%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/</guid>
     <description><![CDATA[<h2 id="概览">概览</h2>
 <p>在分布式环境下，各个微服务都会有不同的实例，服务注册和服务发现解决了“有哪些可用实例”的问题，剩下面临的就是，“这么多可用实例，我该把请求发给谁？”。直觉来说，大部分人如果听过一些专业名词，此时会直接想到“负载均衡”。那负载均衡到底是什么呢？</p>]]></description>
 </item>
 <item>
     <title>感悟</title>
-    <link>http://localhost:1313/life/</link>
+    <link>https://hugo.crazyfrank.top/posts/%E6%84%9F%E6%82%9F/</link>
     <pubDate>Mon, 01 Sep 2025 10:00:00 &#43;0800</pubDate>
     <author>crazyfrank</author>
-    <guid>http://localhost:1313/life/</guid>
+    <guid>https://hugo.crazyfrank.top/posts/%E6%84%9F%E6%82%9F/</guid>
     <description><![CDATA[<p>人的肉体是过去，意识是现在和未来。</p>]]></description>
 </item>
 </channel>

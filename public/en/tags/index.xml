@@ -2,82 +2,89 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on Crazyfrank&#39;s Blog</title>
-    <link>http://localhost:1313/en/tags/</link>
+    <link>https://hugo.crazyfrank.top/en/tags/</link>
     <description>Recent content in Tags on Crazyfrank&#39;s Blog</description>
     <generator>Hugo</generator>
     <language>en-US</language>
     <managingEditor>axu9417@gmail.com (crazyfrank)</managingEditor>
     <webMaster>axu9417@gmail.com (crazyfrank)</webMaster>
-    <lastBuildDate>Mon, 08 Sep 2025 13:18:15 +0800</lastBuildDate>
-    <atom:link href="http://localhost:1313/en/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 11 Sep 2025 13:31:48 +0800</lastBuildDate>
+    <atom:link href="https://hugo.crazyfrank.top/en/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Decentralization</title>
-      <link>http://localhost:1313/en/tags/decentralization/</link>
+      <link>https://hugo.crazyfrank.top/en/tags/decentralization/</link>
       <pubDate>Fri, 05 Sep 2025 10:00:00 +0800</pubDate><author>axu9417@gmail.com (crazyfrank)</author>
-      <guid>http://localhost:1313/en/tags/decentralization/</guid>
+      <guid>https://hugo.crazyfrank.top/en/tags/decentralization/</guid>
       <description></description>
     </item>
     <item>
       <title>Distributed Systems</title>
-      <link>http://localhost:1313/en/tags/distributed-systems/</link>
+      <link>https://hugo.crazyfrank.top/en/tags/distributed-systems/</link>
       <pubDate>Fri, 05 Sep 2025 10:00:00 +0800</pubDate><author>axu9417@gmail.com (crazyfrank)</author>
-      <guid>http://localhost:1313/en/tags/distributed-systems/</guid>
+      <guid>https://hugo.crazyfrank.top/en/tags/distributed-systems/</guid>
       <description></description>
     </item>
     <item>
       <title>System Design</title>
-      <link>http://localhost:1313/en/tags/system-design/</link>
+      <link>https://hugo.crazyfrank.top/en/tags/system-design/</link>
       <pubDate>Fri, 05 Sep 2025 10:00:00 +0800</pubDate><author>axu9417@gmail.com (crazyfrank)</author>
-      <guid>http://localhost:1313/en/tags/system-design/</guid>
+      <guid>https://hugo.crazyfrank.top/en/tags/system-design/</guid>
       <description></description>
     </item>
     <item>
       <title>DDD</title>
-      <link>http://localhost:1313/en/tags/ddd/</link>
+      <link>https://hugo.crazyfrank.top/en/tags/ddd/</link>
       <pubDate>Thu, 04 Sep 2025 10:00:00 +0800</pubDate><author>axu9417@gmail.com (crazyfrank)</author>
-      <guid>http://localhost:1313/en/tags/ddd/</guid>
+      <guid>https://hugo.crazyfrank.top/en/tags/ddd/</guid>
       <description></description>
     </item>
     <item>
       <title>Log</title>
-      <link>http://localhost:1313/en/tags/log/</link>
+      <link>https://hugo.crazyfrank.top/en/tags/log/</link>
       <pubDate>Wed, 03 Sep 2025 10:00:00 +0800</pubDate><author>axu9417@gmail.com (crazyfrank)</author>
-      <guid>http://localhost:1313/en/tags/log/</guid>
+      <guid>https://hugo.crazyfrank.top/en/tags/log/</guid>
       <description></description>
     </item>
     <item>
       <title>Cache</title>
-      <link>http://localhost:1313/en/tags/cache/</link>
+      <link>https://hugo.crazyfrank.top/en/tags/cache/</link>
       <pubDate>Tue, 02 Sep 2025 10:00:00 +0800</pubDate><author>axu9417@gmail.com (crazyfrank)</author>
-      <guid>http://localhost:1313/en/tags/cache/</guid>
+      <guid>https://hugo.crazyfrank.top/en/tags/cache/</guid>
       <description></description>
     </item>
     <item>
       <title>Data Consistency</title>
-      <link>http://localhost:1313/en/tags/data-consistency/</link>
+      <link>https://hugo.crazyfrank.top/en/tags/data-consistency/</link>
       <pubDate>Tue, 02 Sep 2025 10:00:00 +0800</pubDate><author>axu9417@gmail.com (crazyfrank)</author>
-      <guid>http://localhost:1313/en/tags/data-consistency/</guid>
+      <guid>https://hugo.crazyfrank.top/en/tags/data-consistency/</guid>
       <description></description>
     </item>
     <item>
       <title>DB</title>
-      <link>http://localhost:1313/en/tags/db/</link>
+      <link>https://hugo.crazyfrank.top/en/tags/db/</link>
       <pubDate>Tue, 02 Sep 2025 10:00:00 +0800</pubDate><author>axu9417@gmail.com (crazyfrank)</author>
-      <guid>http://localhost:1313/en/tags/db/</guid>
+      <guid>https://hugo.crazyfrank.top/en/tags/db/</guid>
       <description></description>
     </item>
     <item>
       <title>Load Balancing</title>
-      <link>http://localhost:1313/en/tags/load-balancing/</link>
+      <link>https://hugo.crazyfrank.top/en/tags/load-balancing/</link>
       <pubDate>Tue, 02 Sep 2025 10:00:00 +0800</pubDate><author>axu9417@gmail.com (crazyfrank)</author>
-      <guid>http://localhost:1313/en/tags/load-balancing/</guid>
+      <guid>https://hugo.crazyfrank.top/en/tags/load-balancing/</guid>
       <description></description>
     </item>
     <item>
       <title>Microservices</title>
-      <link>http://localhost:1313/en/tags/microservices/</link>
+      <link>https://hugo.crazyfrank.top/en/tags/microservices/</link>
       <pubDate>Tue, 02 Sep 2025 10:00:00 +0800</pubDate><author>axu9417@gmail.com (crazyfrank)</author>
-      <guid>http://localhost:1313/en/tags/microservices/</guid>
+      <guid>https://hugo.crazyfrank.top/en/tags/microservices/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>MySQL</title>
+      <link>https://hugo.crazyfrank.top/en/tags/mysql/</link>
+      <pubDate>Tue, 02 Sep 2025 10:00:00 +0800</pubDate><author>axu9417@gmail.com (crazyfrank)</author>
+      <guid>https://hugo.crazyfrank.top/en/tags/mysql/</guid>
       <description></description>
     </item>
   </channel>

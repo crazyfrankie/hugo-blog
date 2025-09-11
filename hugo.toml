@@ -381,7 +381,7 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
 
 # Permalinks config
 [permalinks]
-  posts = ":filename"
+  posts = "/posts/:slug/"
 
 # Options to make hugo output files
 [outputs]

@@ -2,48 +2,48 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>后端 on Crazyfrank 的博客</title>
-    <link>http://localhost:1313/categories/%E5%90%8E%E7%AB%AF/</link>
+    <link>https://hugo.crazyfrank.top/categories/%E5%90%8E%E7%AB%AF/</link>
     <description>Recent content in 后端 on Crazyfrank 的博客</description>
     <generator>Hugo</generator>
     <language>zh-CN</language>
     <managingEditor>axu9417@gmail.com (crazyfrank)</managingEditor>
     <webMaster>axu9417@gmail.com (crazyfrank)</webMaster>
-    <lastBuildDate>Mon, 08 Sep 2025 13:18:15 +0800</lastBuildDate>
-    <atom:link href="http://localhost:1313/categories/%E5%90%8E%E7%AB%AF/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 11 Sep 2025 13:31:48 +0800</lastBuildDate>
+    <atom:link href="https://hugo.crazyfrank.top/categories/%E5%90%8E%E7%AB%AF/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>以日志处理浅谈去中心化</title>
-      <link>http://localhost:1313/decentration/</link>
+      <link>https://hugo.crazyfrank.top/posts/%E4%BB%A5%E6%97%A5%E5%BF%97%E5%A4%84%E7%90%86%E6%B5%85%E8%B0%88%E5%8E%BB%E4%B8%AD%E5%BF%83%E5%8C%96/</link>
       <pubDate>Fri, 05 Sep 2025 10:00:00 +0800</pubDate><author>axu9417@gmail.com (crazyfrank)</author>
-      <guid>http://localhost:1313/decentration/</guid>
+      <guid>https://hugo.crazyfrank.top/posts/%E4%BB%A5%E6%97%A5%E5%BF%97%E5%A4%84%E7%90%86%E6%B5%85%E8%B0%88%E5%8E%BB%E4%B8%AD%E5%BF%83%E5%8C%96/</guid>
       <description>&lt;p&gt;本文通过日志处理的角度来探讨去中心化系统的设计思路和实现方案。&lt;/p&gt;&#xA;&lt;h2 id=&#34;去中心化系统概述&#34;&gt;去中心化系统概述&lt;/h2&gt;&#xA;&lt;p&gt;去中心化是分布式系统设计中的重要概念，它通过将控制权分散到多个节点来提高系统的可靠性和容错性。&lt;/p&gt;</description>
     </item>
     <item>
       <title>DDD 的一些思考</title>
-      <link>http://localhost:1313/ddd/</link>
+      <link>https://hugo.crazyfrank.top/posts/ddd-%E7%9A%84%E4%B8%80%E4%BA%9B%E6%80%9D%E8%80%83/</link>
       <pubDate>Thu, 04 Sep 2025 10:00:00 +0800</pubDate><author>axu9417@gmail.com (crazyfrank)</author>
-      <guid>http://localhost:1313/ddd/</guid>
+      <guid>https://hugo.crazyfrank.top/posts/ddd-%E7%9A%84%E4%B8%80%E4%BA%9B%E6%80%9D%E8%80%83/</guid>
       <description>&lt;h2 id=&#34;项目介绍&#34;&gt;项目介绍&lt;/h2&gt;&#xA;&lt;p&gt;叠甲，写这篇文章主要是分享在看 DDD 的项目实践中的一些学习感悟，因为本人懒得看理论，所以都只是猜测 DDD 要这么设计。具体还是要参考 DDD 官方网站： &lt;a href=&#34;https://domain-driven-design.org/zh/ddd-concept-reference.html&#34; target=&#34;_blank&#34; rel=&#34;noopener noreffer &#34;&gt;DDD 概念介绍&lt;/a&gt;&lt;/p&gt;</description>
     </item>
     <item>
       <title>日志与 Error</title>
-      <link>http://localhost:1313/log-error/</link>
+      <link>https://hugo.crazyfrank.top/posts/%E6%97%A5%E5%BF%97%E4%B8%8E-error/</link>
       <pubDate>Wed, 03 Sep 2025 10:00:00 +0800</pubDate><author>axu9417@gmail.com (crazyfrank)</author>
-      <guid>http://localhost:1313/log-error/</guid>
+      <guid>https://hugo.crazyfrank.top/posts/%E6%97%A5%E5%BF%97%E4%B8%8E-error/</guid>
       <description>&lt;h2 id=&#34;日志与-error&#34;&gt;日志与 Error&lt;/h2&gt;&#xA;&lt;p&gt;一般来说在我们的项目中，按照严格分层的结构划分的话，大致是 &lt;code&gt;handler&lt;/code&gt;、&lt;code&gt;service&lt;/code&gt;（DDD 中细分为 &lt;code&gt;application&lt;/code&gt; 和&#xA;&lt;code&gt;domain&lt;/code&gt; ），&lt;code&gt;dao&lt;/code&gt;。&lt;/p&gt;&#xA;&lt;p&gt;对于 &lt;code&gt;dao&lt;/code&gt; 层，如果出现错误，我们的处理方式是直接上抛，选择性的打日志处理错误，比如可能有些接口涉及到在 &lt;code&gt;dao&lt;/code&gt;层进行参数校验、手动管理事务等，需要日志记录，但错误仍然是直接上抛。&lt;/p&gt;</description>
     </item>
     <item>
       <title>DB-Cache 一致性问题</title>
-      <link>http://localhost:1313/db-cache/</link>
+      <link>https://hugo.crazyfrank.top/posts/db-cache-%E4%B8%80%E8%87%B4%E6%80%A7%E9%97%AE%E9%A2%98/</link>
       <pubDate>Tue, 02 Sep 2025 10:00:00 +0800</pubDate><author>axu9417@gmail.com (crazyfrank)</author>
-      <guid>http://localhost:1313/db-cache/</guid>
+      <guid>https://hugo.crazyfrank.top/posts/db-cache-%E4%B8%80%E8%87%B4%E6%80%A7%E9%97%AE%E9%A2%98/</guid>
       <description>&lt;p&gt;如何保证缓存和数据库一致性，这是一个老生常谈的话题了。&lt;/p&gt;&#xA;&lt;p&gt;但很多人对这个问题，依旧有很多疑惑：&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;到底是更新缓存还是删缓存？&lt;/li&gt;&#xA;&lt;li&gt;到底选择先更新数据库，再删除缓存，还是先删除缓存，再更新数据库？&lt;/li&gt;&#xA;&lt;li&gt;为什么要引入消息队列保证一致性？&lt;/li&gt;&#xA;&lt;li&gt;延迟双删会有什么问题？到底要不要用？&lt;/li&gt;&#xA;&lt;li&gt;…&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;引入缓存提高性能&#34;&gt;引入缓存提高性能&lt;/h2&gt;&#xA;&lt;p&gt;我们从最简单的场景开始讲起。&lt;/p&gt;</description>
     </item>
     <item>
       <title>MVCC 及 MySQL 日志</title>
-      <link>http://localhost:1313/mysql-log/</link>
+      <link>https://hugo.crazyfrank.top/posts/mvcc-%E5%8F%8A-mysql-%E6%97%A5%E5%BF%97/</link>
       <pubDate>Tue, 02 Sep 2025 10:00:00 +0800</pubDate><author>axu9417@gmail.com (crazyfrank)</author>
-      <guid>http://localhost:1313/mysql-log/</guid>
-      <description>&lt;h2 id=&#34;mvcc-及-mysql-日志&#34;&gt;MVCC 及 MySQL 日志&lt;/h2&gt;&#xA;&lt;p&gt;在 &lt;strong&gt;MVCC&lt;/strong&gt; 机制下，&lt;strong&gt;Redo Log 和 Bin Log 主要在事务提交时发挥作用&lt;/strong&gt; ，它们的作用和触发时机如下：&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h3 id=&#34;1-事务执行过程中的日志行为&#34;&gt;&lt;strong&gt;1. 事务执行过程中的日志行为&lt;/strong&gt;&lt;/h3&gt;&#xA;&lt;p&gt;当执行：&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;UPDATE users SET age = 26 WHERE id = 1;  &#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;MySQL 的 &lt;strong&gt;事务执行顺序&lt;/strong&gt; （结合 MVCC + 日志）如下：&lt;/p&gt;</description>
+      <guid>https://hugo.crazyfrank.top/posts/mvcc-%E5%8F%8A-mysql-%E6%97%A5%E5%BF%97/</guid>
+      <description>&lt;p&gt;在 &lt;strong&gt;MVCC&lt;/strong&gt; 机制下，&lt;strong&gt;Redo Log 和 Bin Log 主要在事务提交时发挥作用&lt;/strong&gt; ，它们的作用和触发时机如下：&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h3 id=&#34;事务执行过程中的日志行为&#34;&gt;事务执行过程中的日志行为&lt;/h3&gt;&#xA;&lt;p&gt;当执行：&lt;/p&gt;&#xA;&lt;div class=&#34;code-block code-line-numbers open&#34; style=&#34;counter-reset: code-block 0&#34;&gt;&#xA;    &lt;div class=&#34;code-header language-sql&#34;&gt;&#xA;        &lt;span class=&#34;code-title&#34;&gt;&lt;i class=&#34;arrow fas fa-angle-right fa-fw&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;&lt;/span&gt;&#xA;        &lt;span class=&#34;ellipses&#34;&gt;&lt;i class=&#34;fas fa-ellipsis-h fa-fw&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;&lt;/span&gt;&#xA;        &lt;span class=&#34;copy&#34; title=&#34;复制到剪贴板&#34;&gt;&lt;i class=&#34;far fa-copy fa-fw&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;&lt;/span&gt;&#xA;    &lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;UPDATE&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;users&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;SET&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;age&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;26&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;WHERE&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;id&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;  &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&#xA;&lt;p&gt;MySQL 的 &lt;strong&gt;事务执行顺序&lt;/strong&gt; （结合 MVCC + 日志）如下：&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>
