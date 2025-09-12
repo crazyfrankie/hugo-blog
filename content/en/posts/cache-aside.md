@@ -59,8 +59,8 @@ Why doesn't it **delete the cache** instead of **update the cache**? Thinking ba
 
 The kafka in this architecture, on the other hand, has a partition that naturally supports sequential consumption. What does this mean?
 
-Specifically, when multiple requests operate on the same piece of data, all of them are sent to kafka, and the same piece of data can be sent to the same partition through kafka's hash policy, which is synchronized IO, meaning that their operations are atomic, one by one.
-That is to say, their operations are atomic, one by one, so there is a natural guarantee that there will be no concurrency problems.
+Specifically, when multiple requests operate on the same piece of data, all of them are sent to kafka, and the same piece of data can be sent to the same partition through kafka's hash policy, and the policies in the same partition are consumed sequentially, which means that their operations are atomic, one by one, so there is a natural guarantee that there will be no concurrency problems.
+That is to say, their operations are atomic, one by one, which naturally ensures that there will be no concurrency problems.
 
 It's the fact that it's `writing the database and manipulating the cache` in the same thread, combined with kafka's sequential consumption, that ensures that concurrency issues don't arise.
 
