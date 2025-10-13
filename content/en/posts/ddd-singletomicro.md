@@ -77,13 +77,6 @@ Thus, an RPC Server can only be considered an Adapter. Let's illustrate this wit
     ├── application
     │   └── user.go
     ├── conf
-    ├── crossdomain
-    │       ├── contract
-    │       │    ├── app
-    │       │    └── event
-    │       └── impl
-    │            ├── app
-    │            └── event
     ├── domain
     │     └── user
     │          ├── entity
@@ -101,22 +94,18 @@ Thus, an RPC Server can only be considered an Adapter. Let's illustrate this wit
     └── pkg
 ```
 
-Here, focus on two modules under `infra`: `rpc` and `crossdomain`.
+Here, the focus is on `rpc` under `infra`.
 
-#### rpc, crossdomain
-As mentioned earlier, it serves as infrastructure providing RPC communication capabilities. Each module requires its own service, hence the inclusion of `server.go` (or possibly a `server` package).
+#### rpc
+As mentioned earlier, it functions as infrastructure providing RPC communication capabilities. Each module must offer its own services, so it necessarily includes a `server.go` file—or potentially a `server` package.
 
-Its role is protocol conversion, constructing request objects, and passing requests transparently to `application`. For gRPC, it also provides additional capabilities like metadata handling. This logic can reside at the server layer
-or be extracted separately. The optimal approach is using gRPC interceptors to uniformly extract metadata, allowing subsequent retrieval from the context (ctx).
+Its role is protocol conversion, constructing request objects, and then passing requests through to the `application` layer. For gRPC, it also provides additional capabilities like metadata handling. This logic can reside within the server layer
+or be extracted separately. The optimal approach is to use gRPC interceptors for unified extraction, allowing subsequent retrieval directly from the context (ctx).
 
-Additionally, it requires cross-service invocations, necessitating clients from other modules. This also requires including client.go.
+Additionally, since it requires cross-service invocations, it must include clients for other modules, necessitating a `client.go` file.
 
-What about `crossdomain`? As mentioned earlier, in monolithic architectures, crossdomain acts as a protective layer, encapsulating cross-module invocations. In monoliths, these are direct in-process calls, while microservices require RPC.
-As previously noted, cross-service invocations are implemented by rpc/client.go.
+Analyzing this, the structure becomes clear:
+- `rpc/server`: Protocol conversion, request construction, encapsulating the application
+- `rpc/client`: Constructs the gRPC client (connection, serialization, load balancing, interceptors, etc.), without encapsulating business logic
 
-Analyzing this, the roles become clear:
-- `rpc/server`: Protocol conversion, request construction, encapsulates the application
-- `rpc/client`: Constructs the gRPC client (connection, serialization, load balancing, interceptors, etc.), does not encapsulate business logic
-- `crossdomain`: Defines and implements ACLs, relies on `infra/rpc client`, handles semantic/protocol conversion, and passes results to the application or domain
-
-This approach decouples communication mechanisms (infrastructure) from business logic, ensuring each component focuses on its core responsibilities with clear delineation of duties.
+This approach decouples the communication mechanism (infrastructure) from the business logic, ensuring each component focuses on its core responsibilities with clear delineation of duties.

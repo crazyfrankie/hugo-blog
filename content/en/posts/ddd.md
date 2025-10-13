@@ -32,6 +32,8 @@ The project structure is roughly as follows:
 
 Here, we mainly explain the design concept of crossdomain. Other designs are consistent with those mentioned on the official website, so you can refer to the official website.
 
+There is one prerequisite: this design approach applies to **monolithic projects**. In most cases, microservice architectures do not require cross-domain communication.
+
 When we encounter an interface logic of module A that involves operations on module B, and at the same time, the interface designed or provided by module B is insufficient to meet the requirements of Module A, it is generally due to inconsistent data structures: input parameters or output parameters.
 So in A simple design architecture, some people often directly add methods in module B to meet the invocation requirements of module A. However, this actually disrupts the boundary design of domain design (the core idea of DDD is to clearly define the boundaries of the domain). Each module/bounded context should encapsulate its own business logic and data, 
 and the single responsibility principle (a module should only be responsible for the business logic of its own domain)

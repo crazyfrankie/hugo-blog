@@ -78,13 +78,6 @@ RPC 就像是另一个“handler”，应该在 service 之上抽象，因为它
     ├── application
     │   └── user.go
     ├── conf
-    ├── crossdomain
-    │       ├── contract
-    │       │    ├── app
-    │       │    └── event
-    │       └── impl
-    │            ├── app
-    │            └── event
     ├── domain
     │     └── user
     │          ├── entity
@@ -102,9 +95,9 @@ RPC 就像是另一个“handler”，应该在 service 之上抽象，因为它
     └── pkg
 ```
 
-这里重点关注两个模块 `infra` 下的 `rpc` 和 `crossdomain`。
+这里重点关注 `infra` 下的 `rpc` 。
 
-#### rpc 、crossdomain
+#### rpc
 刚刚提到了它是作为一种基础设施，提供的能力是 rpc 通信。对于每个模块来说，它自身需要提供服务，所以这里必然包含一个 server.go，当然也可能是 server 包，
 
 它的作用就是协议转换，请求对象的构建，然后将请求透传到 `application`，当然对于 gRPC，还提供了一些其他的，比如 metadata 的能力，这个逻辑可以放在 server 层，
@@ -112,12 +105,8 @@ RPC 就像是另一个“handler”，应该在 service 之上抽象，因为它
 
 同时，它也需要跨服务之间的调用，那么它必然需要其他模块的 client，这里也需要包含 client.go。
 
-那 `crossdomain` 的作用呢？之前提到了单体下的 crossdomain 是作为一个防腐层，提供跨模块之间的调用封装，那单体下是直接进程内，微服务下就要用 rpc 了，
-那刚刚提到了，跨服务之间的调用是由 rpc/client.go 实现的。
-
 那分析到这里，其实就很明确了：
 - `rpc/server`: 协议转换，请求构建，封装 application
 - `rpc/client`: 构建 gRPC Client（连接、序列化、负载均衡、拦截器等），不做业务封装
-- `crossdomain`: 定义和实现 ACL，依赖 infra/rpc client，做语义/协议转换，交给 application 或者 domain
 
 这样的好处是把通信机制（infra）和业务进行了解耦，各司其职，职责划分明确。
