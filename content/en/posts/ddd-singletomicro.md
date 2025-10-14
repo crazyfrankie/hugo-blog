@@ -109,3 +109,6 @@ Analyzing this, the structure becomes clear:
 - `rpc/client`: Constructs the gRPC client (connection, serialization, load balancing, interceptors, etc.), without encapsulating business logic
 
 This approach decouples the communication mechanism (infrastructure) from the business logic, ensuring each component focuses on its core responsibilities with clear delineation of duties.
+
+It should be noted that in microservices, a `crossdomain` layer is not designed. The reason is that the purpose of crossdomain is to decouple two modules through interface contracts, allowing A to no longer directly depend on B, but instead decouple via interfaces.
+However, in microservices, each module's interfaces are exposed as interfaces, such as gRPC Clients, so this layer is largely unnecessary.
