@@ -172,7 +172,7 @@ Based on the above analysis, we require an algorithm that can:
 4. **Fault tolerance**: System continues functioning normally with minor node failures
 5. **Simplicity and clarity**: Logical algorithm design for easy implementation and verification
 
-**This is precisely the problem Raft algorithm solves!**
+**This is precisely the problem Raft algorithm solves**
 
 ## Preview of the Next Section
 
